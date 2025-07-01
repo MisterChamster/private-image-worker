@@ -1,3 +1,4 @@
-from common import ask_path
+from functions import ask_path
 
-dir_main = ask_path
+# print("Helo")
+dir_main = ask_path()
