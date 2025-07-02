@@ -45,7 +45,7 @@ def format_date(date_string):
 def list_images_with_dates(directory):
     """Lists all images in the directory with their capture dates in the format IMG_[Y][M][D]_[H][M][S]."""
     valid_extensions = ('.jpg', '.jpeg', '.png', '.tiff', '.heic')
-    
+
     for filename in os.listdir(directory):
         if filename.lower().endswith(valid_extensions):
             image_path = os.path.join(directory, filename)
