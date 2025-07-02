@@ -5,7 +5,6 @@ import pillow_heif
 
 
 def HEICtoPNG_no_del(directory):
-    # heic to png no deletion
     for filename in os.listdir(directory):
         # check if the file is in HEIC format
         if filename.lower().endswith(".heic"):
@@ -28,7 +27,6 @@ def HEICtoPNG_no_del(directory):
 
 
 def HEICtoPNG_del(directory):
-    # heic to png deletion
     for filename in os.listdir(directory):
         # check if the file is in HEIC format
         if filename.lower().endswith(".heic"):
@@ -55,7 +53,6 @@ def HEICtoPNG_del(directory):
 
 
 def PNGtoJPG_del(directory):
-    # png to jpg deletion
     for filename in os.listdir(directory):
         if filename.lower().endswith(".png"):
             png_image = Image.open(filename)
@@ -68,4 +65,3 @@ def PNGtoJPG_del(directory):
                 os.remove(filename)
             except:
                 print("Couldn't remove " + filename)
-                
