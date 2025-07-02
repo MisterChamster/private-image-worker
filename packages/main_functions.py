@@ -21,13 +21,20 @@ def list_images_in_dir():
 
 def ask_mainloop_action():
     while True:
-        action = str(input("Enter action: \nls - List all images in folder.\nexit - Exit program.\n\n>> "))
+        action = str(input("Enter action: \n" \
+        "ls - List all images in folder.\n" \
+        "cnv - Convert...\n" \
+        "exit - Exit program.\n\n>> "))
 
-        if action not in ["ls", "exit"]:
+        if action not in ["ls", "cnv", "exit"]:
             print("Incorrect input!!")
 
         else:
             return action
+
+
+def ask_convert_action():
+    pass
 
 
 def mainloop():
@@ -41,5 +48,7 @@ def mainloop():
         if action == "ls":
             list_images_in_dir()
             print()
+        elif action =="cnv":
+            ask_convert_action()
         elif action == "exit":
             break
