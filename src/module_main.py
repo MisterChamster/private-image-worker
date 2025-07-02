@@ -1,4 +1,4 @@
-from .module_askers import ask_path
+from .module_askers import ask_path, ask_mainloop_action, ask_convert_action
 from os import chdir, listdir, getcwd
 
 
@@ -10,34 +10,6 @@ def list_images_in_dir():
     for filename in listdir(getcwd()):
         if filename.lower().endswith(valid_extensions):
             print(filename)
-
-
-def ask_mainloop_action():
-    while True:
-        action = str(input("Enter action: \n" \
-        "ls - List all images in folder.\n" \
-        "cnv - Convert...\n" \
-        "exit - Exit program.\n\n>> "))
-
-        if action not in ["ls", "cnv", "exit"]:
-            print("Incorrect input.\n")
-        else:
-            return action
-
-
-def ask_convert_action():
-    while True:
-        action = str(input("Enter convert action: \n" \
-        "hpn - \n" \
-        "hpd - \n" \
-        "pjn - \n" \
-        "pjd - \n" \
-        "rt - Return.\n\n>> "))
-
-        if action not in ["hpn", "hpd", "rt"]:
-            print("Incorrect input.\n")
-        else:
-            return
 
 
 def mainloop():

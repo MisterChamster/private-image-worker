@@ -7,3 +7,33 @@ def ask_path():
         dir_path = str(input("Enter path: \n>> "))
         if exists(dir_path):
             return dir_path
+
+
+def ask_mainloop_action():
+    while True:
+        action = str(input("Enter action: \n" \
+        "ls - List all images in folder.\n" \
+        "cnv - Convert...\n" \
+        "exit - Exit program.\n\n>> "))
+
+        if action not in ["ls", "cnv", "exit"]:
+            print("Incorrect input.\n")
+        else:
+            return action
+
+
+def ask_convert_action():
+    while True:
+        action = str(input("Enter convert action: \n" \
+        "lhp - \n" \
+        "hpn - \n" \
+        "hpd - \n" \
+        "lpj - \n" \
+        "pjn - \n" \
+        "pjd - \n" \
+        "rt  - Return.\n\n>> "))
+
+        if action not in ["lhp", "hpn", "hpd", "lpj", "pjn", "pjd", "rt"]:
+            print("Incorrect input.\n")
+        else:
+            return action
