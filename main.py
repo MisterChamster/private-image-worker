@@ -1,4 +1,4 @@
-from packages import mainloop
+from src import mainloop
 
 
 mainloop()
