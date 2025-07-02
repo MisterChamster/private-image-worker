@@ -52,6 +52,16 @@ def HEICtoPNG_del(directory):
             image.save(new_filepath, format("png"))
 
 
+def PNGtoJPG_no_del(directory):
+    for filename in os.listdir(directory):
+        if filename.lower().endswith(".png"):
+            png_image = Image.open(filename)
+            print("Converting:", filename)
+            rgb_image = png_image.convert("RGB")
+            new_filename = os.path.splitext(filename)[0] + ".jpg"
+            rgb_image.save(new_filename, "JPEG")
+
+
 def PNGtoJPG_del(directory):
     for filename in os.listdir(directory):
         if filename.lower().endswith(".png"):
