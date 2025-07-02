@@ -1,13 +1,6 @@
-from os.path import exists
+from .module_askers import ask_path
 from os import chdir, listdir, getcwd
 
-
-
-def ask_path():
-    while True:
-        dir_path = str(input("Enter path: \n>> "))
-        if exists(dir_path):
-            return dir_path
 
 
 def list_images_in_dir():
