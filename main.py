@@ -1,7 +1,9 @@
-from packages import ask_path, ask_mainloop_action
+from packages import ask_path, mainloop
+from os import chdir
 
 
 print("")
 dir_main = ask_path()
+chdir(dir_main)
 print("")
-action = ask_mainloop_action()
+mainloop()
