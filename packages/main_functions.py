@@ -27,14 +27,24 @@ def ask_mainloop_action():
         "exit - Exit program.\n\n>> "))
 
         if action not in ["ls", "cnv", "exit"]:
-            print("Incorrect input!!")
-
+            print("Incorrect input.\n")
         else:
             return action
 
 
 def ask_convert_action():
-    pass
+    while True:
+        action = str(input("Enter convert action: \n" \
+        "hpn - \n" \
+        "hpd - \n" \
+        "pjn - \n" \
+        "pjd - \n" \
+        "rt - Return.\n\n>> "))
+
+        if action not in ["hpn", "hpd", "rt"]:
+            print("Incorrect input.\n")
+        else:
+            return
 
 
 def mainloop():
@@ -49,6 +59,7 @@ def mainloop():
             list_images_in_dir()
             print()
         elif action =="cnv":
+            print()
             ask_convert_action()
         elif action == "exit":
             break
