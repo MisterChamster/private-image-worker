@@ -26,15 +26,13 @@ def ask_mainloop_action():
 def ask_convert_action():
     while True:
         action = str(input("Enter convert action: \n" \
-        "lsh - \n" \
-        "hpn - \n" \
-        "hpd - \n" \
-        "lsp - \n" \
-        "pjn - \n" \
-        "pjd - \n" \
+        "lsh - List all .heic files in folder\n" \
+        "htp - .heic to .png...\n" \
+        "lsp - List all .png files in folder\n" \
+        "ptj - .png to .jpg...\n" \
         "rt  - Return.\n\n>> "))
 
-        if action not in ["lsh", "hpn", "hpd", "lsp", "pjn", "pjd", "rt"]:
+        if action not in ["lsh", "htp", "lsp", "ptj", "rt"]:
             print("Incorrect input.\n")
         else:
             return action

@@ -84,15 +84,13 @@ def convertloop():
 
         if action == "lsh":
             list_images_in_dir("heic")
-        elif action == "hpn":
-            pass
-        elif action == "hpd":
+            print()
+        elif action == "htp":
             pass
         elif action == "lsp":
             list_images_in_dir("png")
-        elif action == "pjn":
-            pass
-        elif action == "pjd":
+            print()
+        elif action == "ptj":
             pass
         elif action == "rt":
             return
