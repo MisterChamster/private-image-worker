@@ -1,23 +1,8 @@
-from .module_askers import ask_path, ask_mainloop_action, ask_convert_action
-from os import chdir, listdir, getcwd
+from .module_askers import ask_path, ask_mainloop_action
+from .module_converter import convertloop
+from .module_common import list_images_in_dir
+from os import chdir
 
-
-
-def list_images_in_dir(format = "all"):
-    """Lists all images in current directory."""
-    valid_extensions = ()
-    if format == "all":
-        valid_extensions = ('.jpg', '.jpeg', '.png', '.tiff', '.heic')
-    elif format == "heic":
-        valid_extensions = ('.heic')
-    elif format == "png":
-        valid_extensions = ('.png')
-    else:
-        raise Exception("module_main.py/list_images_in_dir error: Wrong format chosen.")
-
-    for filename in listdir(getcwd()):
-        if filename.lower().endswith(valid_extensions):
-            print(filename)
 
 
 def mainloop():
@@ -36,6 +21,6 @@ def mainloop():
             chdir(dir_main)
         elif action =="cnv":
             print()
-            ask_convert_action()
+            convertloop()
         elif action == "exit":
             break

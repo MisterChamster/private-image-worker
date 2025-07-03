@@ -1,6 +1,8 @@
 import os
 from PIL import Image
 import pillow_heif
+from .module_common import list_images_in_dir
+from .module_askers import ask_convert_action
 
 
 
@@ -75,3 +77,22 @@ def PNGtoJPG_del(directory):
                 os.remove(filename)
             except:
                 print("Couldn't remove " + filename)
+
+def convertloop():
+    while True:
+        action = ask_convert_action()
+
+        if action == "lsh":
+            list_images_in_dir("heic")
+        elif action == "hpn":
+            pass
+        elif action == "hpd":
+            pass
+        elif action == "lsp":
+            list_images_in_dir("png")
+        elif action == "pjn":
+            pass
+        elif action == "pjd":
+            pass
+        elif action == "rt":
+            return

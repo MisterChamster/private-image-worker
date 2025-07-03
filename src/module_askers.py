@@ -26,15 +26,15 @@ def ask_mainloop_action():
 def ask_convert_action():
     while True:
         action = str(input("Enter convert action: \n" \
-        "lhp - \n" \
+        "lsh - \n" \
         "hpn - \n" \
         "hpd - \n" \
-        "lpj - \n" \
+        "lsp - \n" \
         "pjn - \n" \
         "pjd - \n" \
         "rt  - Return.\n\n>> "))
 
-        if action not in ["lhp", "hpn", "hpd", "lpj", "pjn", "pjd", "rt"]:
+        if action not in ["lsh", "hpn", "hpd", "lsp", "pjn", "pjd", "rt"]:
             print("Incorrect input.\n")
         else:
             return action
