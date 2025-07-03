@@ -13,10 +13,11 @@ def ask_mainloop_action():
     while True:
         action = str(input("Enter action: \n" \
         "ls - List all images in folder.\n" \
+        "cd - Change program working directory.\n" \
         "cnv - Convert...\n" \
         "exit - Exit program.\n\n>> "))
 
-        if action not in ["ls", "cnv", "exit"]:
+        if action not in ["ls", "cd", "cnv", "exit"]:
             print("Incorrect input.\n")
         else:
             return action

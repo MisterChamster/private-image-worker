@@ -31,6 +31,9 @@ def mainloop():
         if action == "ls":
             list_images_in_dir()
             print()
+        elif action == "cd":
+            dir_main = ask_path()
+            chdir(dir_main)
         elif action =="cnv":
             print()
             ask_convert_action()
