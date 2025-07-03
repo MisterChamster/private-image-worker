@@ -80,13 +80,19 @@ def PNGtoJPG_del(directory):
 
 
 def htploop():
-    print("Hello from htp!")
-    action = ask_htp_action()
+    while True:
+        action = ask_htp_action()
+
+        if action == "rt":
+            return
 
 
 def ptjloop():
-    print("Hello from ptj!")
-    action = ask_ptj_action()
+    while True:
+        action = ask_ptj_action()
+
+        if action == "rt":
+            return
 
 
 def convertloop():
@@ -97,12 +103,14 @@ def convertloop():
             list_images_in_dir("heic")
             print()
         elif action == "htp":
+            print()
             htploop()
             print()
         elif action == "lsp":
             list_images_in_dir("png")
             print()
         elif action == "ptj":
+            print()
             ptjloop()
             print()
         elif action == "rt":
