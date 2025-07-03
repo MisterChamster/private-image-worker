@@ -83,7 +83,10 @@ def htploop():
     while True:
         action = ask_htp_action()
 
-        if action == "rt":
+        if action == "lsh":
+            list_images_in_dir("heic")
+            print()
+        elif action == "rt":
             return
 
 
@@ -91,7 +94,10 @@ def ptjloop():
     while True:
         action = ask_ptj_action()
 
-        if action == "rt":
+        if action == "lsp":
+            list_images_in_dir("png")
+            print()
+        elif action == "rt":
             return
 
 

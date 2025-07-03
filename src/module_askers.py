@@ -40,10 +40,13 @@ def ask_convert_action():
 
 def ask_htp_action():
     while True:
-        action = str(input("Enter convert action: \n" \
+        action = str(input("Enter heic to png action: \n" \
+        "lsh - List all .heic files in folder\n" \
+        "hpn - Convert .heic files to .png files (leave heic files)\n" \
+        "hpd - Convert .heic files to .png files (delete heic files)\n" \
         "rt  - Return.\n\n>> "))
 
-        if action not in ["rt"]:
+        if action not in ["lsh", "hpn", "hpd", "rt"]:
             print("Incorrect input.\n")
         else:
             return action
@@ -51,10 +54,13 @@ def ask_htp_action():
 
 def ask_ptj_action():
     while True:
-        action = str(input("Enter convert action: \n" \
+        action = str(input("Enter png to jpg action: \n" \
+        "lsp - List all .png files in folder\n" \
+        "pjn - Convert .png files to .jpg files (leave png files)\n" \
+        "pjd - Convert .png files to .jpg files (delete png files)\n" \
         "rt  - Return.\n\n>> "))
 
-        if action not in ["rt"]:
+        if action not in ["lsp", "pjn", "pjd", "rt"]:
             print("Incorrect input.\n")
         else:
             return action
