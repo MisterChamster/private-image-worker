@@ -72,7 +72,7 @@ def format_date(date_string):
 def check_single_image_dates(directory):
     """Generator function listing images with all possible date types."""
     # return
-    valid_extensions = ('.jpg', '.jpeg', '.png', '.tiff', '.heic')
+    valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
 
     for filename in os.listdir(directory):
         if filename.lower().endswith(valid_extensions):
@@ -83,30 +83,30 @@ def check_single_image_dates(directory):
             FILE_CREAT_date = get_image_date(image_path, "FILE_CREAT")
             FILE_MOD_date   = get_image_date(image_path, "FILE_MOD")
 
-            formatted_EXIF_DTO_date   = format_date(EXIF_DTO_date)        \
-            if EXIF_DTO_date != "No date" and                             \
-               EXIF_DTO_date is not None                                  \
-            else "No date"
+            formatted_EXIF_DTO_date   = format_date(EXIF_DTO_date)           \
+                if EXIF_DTO_date != "No date" and                            \
+                   EXIF_DTO_date is not None                                 \
+                else "No date"
 
-            formatted_EXIF_DTD_date   = format_date(EXIF_DTD_date)        \
-            if EXIF_DTD_date != "No date" and                             \
-               EXIF_DTD_date is not None                                  \
-            else "No date"
+            formatted_EXIF_DTD_date   = format_date(EXIF_DTD_date)           \
+                if EXIF_DTD_date != "No date" and                            \
+                   EXIF_DTD_date is not None                                 \
+                else "No date"
 
-            formatted_EXIF_DT_date    = format_date(EXIF_DT_date)         \
-            if EXIF_DT_date != "No date" and                              \
-               EXIF_DT_date is not None                                   \
-            else "No date"
+            formatted_EXIF_DT_date    = format_date(EXIF_DT_date)            \
+                if EXIF_DT_date != "No date" and                             \
+                   EXIF_DT_date is not None                                  \
+                else "No date"
 
-            formatted_FILE_CREAT_date = format_date(str(FILE_CREAT_date)) \
-            if FILE_CREAT_date != "No date" and                           \
-               FILE_CREAT_date is not None                                \
-            else "No date"
+            formatted_FILE_CREAT_date = format_date(str(FILE_CREAT_date))    \
+                if FILE_CREAT_date != "No date" and                          \
+                   FILE_CREAT_date is not None                               \
+                else "No date"
 
-            formatted_FILE_MOD_date   = format_date(str(FILE_MOD_date))   \
-            if FILE_MOD_date != "No date" and                             \
-               FILE_MOD_date is not None                                  \
-            else "No date"
+            formatted_FILE_MOD_date   = format_date(str(FILE_MOD_date))      \
+                if FILE_MOD_date != "No date" and                            \
+                   FILE_MOD_date is not None                                 \
+                else "No date"
 
             yield filename + "\n" + \
                   "By DateTimeOriginal EXIF:  " + formatted_EXIF_DTO_date   + "\n" + \
@@ -118,19 +118,27 @@ def check_single_image_dates(directory):
 
 def list_images_with_dates(directory, date_type):
     """Lists all images in the directory with date_type dates in the format IMG_[Y][M][D]_[H][M][S]."""
-    valid_extensions = ('.jpg', '.jpeg', '.png', '.tiff', '.heic')
+    valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
 
     for filename in os.listdir(directory):
         if filename.lower().endswith(valid_extensions):
             image_path = os.path.join(directory, filename)
-            date_created = get_image_date(image_path)
-            formatted_date = format_date(date_created) if date_created != "No date" else date_created
-            print(f"{filename}: {formatted_date}")
+            date_created = get_image_date(image_path, date_type)
+            formatted_date = format_date(date_created)   \
+                if date_created != "No date" and         \
+                   date_created is not None              \
+                else "No date"
+
+            line_len = 80
+            rest_len = len(f": {formatted_date}")
+            if len(filename) > line_len + rest_len:
+                filename = filename[:line_len + rest_len-3] + "..."
+            print(f"{formatted_date}: {filename}")
 
 
 def rename_images(directory):
     """Renames images in a directory based on their capture date."""
-    valid_extensions = ('.jpg', '.jpeg', '.png', '.tiff', '.heic')
+    valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
 
     for filename in os.listdir(directory):
         if filename.lower().endswith(valid_extensions):
@@ -138,6 +146,7 @@ def rename_images(directory):
             date_created = get_image_date(image_path)
 
             if date_created:
+                #THIS WILL NEED WORK TOO
                 formatted_date = format_date(date_created)
                 if formatted_date:
                     new_filename = formatted_date + os.path.splitext(filename)[1]
@@ -180,7 +189,22 @@ def alldatesloop():
 def allfilesdatesloop():
     while True:
         action = ask_all_files_dates()
-        if action == "rt" or action == "exit":
+        if action == "dto":
+            list_images_with_dates(os.getcwd(), "EXIF_DTO")
+            print()
+        elif action == "dtd":
+            list_images_with_dates(os.getcwd(), "EXIF_DTD")
+            print()
+        elif action == "dt":
+            list_images_with_dates(os.getcwd(), "EXIF_DT")
+            print()
+        elif action == "fc":
+            list_images_with_dates(os.getcwd(), "FILE_CREAT")
+            print()
+        elif action == "fm":
+            list_images_with_dates(os.getcwd(), "FILE_MOD")
+            print()
+        elif action == "rt" or action == "exit":
             return action
 
 
