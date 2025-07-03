@@ -77,17 +77,19 @@ def ask_rename_action():
     while True:
         action = str(input("Enter rename action: \n" \
         "pfd  - Print all dates of the first file in folder...\n" \
-        "pad  - Print all images names converted to a format...\n" \
+        "pad  - Print all images names converted to a date format...\n" \
+        "roo  - Rename images names one by one...\n" \
+        "rai  - Rename all images names to a date format...\n" \
         "rt   - Return.\n" \
         "exit - Exit program.\n\n>> "))
 
-        if action not in ["pfd", "pad", "rt", "exit"]:
+        if action not in ["pfd", "pad", "roo", "rai", "rt", "exit"]:
             print("Incorrect input.\n")
         else:
             return action
 
 
-def ask_all_dates():
+def ask_print_all_dates():
     while True:
         action = str(input("Show next file dates?\n" \
         "Enter - Next.\n" \
@@ -102,7 +104,7 @@ def ask_all_dates():
             return action
 
 
-def ask_all_files_dates():
+def ask_print_all_files_dates():
     while True:
         action = str(input("What format to print?\n" \
         "dto  - DateTimeOriginal.\n" \

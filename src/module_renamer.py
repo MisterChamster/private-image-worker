@@ -3,7 +3,7 @@ from PIL.ExifTags import TAGS
 import os
 from datetime import datetime
 from pathlib import Path
-from .module_askers import ask_rename_action, ask_all_dates, ask_all_files_dates
+from .module_askers import ask_rename_action, ask_print_all_dates, ask_print_all_files_dates
 import pillow_heif
 pillow_heif.register_heif_opener()
 
@@ -170,11 +170,11 @@ def rename_images(directory):
 
 
 # ========================= LOOPS =========================
-def alldatesloop():
+def printalldatesloop():
     gen = check_single_image_dates(os.getcwd())
     print(next(gen))
     while True:
-        action = ask_all_dates()
+        action = ask_print_all_dates()
 
         if action == "next":
             try:
@@ -187,9 +187,9 @@ def alldatesloop():
             return action
 
 
-def allfilesdatesloop():
+def printallfilesdatesloop():
     while True:
-        action = ask_all_files_dates()
+        action = ask_print_all_files_dates()
         if action == "dto":
             list_images_with_dates(os.getcwd(), "EXIF_DTO")
             print()
@@ -214,11 +214,19 @@ def renameloop():
         action = ask_rename_action()
 
         if action == "pfd":
-            outing = alldatesloop()
+            outing = printalldatesloop()
             if outing == "exit":
                 return outing
         elif action == "pad":
-            outing = allfilesdatesloop()
+            outing = printallfilesdatesloop()
+            if outing == "exit":
+                return outing
+        elif action == "roo":
+            outing = "exit"
+            if outing == "exit":
+                return outing
+        elif action == "rai":
+            outing = "exit"
             if outing == "exit":
                 return outing
         elif action == "rt" or action == "exit":
