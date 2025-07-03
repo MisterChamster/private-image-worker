@@ -79,6 +79,7 @@ def PNGtoJPG_del(directory):
                 print("Couldn't remove " + filename)
 
 
+# ========================= LOOPS =========================
 def htploop():
     while True:
         action = ask_htp_action()

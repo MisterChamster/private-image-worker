@@ -2,13 +2,6 @@ from os.path import exists
 
 
 
-def ask_path():
-    while True:
-        dir_path = str(input("Enter path: \n>> "))
-        if exists(dir_path):
-            return dir_path
-
-
 # ========================== MAIN ==========================
 def ask_mainloop_action():
     while True:
@@ -23,6 +16,13 @@ def ask_mainloop_action():
             print("Incorrect input.\n")
         else:
             return action
+
+
+def ask_path():
+    while True:
+        dir_path = str(input("Enter path: \n>> "))
+        if exists(dir_path):
+            return dir_path
 
 
 # ========================= CONVERT =========================
@@ -84,6 +84,7 @@ def ask_rename_action():
             print("Incorrect input.\n")
         else:
             return action
+
 
 def ask_all_dates():
     while True:

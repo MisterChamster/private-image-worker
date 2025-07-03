@@ -108,7 +108,7 @@ def check_single_image_dates(directory):
                FILE_CREAT_date is not None                                \
             else "No date"
 
-            yield filename + "\n" +                \
+            yield filename + "\n" + \
                   "By DateTimeOriginal EXIF:  " + formatted_EXIF_DTO_date   + "\n" + \
                   "By DateTimeDigitized EXIF: " + formatted_EXIF_DTD_date   + "\n" + \
                   "By DateTime EXIF:          " + formatted_EXIF_DT_date    + "\n" + \
@@ -159,6 +159,7 @@ def rename_images(directory):
                 print(f"Skipping {filename}: No date found")
 
 
+# ========================= LOOPS =========================
 def alldatesloop():
     gen = check_single_image_dates(os.getcwd())
     print(next(gen))
