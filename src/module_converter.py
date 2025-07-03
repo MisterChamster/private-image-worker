@@ -2,7 +2,7 @@ import os
 from PIL import Image
 import pillow_heif
 from .module_common import list_images_in_dir
-from .module_askers import ask_convert_action
+from .module_askers import ask_convert_action, ask_htp_action, ask_ptj_action
 
 
 
@@ -78,6 +78,17 @@ def PNGtoJPG_del(directory):
             except:
                 print("Couldn't remove " + filename)
 
+
+def htploop():
+    print("Hello from htp!")
+    action = ask_htp_action()
+
+
+def ptjloop():
+    print("Hello from ptj!")
+    action = ask_ptj_action()
+
+
 def convertloop():
     while True:
         action = ask_convert_action()
@@ -86,11 +97,13 @@ def convertloop():
             list_images_in_dir("heic")
             print()
         elif action == "htp":
-            pass
+            htploop()
+            print()
         elif action == "lsp":
             list_images_in_dir("png")
             print()
         elif action == "ptj":
-            pass
+            ptjloop()
+            print()
         elif action == "rt":
             return

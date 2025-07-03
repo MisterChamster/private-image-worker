@@ -36,3 +36,11 @@ def ask_convert_action():
             print("Incorrect input.\n")
         else:
             return action
+        
+
+def ask_htp_action():
+    print("Hello from htp action!")
+
+
+def ask_ptj_action():
+    print("Hello from ptj action!")
