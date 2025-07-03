@@ -75,11 +75,11 @@ def check_single_image_dates(directory):
             EXIF_DT_date    = get_image_date(image_path, "EXIF_DT")
             FILE_MOD_date   = get_image_date(image_path, "FILE_MOD")
             FILE_CREAT_date = get_image_date(image_path, "FILE_CREAT")
-            formatted_EXIF_DTO_date   = format_date(EXIF_DTO_date)   if EXIF_DTO_date != "No date"   else EXIF_DTO_date
-            formatted_EXIF_DTD_date   = format_date(EXIF_DTD_date)   if EXIF_DTD_date != "No date"   else EXIF_DTD_date
-            formatted_EXIF_DT_date    = format_date(EXIF_DT_date)    if EXIF_DT_date != "No date"    else EXIF_DT_date
-            formatted_FILE_MOD_date   = format_date(FILE_MOD_date)   if FILE_MOD_date != "No date"   else FILE_MOD_date
-            formatted_FILE_CREAT_date = format_date(FILE_CREAT_date) if FILE_CREAT_date != "No date" else FILE_CREAT_date
+            formatted_EXIF_DTO_date   = format_date(EXIF_DTO_date)   if EXIF_DTO_date != "No date"   else "No date"
+            formatted_EXIF_DTD_date   = format_date(EXIF_DTD_date)   if EXIF_DTD_date != "No date"   else "No date"
+            formatted_EXIF_DT_date    = format_date(EXIF_DT_date)    if EXIF_DT_date != "No date"    else "No date"
+            formatted_FILE_MOD_date   = format_date(str(FILE_MOD_date))   if FILE_MOD_date != "No date"   else "No date"
+            formatted_FILE_CREAT_date = format_date(str(FILE_CREAT_date)) if FILE_CREAT_date != "No date" else "No date"
             yield formatted_EXIF_DTO_date   + "\n" + \
                   formatted_EXIF_DTD_date   + "\n" + \
                   formatted_EXIF_DT_date    + "\n" + \
@@ -130,12 +130,27 @@ def rename_images(directory):
                 print(f"Skipping {filename}: No date found")
 
 
+def alldatesloop():
+    gen = check_single_image_dates(os.getcwd())
+    print(next(gen))
+    while True:
+        action = ask_all_dates()
+
+        if action == "next":
+            print(next(gen))
+        elif action == "rt" or action == "exit":
+            gen.close()
+            return action
+
+
 def renameloop():
     while True:
         action = ask_rename_action()
 
         if action == "pfd":
-            ask_all_dates()
+            outing = alldatesloop()
+            if outing == "exit":
+                return outing
         elif action == "rt":
             return action
         elif action == "exit":
