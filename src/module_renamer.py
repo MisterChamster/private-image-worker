@@ -75,7 +75,7 @@ def check_single_image_dates(directory):
             EXIF_DT_date    = get_image_date(image_path, "EXIF_DT")
             FILE_MOD_date   = get_image_date(image_path, "FILE_MOD")
             FILE_CREAT_date = get_image_date(image_path, "FILE_CREAT")
-            
+
             formatted_EXIF_DTO_date   = format_date(EXIF_DTO_date)        \
             if EXIF_DTO_date != "No date" and                             \
                EXIF_DTO_date is not None                                  \
@@ -83,25 +83,26 @@ def check_single_image_dates(directory):
 
             formatted_EXIF_DTD_date   = format_date(EXIF_DTD_date)        \
             if EXIF_DTD_date != "No date" and                             \
-               EXIF_DTO_date is not None                                  \
+               EXIF_DTD_date is not None                                  \
             else "No date"
 
             formatted_EXIF_DT_date    = format_date(EXIF_DT_date)         \
             if EXIF_DT_date != "No date" and                              \
-               EXIF_DTO_date is not None                                  \
+               EXIF_DT_date is not None                                  \
             else "No date"
 
             formatted_FILE_MOD_date   = format_date(str(FILE_MOD_date))   \
             if FILE_MOD_date != "No date" and                             \
-               EXIF_DTO_date is not None                                  \
+               FILE_MOD_date is not None                                  \
             else "No date"
 
             formatted_FILE_CREAT_date = format_date(str(FILE_CREAT_date)) \
             if FILE_CREAT_date != "No date" and                           \
-               EXIF_DTO_date is not None                                  \
+               FILE_CREAT_date is not None                                  \
             else "No date"
 
-            yield formatted_EXIF_DTO_date   + "\n" + \
+            yield filename + ": \n" +                \
+                  formatted_EXIF_DTO_date   + "\n" + \
                   formatted_EXIF_DTD_date   + "\n" + \
                   formatted_EXIF_DT_date    + "\n" + \
                   formatted_FILE_MOD_date   + "\n" + \
@@ -128,7 +129,7 @@ def rename_images(directory):
         if filename.lower().endswith(valid_extensions):
             image_path = os.path.join(directory, filename)
             date_created = get_image_date(image_path)
-            
+
             if date_created:
                 formatted_date = format_date(date_created)
                 if formatted_date:
