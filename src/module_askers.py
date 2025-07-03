@@ -119,3 +119,27 @@ def ask_print_all_files_dates():
             print("Incorrect input.\n")
         else:
             return action
+
+
+def ask_convert_dates_one_by_one():
+    while True:
+        action = str(input("\n" \
+        "rt   - Return.\n" \
+        "exit - Exit program.\n\n>> "))
+
+        if action not in ["rt", "exit"]:
+            print("Incorrect input.\n")
+        else:
+            return action
+
+
+def ask_convert_all_dates_loop():
+    while True:
+        action = str(input("\n" \
+        "rt   - Return.\n" \
+        "exit - Exit program.\n\n>> "))
+
+        if action not in ["rt", "exit"]:
+            print("Incorrect input.\n")
+        else:
+            return action
