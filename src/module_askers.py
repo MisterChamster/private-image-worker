@@ -88,4 +88,13 @@ def ask_rename_action():
 def ask_all_dates():
     while True:
         action = str(input("Show next file dates?\n" \
-        ))
+        "Enter - Next.\n" \
+        "rt    - Return.\n" \
+        "exit  - Exit program.\n\n>> "))
+
+        if action not in ["", "rt", "exit"]:
+            print("Incorrect input.\n")
+        else:
+            if action == "":
+                return "next"
+            return action
