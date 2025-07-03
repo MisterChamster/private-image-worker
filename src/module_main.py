@@ -21,6 +21,8 @@ def mainloop():
             chdir(dir_main)
         elif action =="cnv":
             print()
-            convertloop()
+            outing = convertloop()
+            if outing == "exit":
+                return
         elif action == "exit":
-            break
+            return

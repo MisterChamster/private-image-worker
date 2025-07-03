@@ -86,8 +86,14 @@ def htploop():
         if action == "lsh":
             list_images_in_dir("heic")
             print()
-        elif action == "rt":
-            return
+        elif action == "hpn":
+            HEICtoPNG_no_del(os.getcwd())
+            print()
+        elif action == "hpd":
+            HEICtoPNG_del(os.getcwd())
+            print()
+        elif action == "rt" or action == "exit":
+            return action
 
 
 def ptjloop():
@@ -97,8 +103,14 @@ def ptjloop():
         if action == "lsp":
             list_images_in_dir("png")
             print()
-        elif action == "rt":
-            return
+        elif action == "pjn":
+            PNGtoJPG_no_del(os.getcwd())
+            print()
+        elif action == "pjd":
+            PNGtoJPG_del(os.getcwd())
+            print()
+        elif action == "rt" or action == "exit":
+            return action
 
 
 def convertloop():
@@ -108,16 +120,22 @@ def convertloop():
         if action == "lsh":
             list_images_in_dir("heic")
             print()
-        elif action == "htp":
-            print()
-            htploop()
-            print()
         elif action == "lsp":
             list_images_in_dir("png")
             print()
+        elif action == "htp":
+            print()
+            outing = htploop()
+            if outing == "exit":
+                return outing
+            print()
         elif action == "ptj":
             print()
-            ptjloop()
+            outing = ptjloop()
+            if outing == "exit":
+                return outing
             print()
         elif action == "rt":
-            return
+            return action
+        elif action == "exit":
+            return action
