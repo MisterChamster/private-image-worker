@@ -3,7 +3,7 @@ from PIL.ExifTags import TAGS
 import os
 from datetime import datetime
 from pathlib import Path
-from .module_askers import ask_rename_action
+from .module_askers import ask_rename_action, ask_all_dates
 import pillow_heif
 pillow_heif.register_heif_opener()
 
@@ -134,7 +134,9 @@ def renameloop():
     while True:
         action = ask_rename_action()
 
-        if action == "rt":
+        if action == "pfd":
+            ask_all_dates()
+        elif action == "rt":
             return action
         elif action == "exit":
             return action

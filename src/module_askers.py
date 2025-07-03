@@ -76,10 +76,16 @@ def ask_ptj_action():
 def ask_rename_action():
     while True:
         action = str(input("Enter rename action: \n" \
+        "pfd  - Print all dates of the first file in folder...\n" \
         "rt   - Return.\n" \
         "exit - Exit program.\n\n>> "))
 
-        if action not in ["rt", "exit"]:
+        if action not in ["pfd", "rt", "exit"]:
             print("Incorrect input.\n")
         else:
             return action
+
+def ask_all_dates():
+    while True:
+        action = str(input("Show next file dates?\n" \
+        ))
