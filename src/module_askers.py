@@ -105,10 +105,15 @@ def ask_all_dates():
 def ask_all_files_dates():
     while True:
         action = str(input("What format to print?\n" \
-        "rt    - Return.\n" \
-        "exit  - Exit program.\n\n>> "))
+        "dto  - DateTimeOriginal.\n" \
+        "dtd  - DateTimeDigitized.\n" \
+        "dt   - DateTime.\n" \
+        "fc   - File creation.\n" \
+        "fm   - File modification.\n" \
+        "rt   - Return.\n" \
+        "exit - Exit program.\n\n>> "))
 
-        if action not in ["rt", "exit"]:
+        if action not in ["dto", "dtd", "dt", "fc", "fm", "rt", "exit"]:
             print("Incorrect input.\n")
         else:
             return action

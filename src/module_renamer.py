@@ -44,16 +44,16 @@ def get_image_date(image_path, date_type):
 
     elif date_type in ["FILE_MOD", "FILE_CREAT"]:
         stats = Path(image_path).stat()
-        if date_type == "FILE_MOD":
-            modified = str(datetime.fromtimestamp(stats.st_mtime))
-            modified = ":".join(modified.split("-")).split(".")[0]
-            # print(modified)
-            return modified
-        elif date_type == "FILE_CREAT":
+        if date_type == "FILE_CREAT":
             created = str(datetime.fromtimestamp(stats.st_birthtime))
             created = (":".join(created.split("-"))).split(".")[0]
             # print(created)
             return created
+        elif date_type == "FILE_MOD":
+            modified = str(datetime.fromtimestamp(stats.st_mtime))
+            modified = ":".join(modified.split("-")).split(".")[0]
+            # print(modified)
+            return modified
 
     else:
         raise ValueError("module_renamer.py/get_image_date error: " \
@@ -80,8 +80,8 @@ def check_single_image_dates(directory):
             EXIF_DTO_date   = get_image_date(image_path, "EXIF_DTO")
             EXIF_DTD_date   = get_image_date(image_path, "EXIF_DTD")
             EXIF_DT_date    = get_image_date(image_path, "EXIF_DT")
-            FILE_MOD_date   = get_image_date(image_path, "FILE_MOD")
             FILE_CREAT_date = get_image_date(image_path, "FILE_CREAT")
+            FILE_MOD_date   = get_image_date(image_path, "FILE_MOD")
 
             formatted_EXIF_DTO_date   = format_date(EXIF_DTO_date)        \
             if EXIF_DTO_date != "No date" and                             \
@@ -98,22 +98,22 @@ def check_single_image_dates(directory):
                EXIF_DT_date is not None                                   \
             else "No date"
 
-            formatted_FILE_MOD_date   = format_date(str(FILE_MOD_date))   \
-            if FILE_MOD_date != "No date" and                             \
-               FILE_MOD_date is not None                                  \
-            else "No date"
-
             formatted_FILE_CREAT_date = format_date(str(FILE_CREAT_date)) \
             if FILE_CREAT_date != "No date" and                           \
                FILE_CREAT_date is not None                                \
+            else "No date"
+
+            formatted_FILE_MOD_date   = format_date(str(FILE_MOD_date))   \
+            if FILE_MOD_date != "No date" and                             \
+               FILE_MOD_date is not None                                  \
             else "No date"
 
             yield filename + "\n" + \
                   "By DateTimeOriginal EXIF:  " + formatted_EXIF_DTO_date   + "\n" + \
                   "By DateTimeDigitized EXIF: " + formatted_EXIF_DTD_date   + "\n" + \
                   "By DateTime EXIF:          " + formatted_EXIF_DT_date    + "\n" + \
-                  "By file modification:      " + formatted_FILE_MOD_date   + "\n" + \
-                  "By file creation:          " + formatted_FILE_CREAT_date + "\n"
+                  "By file creation:          " + formatted_FILE_CREAT_date + "\n" + \
+                  "By file modification:      " + formatted_FILE_MOD_date   + "\n"
 
 
 def list_images_with_dates(directory, date_type):
