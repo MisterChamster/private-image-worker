@@ -136,7 +136,5 @@ def convertloop():
             if outing == "exit":
                 return outing
             print()
-        elif action == "rt":
-            return action
-        elif action == "exit":
+        elif action == "rt" or action == "exit":
             return action

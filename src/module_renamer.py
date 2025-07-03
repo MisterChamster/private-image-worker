@@ -3,7 +3,7 @@ from PIL.ExifTags import TAGS
 import os
 from datetime import datetime
 from pathlib import Path
-from .module_askers import ask_rename_action, ask_all_dates
+from .module_askers import ask_rename_action, ask_all_dates, ask_all_files_dates
 import pillow_heif
 pillow_heif.register_heif_opener()
 
@@ -116,8 +116,8 @@ def check_single_image_dates(directory):
                   "By file creation:          " + formatted_FILE_CREAT_date + "\n"
 
 
-def list_images_with_dates(directory):
-    """Lists all images in the directory with their capture dates in the format IMG_[Y][M][D]_[H][M][S]."""
+def list_images_with_dates(directory, date_type):
+    """Lists all images in the directory with date_type dates in the format IMG_[Y][M][D]_[H][M][S]."""
     valid_extensions = ('.jpg', '.jpeg', '.png', '.tiff', '.heic')
 
     for filename in os.listdir(directory):
@@ -177,6 +177,13 @@ def alldatesloop():
             return action
 
 
+def allfilesdatesloop():
+    while True:
+        action = ask_all_files_dates()
+        if action == "rt" or action == "exit":
+            return action
+
+
 def renameloop():
     while True:
         action = ask_rename_action()
@@ -185,7 +192,9 @@ def renameloop():
             outing = alldatesloop()
             if outing == "exit":
                 return outing
-        elif action == "rt":
-            return action
-        elif action == "exit":
+        elif action == "pad":
+            outing = allfilesdatesloop()
+            if outing == "exit":
+                return outing
+        elif action == "rt" or action == "exit":
             return action
