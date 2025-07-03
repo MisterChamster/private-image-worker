@@ -121,7 +121,8 @@ def list_images_with_dates(directory, date_type):
     valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
 
     for filename in os.listdir(directory):
-        if filename.lower().endswith(valid_extensions):
+        extension = filename.lower().split(".")[-1]
+        if extension in valid_extensions:
             image_path = os.path.join(directory, filename)
             date_created = get_image_date(image_path, date_type)
             formatted_date = format_date(date_created)   \
@@ -132,7 +133,7 @@ def list_images_with_dates(directory, date_type):
             line_len = 80
             rest_len = len(f": {formatted_date}")
             if len(filename) > line_len + rest_len:
-                filename = filename[:line_len + rest_len-3] + "..."
+                filename = filename[:line_len + rest_len-3-4] + "..." + extension
             print(f"{formatted_date}: {filename}")
 
 
