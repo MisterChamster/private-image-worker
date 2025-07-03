@@ -9,16 +9,17 @@ def ask_path():
             return dir_path
 
 
-# ========================= MAIN =========================
+# ========================== MAIN ==========================
 def ask_mainloop_action():
     while True:
         action = str(input("Enter action: \n" \
         "ls   - List all images in folder.\n" \
         "cd   - Change program working directory.\n" \
+        "rnm  - Rename...\n" \
         "cnv  - Convert...\n" \
         "exit - Exit program.\n\n>> "))
 
-        if action not in ["ls", "cd", "cnv", "exit"]:
+        if action not in ["ls", "cd", "rnm", "cnv", "exit"]:
             print("Incorrect input.\n")
         else:
             return action
@@ -66,6 +67,19 @@ def ask_ptj_action():
         "exit - Exit program.\n\n>> "))
 
         if action not in ["lsp", "pjn", "pjd", "rt", "exit"]:
+            print("Incorrect input.\n")
+        else:
+            return action
+
+
+# ========================= RENAME =========================
+def ask_rename_action():
+    while True:
+        action = str(input("Enter rename action: \n" \
+        "rt   - Return.\n" \
+        "exit - Exit program.\n\n>> "))
+
+        if action not in ["rt", "exit"]:
             print("Incorrect input.\n")
         else:
             return action

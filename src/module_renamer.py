@@ -2,6 +2,7 @@ from PIL import Image
 from PIL.ExifTags import TAGS
 import os
 from datetime import datetime
+from .module_askers import ask_rename_action
 import pillow_heif
 pillow_heif.register_heif_opener()
 
@@ -83,3 +84,13 @@ def rename_images(directory):
                     print(f"Skipping {filename}: Invalid date format")
             else:
                 print(f"Skipping {filename}: No date found")
+
+
+def renameloop():
+    while True:
+        action = ask_rename_action()
+
+        if action == "rt":
+            return action
+        elif action == "exit":
+            return action
