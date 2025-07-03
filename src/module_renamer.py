@@ -8,27 +8,30 @@ pillow_heif.register_heif_opener()
 
 
 
-def get_image_date(image_path):
+def get_image_date(image_path, date_type):
     """Extracts the date the image was taken from EXIF metadata."""
+    #date_type can be FILE_MOD, FILE_CREAT, EXIF_DTO, EXIF_DTD, EXIF_DT
     try:
         with Image.open(image_path) as img:
             exif_data = img.getexif()
 
-            # creation_time = os.path.getctime(image_path)
-            # print(creation_time)
-            # dt = datetime.fromtimestamp(creation_time)
-            # return str(dt)
-
             if exif_data:
                 tag_dict = {TAGS.get(tag, tag): value for tag, value in exif_data.items()}
-                # Try to return the most reliable tag
-                return (
-                    #COME BACK HERE IF SOMETHING DOES NOT WORK
-                    # tag_dict.get("DateTimeOriginal") or
-                    tag_dict.get("DateTimeDigitized") or
-                    tag_dict.get("DateTime") or
-                    "No date"
-                )
+
+                if date_type == "EXIF_DTO":
+                    return tag_dict.get("DateTimeOriginal")
+                elif date_type == "EXIF_DTD":
+                    return tag_dict.get("DateTimeDigitized")
+                elif date_type == "EXIF_DT":
+                    tag_dict.get("DateTime")
+                else:
+                    raise ValueError("module_renamer.py/get_image_date error:" \
+                    " Wrong input mr programmer.")
+            else:
+                return "No EXIF data"
+
+
+
     except Exception as e:
         print(f"Error reading {image_path}: {e}")
     return "No date"
@@ -58,7 +61,7 @@ def list_images_with_dates(directory):
 def rename_images(directory):
     """Renames images in a directory based on their capture date."""
     valid_extensions = ('.jpg', '.jpeg', '.png', '.tiff', '.heic')
-    
+
     for filename in os.listdir(directory):
         if filename.lower().endswith(valid_extensions):
             image_path = os.path.join(directory, filename)
