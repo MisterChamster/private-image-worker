@@ -2,6 +2,7 @@ from PIL import Image
 from PIL.ExifTags import TAGS
 import os
 from datetime import datetime
+from pathlib import Path
 from .module_askers import ask_rename_action
 import pillow_heif
 pillow_heif.register_heif_opener()
@@ -10,31 +11,46 @@ pillow_heif.register_heif_opener()
 
 def get_image_date(image_path, date_type):
     """Extracts the date the image was taken from EXIF metadata."""
-    #date_type can be FILE_MOD, FILE_CREAT, EXIF_DTO, EXIF_DTD, EXIF_DT
-    try:
-        with Image.open(image_path) as img:
-            exif_data = img.getexif()
+    #date_type can be strings: FILE_MOD, FILE_CREAT, EXIF_DTO, EXIF_DTD, EXIF_DT
+    if date_type in ["EXIF_DTO", "EXIF_DTD", "EXIF_DT"]:
+        try:
+            with Image.open(image_path) as img:
+                exif_data = img.getexif()
+                if exif_data:
+                    tag_dict = {TAGS.get(tag, tag): value for tag, value in exif_data.items()}
 
-            if exif_data:
-                tag_dict = {TAGS.get(tag, tag): value for tag, value in exif_data.items()}
-
-                if date_type == "EXIF_DTO":
-                    return tag_dict.get("DateTimeOriginal")
-                elif date_type == "EXIF_DTD":
-                    return tag_dict.get("DateTimeDigitized")
-                elif date_type == "EXIF_DT":
-                    tag_dict.get("DateTime")
+                    if date_type == "EXIF_DTO":
+                        try:
+                            return tag_dict.get("DateTimeOriginal")
+                        except:
+                            return "No DateTimeOriginal EXIF"
+                    elif date_type == "EXIF_DTD":
+                        try:
+                            return tag_dict.get("DateTimeDigitized")
+                        except:
+                            return "No DateTimeDigitized EXIF"
+                    elif date_type == "EXIF_DT":
+                        try:
+                            return tag_dict.get("DateTime")
+                        except:
+                            return "No DateTime EXIF"
                 else:
-                    raise ValueError("module_renamer.py/get_image_date error:" \
-                    " Wrong input mr programmer.")
-            else:
-                return "No EXIF data"
+                    return "No EXIF data"
+        except Exception as e:
+            print(f"Error reading {image_path}: {e}")
 
+    elif date_type in ["FILE_MOD", "FILE_CREAT"]:
+        stats = Path(image_path).stat()
+        if date_type == "FILE_MOD":
+            modified = datetime.fromtimestamp(stats.st_mtime)
+            return modified
+        elif date_type == "FILE_CREAT":
+            created = datetime.fromtimestamp(stats.st_ctime)
+            return created
 
-
-    except Exception as e:
-        print(f"Error reading {image_path}: {e}")
-    return "No date"
+    else:
+        raise ValueError("module_renamer.py/get_image_date error: " \
+        "Wrong input mr programmer.")
 
 
 def format_date(date_string):
@@ -44,6 +60,23 @@ def format_date(date_string):
         return dt.strftime("IMG_%Y%m%d_%H%M%S")
     except ValueError:
         return "Invalid date"
+
+
+def check_single_image_dates(directory):
+    """Generator function listing images with all possible date types."""
+    return
+    valid_extensions = ('.jpg', '.jpeg', '.png', '.tiff', '.heic')
+
+    for filename in os.listdir(directory):
+        if filename.lower().endswith(valid_extensions):
+            image_path = os.path.join(directory, filename)
+            EXIF_DTO_date   = get_image_date(image_path, "EXIF_DTO")
+            EXIF_DTD_date   = get_image_date(image_path, "EXIF_DTD")
+            EXIF_DT_date    = get_image_date(image_path, "EXIF_DT")
+            FILE_MOD_date   = get_image_date(image_path, "FILE_MOD")
+            FILE_CREAT_date = get_image_date(image_path, "FILE_CREAT")
+            formatted_date = format_date(date_created) if date_created != "No date" else date_created
+            print(f"{filename}: {formatted_date}")
 
 
 def list_images_with_dates(directory):
