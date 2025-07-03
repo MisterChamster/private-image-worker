@@ -21,16 +21,19 @@ def get_image_date(image_path, date_type):
 
                     if date_type == "EXIF_DTO":
                         try:
+                            # print("PRONT DateTimeOriginal" + tag_dict.get("DateTimeOriginal"))
                             return tag_dict.get("DateTimeOriginal")
                         except:
                             return "No DateTimeOriginal EXIF"
                     elif date_type == "EXIF_DTD":
                         try:
+                            # print("PRONT DateTimeDigitized" + tag_dict.get("DateTimeDigitized"))
                             return tag_dict.get("DateTimeDigitized")
                         except:
                             return "No DateTimeDigitized EXIF"
                     elif date_type == "EXIF_DT":
                         try:
+                            # print("PRONT DateTime" + tag_dict.get("DateTime"))
                             return tag_dict.get("DateTime")
                         except:
                             return "No DateTime EXIF"
@@ -42,10 +45,14 @@ def get_image_date(image_path, date_type):
     elif date_type in ["FILE_MOD", "FILE_CREAT"]:
         stats = Path(image_path).stat()
         if date_type == "FILE_MOD":
-            modified = datetime.fromtimestamp(stats.st_mtime)
+            modified = str(datetime.fromtimestamp(stats.st_mtime))
+            modified = ":".join(modified.split("-")).split(".")[0]
+            # print(modified)
             return modified
         elif date_type == "FILE_CREAT":
-            created = datetime.fromtimestamp(stats.st_ctime)
+            created = str(datetime.fromtimestamp(stats.st_birthtime))
+            created = (":".join(created.split("-"))).split(".")[0]
+            # print(created)
             return created
 
     else:
@@ -54,7 +61,7 @@ def get_image_date(image_path, date_type):
 
 
 def format_date(date_string):
-    """Formats the date as IMG_[Y][M][D]_[H][M][S]."""
+    """Formats %Y:%m:%d %H:%M:%S date as IMG_[Y][M][D]_[H][M][S]."""
     try:
         dt = datetime.strptime(date_string, "%Y:%m:%d %H:%M:%S")
         return dt.strftime("IMG_%Y%m%d_%H%M%S")
@@ -88,7 +95,7 @@ def check_single_image_dates(directory):
 
             formatted_EXIF_DT_date    = format_date(EXIF_DT_date)         \
             if EXIF_DT_date != "No date" and                              \
-               EXIF_DT_date is not None                                  \
+               EXIF_DT_date is not None                                   \
             else "No date"
 
             formatted_FILE_MOD_date   = format_date(str(FILE_MOD_date))   \
@@ -98,15 +105,15 @@ def check_single_image_dates(directory):
 
             formatted_FILE_CREAT_date = format_date(str(FILE_CREAT_date)) \
             if FILE_CREAT_date != "No date" and                           \
-               FILE_CREAT_date is not None                                  \
+               FILE_CREAT_date is not None                                \
             else "No date"
 
-            yield filename + ": \n" +                \
-                  formatted_EXIF_DTO_date   + "\n" + \
-                  formatted_EXIF_DTD_date   + "\n" + \
-                  formatted_EXIF_DT_date    + "\n" + \
-                  formatted_FILE_MOD_date   + "\n" + \
-                  formatted_FILE_CREAT_date + "\n"
+            yield filename + "\n" +                \
+                  "By DateTimeOriginal EXIF:  " + formatted_EXIF_DTO_date   + "\n" + \
+                  "By DateTimeDigitized EXIF: " + formatted_EXIF_DTD_date   + "\n" + \
+                  "By DateTime EXIF:          " + formatted_EXIF_DT_date    + "\n" + \
+                  "By file modification:      " + formatted_FILE_MOD_date   + "\n" + \
+                  "By file creation:          " + formatted_FILE_CREAT_date + "\n"
 
 
 def list_images_with_dates(directory):
