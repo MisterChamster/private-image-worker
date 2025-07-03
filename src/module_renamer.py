@@ -64,7 +64,7 @@ def format_date(date_string):
 
 def check_single_image_dates(directory):
     """Generator function listing images with all possible date types."""
-    return
+    # return
     valid_extensions = ('.jpg', '.jpeg', '.png', '.tiff', '.heic')
 
     for filename in os.listdir(directory):
@@ -75,8 +75,16 @@ def check_single_image_dates(directory):
             EXIF_DT_date    = get_image_date(image_path, "EXIF_DT")
             FILE_MOD_date   = get_image_date(image_path, "FILE_MOD")
             FILE_CREAT_date = get_image_date(image_path, "FILE_CREAT")
-            formatted_date = format_date(date_created) if date_created != "No date" else date_created
-            print(f"{filename}: {formatted_date}")
+            formatted_EXIF_DTO_date   = format_date(EXIF_DTO_date)   if EXIF_DTO_date != "No date"   else EXIF_DTO_date
+            formatted_EXIF_DTD_date   = format_date(EXIF_DTD_date)   if EXIF_DTD_date != "No date"   else EXIF_DTD_date
+            formatted_EXIF_DT_date    = format_date(EXIF_DT_date)    if EXIF_DT_date != "No date"    else EXIF_DT_date
+            formatted_FILE_MOD_date   = format_date(FILE_MOD_date)   if FILE_MOD_date != "No date"   else FILE_MOD_date
+            formatted_FILE_CREAT_date = format_date(FILE_CREAT_date) if FILE_CREAT_date != "No date" else FILE_CREAT_date
+            yield formatted_EXIF_DTO_date   + "\n" + \
+                  formatted_EXIF_DTD_date   + "\n" + \
+                  formatted_EXIF_DT_date    + "\n" + \
+                  formatted_FILE_MOD_date   + "\n" + \
+                  formatted_FILE_CREAT_date + "\n"
 
 
 def list_images_with_dates(directory):
