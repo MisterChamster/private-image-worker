@@ -1,4 +1,4 @@
-from os.path import exists
+# from os.path import exists
 from .module_renamer import get_formatted_name
 import os
 
@@ -23,8 +23,9 @@ def ask_mainloop_action():
 
 def ask_path():
     while True:
-        dir_path = str(input("Enter path: \n>> "))
-        if exists(dir_path):
+        print("Enter path (to exit input 'exit'): \n>> ", end="")
+        dir_path = str(input())
+        if os.path.exists(dir_path) or dir_path == "exit":
             return dir_path
         else:
             print("Invalid path.\n")

@@ -9,6 +9,8 @@ from os import chdir
 def mainloop():
     print()
     dir_main = ask_path()
+    if dir_main == "exit":
+        return
     chdir(dir_main)
 
     while True:
@@ -19,6 +21,8 @@ def mainloop():
             print()
         elif action == "cd":
             dir_main = ask_path()
+            if dir_main == "exit":
+                return
             chdir(dir_main)
         elif action == "rnm":
             print()
