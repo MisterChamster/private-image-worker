@@ -1,6 +1,6 @@
 from .module_askers import ask_path, ask_mainloop_action
 from .module_renamer_loops import renameloop
-from .module_converter import convertloop
+from .module_converter_loops import convertloop
 from .module_common import list_images_in_dir
 from os import chdir
 
