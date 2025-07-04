@@ -132,7 +132,7 @@ def rename_image_with_style(image_path, date_type):
             try:
                 os.rename(image_path, new_filepath)
                 og_filename = os.path.basename(image_path)
-                print(f"Renamed: {og_filename} -> {new_filename}")
+                print(f"Renamed:  {new_filename} <- {og_filename}")
                 return
             except FileExistsError:
                 print(f"File {new_filename} already exists, trying with a different name.")
@@ -154,28 +154,4 @@ def rename_images_in_dir(directory, date_type):
         extension = filename.lower().split(".")[-1]
         if extension in valid_extensions:
             image_path = os.path.join(directory, filename)
-            formatted_name = get_formatted_name(image_path, date_type)
-            if formatted_name == "Invalid date":
-                print(f"{formatted_name}:        {filename}")
-                continue
-            elif formatted_name == "No date":
-                print(f"{formatted_name}:             {filename}")
-                continue
-
-        #     new_filename = formatted_date + os.path.splitext(filename)[1]
-        #     for i in range(1, 100):
-        #         try:
-        #             new_path = os.path.join(directory, new_filename)
-        #             # print(f"Image: {image_path} -> New Path: {new_path}")
-        #             os.rename(image_path, new_path)
-        #             print(f"Renamed: {filename} -> {new_filename}")
-        #             break
-        #         except FileExistsError:
-        #             print(f"File {new_filename} already exists, trying with a number suffix.")
-        #             new_filename = new_filename.split('.')[0] + f"_{i}." + new_filename.split('.')[-1]
-        #             continue
-
-        #     else:
-        #         print(f"Skipping {filename}: Invalid date format")
-        # else:
-        #     print(f"Skipping {filename}: No date found")
+            rename_image_with_style(image_path, date_type)

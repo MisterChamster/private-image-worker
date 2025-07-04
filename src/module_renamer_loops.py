@@ -90,7 +90,7 @@ def renameallimagesloop(date_type):
             list_images_with_dates(os.getcwd(), date_type)
             print()
         elif action == "ren":
-            rename_images_in_dir()
+            rename_images_in_dir(os.getcwd(), date_type)
             print()
         elif action == "rt" or action == "exit":
             return action
