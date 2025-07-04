@@ -24,6 +24,8 @@ def ask_path():
         dir_path = str(input("Enter path: \n>> "))
         if exists(dir_path):
             return dir_path
+        else:
+            print("Invalid path.\n")
 
 
 # ========================= CONVERT =========================

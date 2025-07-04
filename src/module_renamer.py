@@ -73,6 +73,15 @@ def format_date(date_string):
         return "Invalid date"
 
 
+def get_formatted_name(image_path, date_type):
+    image_date = get_image_date(image_path, date_type)
+    formatted_name   = format_date(image_date)            \
+        if image_date != "No date" and                    \
+            image_date is not None                        \
+        else "No date"
+    return formatted_name
+
+
 def check_single_image_dates(directory):
     """Generator function listing images with all possible date types."""
     valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
@@ -80,36 +89,11 @@ def check_single_image_dates(directory):
     for filename in os.listdir(directory):
         if filename.lower().endswith(valid_extensions):
             image_path = os.path.join(directory, filename)
-            EXIF_DTO_date   = get_image_date(image_path, "EXIF_DTO")
-            EXIF_DTD_date   = get_image_date(image_path, "EXIF_DTD")
-            EXIF_DT_date    = get_image_date(image_path, "EXIF_DT")
-            FILE_CREAT_date = get_image_date(image_path, "FILE_CREAT")
-            FILE_MOD_date   = get_image_date(image_path, "FILE_MOD")
-
-            formatted_EXIF_DTO_date   = format_date(EXIF_DTO_date)           \
-                if EXIF_DTO_date != "No date" and                            \
-                   EXIF_DTO_date is not None                                 \
-                else "No date"
-
-            formatted_EXIF_DTD_date   = format_date(EXIF_DTD_date)           \
-                if EXIF_DTD_date != "No date" and                            \
-                   EXIF_DTD_date is not None                                 \
-                else "No date"
-
-            formatted_EXIF_DT_date    = format_date(EXIF_DT_date)            \
-                if EXIF_DT_date != "No date" and                             \
-                   EXIF_DT_date is not None                                  \
-                else "No date"
-
-            formatted_FILE_CREAT_date = format_date(str(FILE_CREAT_date))    \
-                if FILE_CREAT_date != "No date" and                          \
-                   FILE_CREAT_date is not None                               \
-                else "No date"
-
-            formatted_FILE_MOD_date   = format_date(str(FILE_MOD_date))      \
-                if FILE_MOD_date != "No date" and                            \
-                   FILE_MOD_date is not None                                 \
-                else "No date"
+            formatted_EXIF_DTO_date   = get_formatted_name(image_path, "EXIF_DTO")
+            formatted_EXIF_DTD_date   = get_formatted_name(image_path, "EXIF_DTD")
+            formatted_EXIF_DT_date    = get_formatted_name(image_path, "EXIF_DT")
+            formatted_FILE_CREAT_date = get_formatted_name(image_path, "FILE_CREAT")
+            formatted_FILE_MOD_date = get_formatted_name(image_path, "FILE_MOD")
 
             yield filename + "\n" + \
                   "By DateTimeOriginal EXIF:  " + formatted_EXIF_DTO_date   + "\n" + \
@@ -140,14 +124,14 @@ def list_images_with_dates(directory, date_type):
             print(f"{formatted_date}: {filename}")
 
 
-def rename_images(directory):
+def rename_images(directory, date_type):
     """Renames images in a directory based on their capture date."""
     valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
 
     for filename in os.listdir(directory):
         if filename.lower().endswith(valid_extensions):
             image_path = os.path.join(directory, filename)
-            date_created = get_image_date(image_path)
+            date_created = get_image_date(image_path, date_type)
 
             if date_created:
                 #THIS WILL NEED WORK TOO
@@ -222,6 +206,7 @@ def convertdatesonebyoneloop(directory):
             action = ask_convert_dates_one_by_one(filename)
             if action == "rt" or action == "exit":
                 return action
+    print("All files have been considered.\n")
 
 
 def convertalldatesloop():
