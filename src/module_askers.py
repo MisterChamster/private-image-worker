@@ -214,10 +214,10 @@ def ask_rename_style():
 
 def ask_rename_all_images(date_type):
     while True:
-        print("Choose a renaming option:\n"                             \
-       f"ls   - List all images names converted to {date_type} format." \
-       f"ren  - Rename all images to {date_type} format."               \
-        "rt   - Return.\n"                                              \
+        print("Choose a renaming option:\n"                               \
+       f"ls   - List all images names converted to {date_type} format.\n" \
+       f"ren  - Rename all images to {date_type} format.\n"               \
+        "rt   - Return.\n"                                                \
         "exit - Exit program.\n\n>> ", end="")
         action = str(input())
 

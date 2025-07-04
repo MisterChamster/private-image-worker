@@ -84,8 +84,8 @@ def renameimagesonebyoneloop(directory):
 
 
 def renameallimagesloop(date_type):
-    action = ask_rename_all_images(date_type)
     while True:
+        action = ask_rename_all_images(date_type)
         if action == "ls":
             list_images_with_dates(os.getcwd(), date_type)
             print()
