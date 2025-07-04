@@ -2,8 +2,8 @@ import os
 from .module_askers import ask_rename_action,            \
                            ask_print_all_dates,          \
                            ask_print_all_files_dates,    \
-                           ask_convert_dates_one_by_one, \
-                           ask_convert_all_dates_loop
+                           ask_rename_images_one_by_one, \
+                           ask_rename_all_images_loop
 from .module_renamer import check_single_image_dates,    \
                             list_images_with_dates,      \
                             rename_image
@@ -51,13 +51,13 @@ def printallfilesdatesloop():
             return action
 
 
-def convertdatesonebyoneloop(directory):
+def renameimagesonebyoneloop(directory):
     valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
 
     for filename in os.listdir():
         if filename.lower().endswith(valid_extensions):
             image_path = os.path.join(directory, filename)
-            action = ask_convert_dates_one_by_one(image_path)
+            action = ask_rename_images_one_by_one(image_path)
 
             if action == "o":
                 rename_image(image_path, "EXIF_DTO")
@@ -81,9 +81,9 @@ def convertdatesonebyoneloop(directory):
     print("All files have been considered.\n")
 
 
-def convertalldatesloop():
+def renameallimagesloop():
     while True:
-        action = ask_convert_all_dates_loop()
+        action = ask_rename_all_images_loop()
         if action == "rt" or action == "exit":
             return action
 
@@ -101,11 +101,11 @@ def renameloop():
             if outing == "exit":
                 return outing
         elif action == "roo":
-            outing = convertdatesonebyoneloop(os.getcwd())
+            outing = renameimagesonebyoneloop(os.getcwd())
             if outing == "exit":
                 return outing
         elif action == "rai":
-            outing = convertalldatesloop()
+            outing = renameallimagesloop()
             if outing == "exit":
                 return outing
         elif action == "rt" or action == "exit":

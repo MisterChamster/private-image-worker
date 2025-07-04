@@ -86,8 +86,8 @@ def ask_rename_action():
         print("Enter rename action: \n" \
         "pfd  - Print all dates of the first file in folder...\n" \
         "pad  - Print all images names converted to a date format...\n" \
-        "roo  - Rename images names one by one...\n" \
-        "rai  - Rename all images names to a date format...\n" \
+        "roo  - Rename images one by one...\n" \
+        "rai  - Rename all images to a date format...\n" \
         "rt   - Return.\n" \
         "exit - Exit program.\n\n>> ", end="")
         action = str(input())
@@ -132,7 +132,7 @@ def ask_print_all_files_dates():
             return action
 
 
-def ask_convert_dates_one_by_one(image_path):
+def ask_rename_images_one_by_one(image_path):
     filename = os.path.basename(image_path)
     formatted_EXIF_DTO_date   = get_formatted_name(image_path, "EXIF_DTO")
     formatted_EXIF_DTD_date   = get_formatted_name(image_path, "EXIF_DTD")
@@ -192,7 +192,7 @@ def ask_convert_dates_one_by_one(image_path):
             return action
 
 
-def ask_convert_all_dates_loop():
+def ask_rename_all_images_loop():
     while True:
         print("\n" \
         "rt   - Return.\n" \
