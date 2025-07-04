@@ -82,30 +82,33 @@ def renameimagesonebyoneloop(directory):
     print("All files have been considered.\n")
 
 
-# def renameloop
+def renameloop(date_type):
+    action = ask_rename_all_images_loop(date_type)
+    while True:
+        return "exit"
 
 
 def renamestyleloop():
     while True:
         action = ask_rename_style_loop()
         if action == "o":
-            outing = ask_rename_all_images_loop("EXIF_DTO")
+            outing = renameloop("EXIF_DTO")
             if outing == "exit":
                 return outing
         elif action == "d":
-            outing = ask_rename_all_images_loop("EXIF_DTD")
+            outing = renameloop("EXIF_DTD")
             if outing == "exit":
                 return outing
         elif action == "t":
-            outing = ask_rename_all_images_loop("EXIF_DT")
+            outing = renameloop("EXIF_DT")
             if outing == "exit":
                 return outing
         elif action == "c":
-            outing = ask_rename_all_images_loop("FILE_CREAT")
+            outing = renameloop("FILE_CREAT")
             if outing == "exit":
                 return outing
         elif action == "m":
-            outing = ask_rename_all_images_loop("FILE_MOD")
+            outing = renameloop("FILE_MOD")
             if outing == "exit":
                 return outing
         elif action == "rt" or action == "exit":
