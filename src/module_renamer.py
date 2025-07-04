@@ -130,9 +130,6 @@ def rename_image(image_path, date_type):
             new_filepath = dirname + "/" + new_filename
             os.path.normcase(new_filepath)
             try:
-                print("HELLO OS.RENAME!")
-                print(f"IMG PATH:      {image_path}\n" \
-                      f"NEW FILE PATH: {new_filepath}")
                 os.rename(image_path, new_filepath)
                 og_filename = os.path.basename(image_path)
                 print(f"Renamed: {og_filename} -> {new_filename}")
