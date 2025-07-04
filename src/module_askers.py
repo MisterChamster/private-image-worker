@@ -1,4 +1,6 @@
 from os.path import exists
+# from .module_renamer import get_formatted_name
+import os
 
 
 
@@ -130,18 +132,58 @@ def ask_print_all_files_dates():
             return action
 
 
-def ask_convert_dates_one_by_one(filename):
+def ask_convert_dates_one_by_one(image_path):
+    filename = os.path.basename(image_path)
+    formatted_EXIF_DTO_date   = get_formatted_name(image_path, "EXIF_DTO")
+    formatted_EXIF_DTD_date   = get_formatted_name(image_path, "EXIF_DTD")
+    formatted_EXIF_DT_date    = get_formatted_name(image_path, "EXIF_DT")
+    formatted_FILE_CREAT_date = get_formatted_name(image_path, "FILE_CREAT")
+    formatted_FILE_MOD_date   = get_formatted_name(image_path, "FILE_MOD")
     while True:
-        print(f"Converting {filename}\n" \
-        " - \n" \
-        "Enter - Skip.\n" \
-        "rt    - Return.\n" \
+        user_inputs = ["rt", "exit"]
+        anything_flag = False
+        print(f"Converting {filename}\n")
+        if formatted_EXIF_DTO_date != "No date":
+            user_inputs.append("o")
+            anything_flag = True
+            print(f"o - DateTimeOriginal EXIF:  {formatted_EXIF_DTO_date}\n")
+
+        if formatted_EXIF_DTD_date != "No date":
+            user_inputs.append("d")
+            anything_flag = True
+            print(f"d - DateTimeDigitized EXIF: {formatted_EXIF_DTD_date}\n")
+
+        if formatted_EXIF_DT_date != "No date":
+            user_inputs.append("t")
+            anything_flag = True
+            print(f"t - DateTime EXIF:          {formatted_EXIF_DT_date}\n")
+
+        if formatted_FILE_CREAT_date != "No date":
+            user_inputs.append("c")
+            anything_flag = True
+            print(f"c - File creation date:     {formatted_FILE_CREAT_date}\n")
+
+        if formatted_FILE_MOD_date != "No date":
+            user_inputs.append("m")
+            anything_flag = True
+            print(f"m - File modified date:     {formatted_FILE_MOD_date}\n")
+
+        if anything_flag == False:
+            print("No valid dates for this image. Skipping...")
+            return "next"
+        else:
+            user_inputs.append("")
+            print("Enter - Skip.\n")
+
+        print("rt    - Return.\n" \
         "exit  - Exit program.\n\n>> ", end="")
         action = str(input())
 
-        if action not in ["", "rt", "exit"]:
+        if action not in user_inputs:
             print("Incorrect input.\n")
         else:
+            if action == "":
+                return "next"
             return action
 
 

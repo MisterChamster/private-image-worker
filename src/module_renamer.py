@@ -93,7 +93,7 @@ def check_single_image_dates(directory):
             formatted_EXIF_DTD_date   = get_formatted_name(image_path, "EXIF_DTD")
             formatted_EXIF_DT_date    = get_formatted_name(image_path, "EXIF_DT")
             formatted_FILE_CREAT_date = get_formatted_name(image_path, "FILE_CREAT")
-            formatted_FILE_MOD_date = get_formatted_name(image_path, "FILE_MOD")
+            formatted_FILE_MOD_date   = get_formatted_name(image_path, "FILE_MOD")
 
             yield filename + "\n" + \
                   "By DateTimeOriginal EXIF:  " + formatted_EXIF_DTO_date   + "\n" + \
@@ -203,7 +203,7 @@ def convertdatesonebyoneloop(directory):
         if filename.lower().endswith(valid_extensions):
             image_path = os.path.join(directory, filename)
 
-            action = ask_convert_dates_one_by_one(filename)
+            action = ask_convert_dates_one_by_one(image_path)
             if action == "rt" or action == "exit":
                 return action
     print("All files have been considered.\n")
