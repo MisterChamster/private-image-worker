@@ -84,12 +84,12 @@ def ask_ptj_action():
 # ========================= RENAME =========================
 def ask_rename_action():
     while True:
-        print("Choose rename action: \n" \
-        "pfd  - Print all dates of the first file in folder...\n" \
+        print("Choose rename action: \n"                                \
+        "pfd  - Print all dates of the first file in folder...\n"       \
         "pad  - Print all images names converted to a date format...\n" \
-        "roo  - Rename images one by one...\n" \
-        "rai  - Rename all images to a date format...\n" \
-        "rt   - Return.\n" \
+        "roo  - Rename images one by one...\n"                          \
+        "rai  - Rename all images to a date format...\n"                \
+        "rt   - Return.\n"                                              \
         "exit - Exit program.\n\n>> ", end="")
         action = str(input())
 
@@ -102,8 +102,8 @@ def ask_rename_action():
 def ask_print_all_dates():
     while True:
         print("Show next file dates?\n" \
-        "Enter - Next.\n" \
-        "rt    - Return.\n" \
+        "Enter - Next.\n"               \
+        "rt    - Return.\n"             \
         "exit  - Exit program.\n\n>> ", end="")
         action = str(input())
 
@@ -117,13 +117,13 @@ def ask_print_all_dates():
 
 def ask_print_all_files_dates():
     while True:
-        print("Choose printing format:\n" \
-        "o  - DateTimeOriginal.\n" \
-        "d  - DateTimeDigitized.\n" \
-        "t   - DateTime.\n" \
-        "c   - File creation.\n" \
-        "m   - File modification.\n" \
-        "rt   - Return.\n" \
+        print("Choose printing format:\n"          \
+        "o    - DateTimeOriginal.\n"               \
+        "d    - DateTimeDigitized.\n"              \
+        "t    - DateTime.\n"                       \
+        "c    - File creation.\n"                  \
+        "m    - File modification.\n"              \
+        "rt   - Return.\n"                         \
         "exit - Exit program.\n\n>> ", end="")
         action = str(input())
 
@@ -194,14 +194,22 @@ def ask_rename_images_one_by_one(image_path):
             return action
 
 
-def ask_rename_all_images_loop():
+def ask_rename_style_loop():
     while True:
         print("Choose style of renaming images:\n" \
-        "rt   - Return.\n" \
+        "o    - DateTimeOriginal.\n"               \
+        "d    - DateTimeDigitized.\n"              \
+        "t    - DateTime.\n"                       \
+        "c    - File creation.\n"                  \
+        "m    - File modification.\n"              \
+        "rt   - Return.\n"                         \
         "exit - Exit program.\n\n>> ", end="")
         action = str(input())
 
-        if action not in ["rt", "exit"]:
+        if action not in ["o", "d", "t", "c", "m", "rt", "exit"]:
             print("Incorrect input.\n")
         else:
             return action
+
+
+# def ask_rename

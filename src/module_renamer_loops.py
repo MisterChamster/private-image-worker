@@ -3,7 +3,7 @@ from .module_askers import ask_rename_action,            \
                            ask_print_all_dates,          \
                            ask_print_all_files_dates,    \
                            ask_rename_images_one_by_one, \
-                           ask_rename_all_images_loop
+                           ask_rename_style_loop
 from .module_renamer import check_single_image_dates,    \
                             list_images_with_dates,      \
                             rename_image
@@ -83,7 +83,8 @@ def renameimagesonebyoneloop(directory):
 
 def renameallimagesloop():
     while True:
-        action = ask_rename_all_images_loop()
+        action = ask_rename_style_loop()
+        
         if action == "rt" or action == "exit":
             return action
 
