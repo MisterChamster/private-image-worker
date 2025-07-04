@@ -114,12 +114,15 @@ def list_images_with_dates(directory, date_type):
                 print(f"{formatted_name}:             {filename}")
                 continue
 
-
             line_len = 80
             rest_len = len(f": {formatted_name}")
             if len(filename) > line_len + rest_len:
                 filename = filename[:line_len + rest_len-3-4] + "..." + extension
             print(f"{formatted_name}: {filename}")
+
+
+def rename_image(image_path, date_type):
+    return
 
 
 def rename_images(directory, date_type):

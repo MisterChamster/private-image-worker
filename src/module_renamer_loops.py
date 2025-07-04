@@ -5,7 +5,8 @@ from .module_askers import ask_rename_action,            \
                            ask_convert_dates_one_by_one, \
                            ask_convert_all_dates_loop
 from .module_renamer import check_single_image_dates,    \
-                            list_images_with_dates
+                            list_images_with_dates,      \
+                            rename_image
 import pillow_heif
 pillow_heif.register_heif_opener()
 
@@ -59,15 +60,15 @@ def convertdatesonebyoneloop(directory):
             action = ask_convert_dates_one_by_one(image_path)
 
             if action == "o":
-                pass
+                rename_image(image_path, "EXIF_DTO")
             elif action == "d":
-                pass
+                rename_image(image_path, "EXIF_DTD")
             elif action == "t":
-                pass
+                rename_image(image_path, "EXIF_DT")
             elif action == "c":
-                pass
+                rename_image(image_path, "FILE_CREAT")
             elif action == "m":
-                pass
+                rename_image(image_path, "FILE_MOD")
             elif action == "next":
                 continue
             elif action == "rt" or action == "exit":
