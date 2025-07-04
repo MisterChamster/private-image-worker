@@ -111,17 +111,20 @@ def list_images_with_dates(directory, date_type):
         extension = filename.lower().split(".")[-1]
         if extension in valid_extensions:
             image_path = os.path.join(directory, filename)
-            date_created = get_image_date(image_path, date_type)
-            formatted_date = format_date(date_created)   \
-                if date_created != "No date" and         \
-                   date_created is not None              \
-                else "No date"
+            formatted_name = get_formatted_name(image_path, date_type)
+            if formatted_name == "Invalid date":
+                print(f"{formatted_name}:        {filename}")
+                continue
+            elif formatted_name == "No date":
+                print(f"{formatted_name}:             {filename}")
+                continue
+
 
             line_len = 80
-            rest_len = len(f": {formatted_date}")
+            rest_len = len(f": {formatted_name}")
             if len(filename) > line_len + rest_len:
                 filename = filename[:line_len + rest_len-3-4] + "..." + extension
-            print(f"{formatted_date}: {filename}")
+            print(f"{formatted_name}: {filename}")
 
 
 def rename_images(directory, date_type):
