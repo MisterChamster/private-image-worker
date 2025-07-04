@@ -142,31 +142,36 @@ def ask_convert_dates_one_by_one(image_path):
     while True:
         user_inputs = ["rt", "exit"]
         anything_flag = False
-        print(f"Converting {filename}")
-        if formatted_EXIF_DTO_date != "No date":
+        print(f"Converting: {filename}")
+        if formatted_EXIF_DTO_date != "No date" and \
+           formatted_EXIF_DTO_date != "Invalid date":
             user_inputs.append("o")
             anything_flag = True
-            print(f"o - DateTimeOriginal EXIF:  {formatted_EXIF_DTO_date}")
+            print(f"o     - DateTimeOriginal EXIF:  {formatted_EXIF_DTO_date}")
 
-        if formatted_EXIF_DTD_date != "No date":
+        if formatted_EXIF_DTD_date != "No date" and \
+           formatted_EXIF_DTD_date != "Invalid date":
             user_inputs.append("d")
             anything_flag = True
-            print(f"d - DateTimeDigitized EXIF: {formatted_EXIF_DTD_date}")
+            print(f"d     - DateTimeDigitized EXIF: {formatted_EXIF_DTD_date}")
 
-        if formatted_EXIF_DT_date != "No date":
+        if formatted_EXIF_DT_date != "No date" and \
+           formatted_EXIF_DT_date != "Invalid date":
             user_inputs.append("t")
             anything_flag = True
-            print(f"t - DateTime EXIF:          {formatted_EXIF_DT_date}")
+            print(f"t     - DateTime EXIF:          {formatted_EXIF_DT_date}")
 
-        if formatted_FILE_CREAT_date != "No date":
+        if formatted_FILE_CREAT_date != "No date" and \
+           formatted_FILE_CREAT_date != "Invalid date":
             user_inputs.append("c")
             anything_flag = True
-            print(f"c - File creation date:     {formatted_FILE_CREAT_date}")
+            print(f"c     - File creation date:     {formatted_FILE_CREAT_date}")
 
-        if formatted_FILE_MOD_date != "No date":
+        if formatted_FILE_MOD_date != "No date" and \
+           formatted_FILE_MOD_date != "Invalid date":
             user_inputs.append("m")
             anything_flag = True
-            print(f"m - File modified date:     {formatted_FILE_MOD_date}")
+            print(f"m     - File modified date:     {formatted_FILE_MOD_date}")
 
         if anything_flag == False:
             print("No valid dates for this image. Skipping...")

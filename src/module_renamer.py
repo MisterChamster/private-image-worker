@@ -122,7 +122,29 @@ def list_images_with_dates(directory, date_type):
 
 
 def rename_image(image_path, date_type):
-    return
+    formatted_date_name = get_formatted_name(image_path, date_type)
+    if formatted_date_name != "No date" and formatted_date_name != "Invalid date":
+        dirname = os.path.dirname(image_path)
+        for i in range(1, 200):
+            new_filename = formatted_date_name + os.path.splitext(image_path)[1]
+            new_filepath = dirname + "/" + new_filename
+            os.path.normcase(new_filepath)
+            try:
+                print("HELLO OS.RENAME!")
+                print(f"IMG PATH:      {image_path}\n" \
+                      f"NEW FILE PATH: {new_filepath}")
+                os.rename(image_path, new_filepath)
+                og_filename = os.path.basename(image_path)
+                print(f"Renamed: {og_filename} -> {new_filename}")
+                return
+            except FileExistsError:
+                print(f"File {new_filename} already exists, trying with a different name.")
+                formatted_date_name += f"_{i}"
+                continue
+        print("File name not changed. How the hell did you achieve this?")
+    else:
+        og_filename = os.path.basename(image_path)
+        print(f"{og_filename} doesn't have a date of that type")
 
 
 def rename_images(directory, date_type):

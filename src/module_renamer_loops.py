@@ -61,14 +61,19 @@ def convertdatesonebyoneloop(directory):
 
             if action == "o":
                 rename_image(image_path, "EXIF_DTO")
+                print()
             elif action == "d":
                 rename_image(image_path, "EXIF_DTD")
+                print()
             elif action == "t":
                 rename_image(image_path, "EXIF_DT")
+                print()
             elif action == "c":
                 rename_image(image_path, "FILE_CREAT")
+                print()
             elif action == "m":
                 rename_image(image_path, "FILE_MOD")
+                print()
             elif action == "next":
                 continue
             elif action == "rt" or action == "exit":
