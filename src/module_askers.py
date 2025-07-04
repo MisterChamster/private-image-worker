@@ -1,5 +1,5 @@
 from os.path import exists
-# from .module_renamer import get_formatted_name
+from .module_renamer import get_formatted_name
 import os
 
 
