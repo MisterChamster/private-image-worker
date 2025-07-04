@@ -7,7 +7,7 @@ import os
 # ========================== MAIN ==========================
 def ask_mainloop_action():
     while True:
-        print("Enter action: \n" \
+        print("Choose action: \n" \
         "ls   - List all images in folder.\n" \
         "cd   - Change program working directory.\n" \
         "rnm  - Rename...\n" \
@@ -33,7 +33,7 @@ def ask_path():
 # ========================= CONVERT =========================
 def ask_convert_action():
     while True:
-        print("Enter convert action: \n" \
+        print("Choose convert action: \n" \
         "lsh  - List all .heic files in folder\n" \
         "lsp  - List all .png files in folder\n" \
         "htp  - .heic to .png...\n" \
@@ -50,7 +50,7 @@ def ask_convert_action():
 
 def ask_htp_action():
     while True:
-        print("Enter heic to png action: \n" \
+        print("Choose heic to png action: \n" \
         "lsh  - List all .heic files in folder\n" \
         "hpn  - Convert .heic files to .png files (leave heic files)\n" \
         "hpd  - Convert .heic files to .png files (delete heic files)\n" \
@@ -66,7 +66,7 @@ def ask_htp_action():
 
 def ask_ptj_action():
     while True:
-        print("Enter png to jpg action: \n" \
+        print("Choose png to jpg action: \n" \
         "lsp  - List all .png files in folder\n" \
         "pjn  - Convert .png files to .jpg files (leave png files)\n" \
         "pjd  - Convert .png files to .jpg files (delete png files)\n" \
@@ -83,7 +83,7 @@ def ask_ptj_action():
 # ========================= RENAME =========================
 def ask_rename_action():
     while True:
-        print("Enter rename action: \n" \
+        print("Choose rename action: \n" \
         "pfd  - Print all dates of the first file in folder...\n" \
         "pad  - Print all images names converted to a date format...\n" \
         "roo  - Rename images one by one...\n" \
@@ -116,17 +116,17 @@ def ask_print_all_dates():
 
 def ask_print_all_files_dates():
     while True:
-        print("What format to print?\n" \
-        "dto  - DateTimeOriginal.\n" \
-        "dtd  - DateTimeDigitized.\n" \
-        "dt   - DateTime.\n" \
-        "fc   - File creation.\n" \
-        "fm   - File modification.\n" \
+        print("Choose printing format:\n" \
+        "o  - DateTimeOriginal.\n" \
+        "d  - DateTimeDigitized.\n" \
+        "t   - DateTime.\n" \
+        "c   - File creation.\n" \
+        "m   - File modification.\n" \
         "rt   - Return.\n" \
         "exit - Exit program.\n\n>> ", end="")
         action = str(input())
 
-        if action not in ["dto", "dtd", "dt", "fc", "fm", "rt", "exit"]:
+        if action not in ["o", "d", "t", "c", "m", "rt", "exit"]:
             print("Incorrect input.\n")
         else:
             return action
@@ -142,7 +142,8 @@ def ask_rename_images_one_by_one(image_path):
     while True:
         user_inputs = ["rt", "exit"]
         anything_flag = False
-        print(f"Converting: {filename}")
+        print(f"Renaming: {filename}")
+        print("Choose renaming style:")
         if formatted_EXIF_DTO_date != "No date" and \
            formatted_EXIF_DTO_date != "Invalid date":
             user_inputs.append("o")
@@ -194,7 +195,7 @@ def ask_rename_images_one_by_one(image_path):
 
 def ask_rename_all_images_loop():
     while True:
-        print("\n" \
+        print("Choose style of renaming images:\n" \
         "rt   - Return.\n" \
         "exit - Exit program.\n\n>> ", end="")
         action = str(input())

@@ -32,19 +32,19 @@ def printalldatesloop():
 def printallfilesdatesloop():
     while True:
         action = ask_print_all_files_dates()
-        if action == "dto":
+        if action == "o":
             list_images_with_dates(os.getcwd(), "EXIF_DTO")
             print()
-        elif action == "dtd":
+        elif action == "d":
             list_images_with_dates(os.getcwd(), "EXIF_DTD")
             print()
-        elif action == "dt":
+        elif action == "t":
             list_images_with_dates(os.getcwd(), "EXIF_DT")
             print()
-        elif action == "fc":
+        elif action == "c":
             list_images_with_dates(os.getcwd(), "FILE_CREAT")
             print()
-        elif action == "fm":
+        elif action == "m":
             list_images_with_dates(os.getcwd(), "FILE_MOD")
             print()
         elif action == "rt" or action == "exit":
