@@ -3,11 +3,11 @@ from .module_askers import ask_rename_action,            \
                            ask_print_all_dates,          \
                            ask_print_all_files_dates,    \
                            ask_rename_images_one_by_one, \
-                           ask_rename_style,        \
+                           ask_rename_style,             \
                            ask_rename_all_images
 from .module_renamer import check_single_image_dates,    \
                             list_images_with_dates,      \
-                            rename_image,                \
+                            rename_image_with_style,     \
                             rename_images_in_dir
 import pillow_heif
 pillow_heif.register_heif_opener()
@@ -62,19 +62,19 @@ def renameimagesonebyoneloop(directory):
             action = ask_rename_images_one_by_one(image_path)
 
             if action == "o":
-                rename_image(image_path, "EXIF_DTO")
+                rename_image_with_style(image_path, "EXIF_DTO")
                 print()
             elif action == "d":
-                rename_image(image_path, "EXIF_DTD")
+                rename_image_with_style(image_path, "EXIF_DTD")
                 print()
             elif action == "t":
-                rename_image(image_path, "EXIF_DT")
+                rename_image_with_style(image_path, "EXIF_DT")
                 print()
             elif action == "c":
-                rename_image(image_path, "FILE_CREAT")
+                rename_image_with_style(image_path, "FILE_CREAT")
                 print()
             elif action == "m":
-                rename_image(image_path, "FILE_MOD")
+                rename_image_with_style(image_path, "FILE_MOD")
                 print()
             elif action == "next":
                 continue

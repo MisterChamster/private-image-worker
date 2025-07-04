@@ -121,7 +121,7 @@ def list_images_with_dates(directory, date_type):
             print(f"{formatted_name}: {filename}")
 
 
-def rename_image(image_path, date_type):
+def rename_image_with_style(image_path, date_type):
     formatted_date_name = get_formatted_name(image_path, date_type)
     if formatted_date_name != "No date" and formatted_date_name != "Invalid date":
         dirname = os.path.dirname(image_path)
