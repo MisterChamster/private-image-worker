@@ -5,12 +5,13 @@ from os.path import exists
 # ========================== MAIN ==========================
 def ask_mainloop_action():
     while True:
-        action = str(input("Enter action: \n" \
+        print("Enter action: \n" \
         "ls   - List all images in folder.\n" \
         "cd   - Change program working directory.\n" \
         "rnm  - Rename...\n" \
         "cnv  - Convert...\n" \
-        "exit - Exit program.\n\n>> "))
+        "exit - Exit program.\n\n>> ", end="")
+        action = str(input())
 
         if action not in ["ls", "cd", "rnm", "cnv", "exit"]:
             print("Incorrect input.\n")
@@ -28,13 +29,14 @@ def ask_path():
 # ========================= CONVERT =========================
 def ask_convert_action():
     while True:
-        action = str(input("Enter convert action: \n" \
+        print("Enter convert action: \n" \
         "lsh  - List all .heic files in folder\n" \
         "lsp  - List all .png files in folder\n" \
         "htp  - .heic to .png...\n" \
         "ptj  - .png to .jpg...\n" \
         "rt   - Return.\n" \
-        "exit - Exit program.\n\n>> "))
+        "exit - Exit program.\n\n>> ", end="")
+        action = str(input())
 
         if action not in ["lsh", "htp", "lsp", "ptj", "rt", "exit"]:
             print("Incorrect input.\n")
@@ -44,12 +46,13 @@ def ask_convert_action():
 
 def ask_htp_action():
     while True:
-        action = str(input("Enter heic to png action: \n" \
+        print("Enter heic to png action: \n" \
         "lsh  - List all .heic files in folder\n" \
         "hpn  - Convert .heic files to .png files (leave heic files)\n" \
         "hpd  - Convert .heic files to .png files (delete heic files)\n" \
         "rt   - Return.\n" \
-        "exit - Exit program.\n\n>> "))
+        "exit - Exit program.\n\n>> ", end="")
+        action = str(input())
 
         if action not in ["lsh", "hpn", "hpd", "rt", "exit"]:
             print("Incorrect input.\n")
@@ -59,12 +62,13 @@ def ask_htp_action():
 
 def ask_ptj_action():
     while True:
-        action = str(input("Enter png to jpg action: \n" \
+        print("Enter png to jpg action: \n" \
         "lsp  - List all .png files in folder\n" \
         "pjn  - Convert .png files to .jpg files (leave png files)\n" \
         "pjd  - Convert .png files to .jpg files (delete png files)\n" \
         "rt   - Return.\n" \
-        "exit - Exit program.\n\n>> "))
+        "exit - Exit program.\n\n>> ", end="")
+        action = str(input())
 
         if action not in ["lsp", "pjn", "pjd", "rt", "exit"]:
             print("Incorrect input.\n")
@@ -75,13 +79,14 @@ def ask_ptj_action():
 # ========================= RENAME =========================
 def ask_rename_action():
     while True:
-        action = str(input("Enter rename action: \n" \
+        print("Enter rename action: \n" \
         "pfd  - Print all dates of the first file in folder...\n" \
         "pad  - Print all images names converted to a date format...\n" \
         "roo  - Rename images names one by one...\n" \
         "rai  - Rename all images names to a date format...\n" \
         "rt   - Return.\n" \
-        "exit - Exit program.\n\n>> "))
+        "exit - Exit program.\n\n>> ", end="")
+        action = str(input())
 
         if action not in ["pfd", "pad", "roo", "rai", "rt", "exit"]:
             print("Incorrect input.\n")
@@ -91,10 +96,11 @@ def ask_rename_action():
 
 def ask_print_all_dates():
     while True:
-        action = str(input("Show next file dates?\n" \
+        print("Show next file dates?\n" \
         "Enter - Next.\n" \
         "rt    - Return.\n" \
-        "exit  - Exit program.\n\n>> "))
+        "exit  - Exit program.\n\n>> ", end="")
+        action = str(input())
 
         if action not in ["", "rt", "exit"]:
             print("Incorrect input.\n")
@@ -106,14 +112,15 @@ def ask_print_all_dates():
 
 def ask_print_all_files_dates():
     while True:
-        action = str(input("What format to print?\n" \
+        print("What format to print?\n" \
         "dto  - DateTimeOriginal.\n" \
         "dtd  - DateTimeDigitized.\n" \
         "dt   - DateTime.\n" \
         "fc   - File creation.\n" \
         "fm   - File modification.\n" \
         "rt   - Return.\n" \
-        "exit - Exit program.\n\n>> "))
+        "exit - Exit program.\n\n>> ", end="")
+        action = str(input())
 
         if action not in ["dto", "dtd", "dt", "fc", "fm", "rt", "exit"]:
             print("Incorrect input.\n")
@@ -121,13 +128,16 @@ def ask_print_all_files_dates():
             return action
 
 
-def ask_convert_dates_one_by_one():
+def ask_convert_dates_one_by_one(filename):
     while True:
-        action = str(input("\n" \
-        "rt   - Return.\n" \
-        "exit - Exit program.\n\n>> "))
+        print(f"Converting {filename}\n" \
+        " - \n" \
+        "Enter - Skip.\n" \
+        "rt    - Return.\n" \
+        "exit  - Exit program.\n\n>> ", end="")
+        action = str(input())
 
-        if action not in ["rt", "exit"]:
+        if action not in ["", "rt", "exit"]:
             print("Incorrect input.\n")
         else:
             return action
@@ -135,9 +145,10 @@ def ask_convert_dates_one_by_one():
 
 def ask_convert_all_dates_loop():
     while True:
-        action = str(input("\n" \
+        print("\n" \
         "rt   - Return.\n" \
-        "exit - Exit program.\n\n>> "))
+        "exit - Exit program.\n\n>> ", end="")
+        action = str(input())
 
         if action not in ["rt", "exit"]:
             print("Incorrect input.\n")
