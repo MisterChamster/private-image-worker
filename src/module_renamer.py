@@ -75,7 +75,6 @@ def format_date(date_string):
 
 def check_single_image_dates(directory):
     """Generator function listing images with all possible date types."""
-    # return
     valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
 
     for filename in os.listdir(directory):
@@ -213,11 +212,16 @@ def printallfilesdatesloop():
             return action
 
 
-def convertdatesonebyoneloop():
-    while True:
-        action = ask_convert_dates_one_by_one()
-        if action == "rt" or action == "exit":
-            return action
+def convertdatesonebyoneloop(directory):
+    valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
+
+    for filename in os.listdir():
+        if filename.lower().endswith(valid_extensions):
+            image_path = os.path.join(directory, filename)
+
+            action = ask_convert_dates_one_by_one(filename)
+            if action == "rt" or action == "exit":
+                return action
 
 
 def convertalldatesloop():
@@ -240,7 +244,7 @@ def renameloop():
             if outing == "exit":
                 return outing
         elif action == "roo":
-            outing = convertdatesonebyoneloop()
+            outing = convertdatesonebyoneloop(os.getcwd())
             if outing == "exit":
                 return outing
         elif action == "rai":
