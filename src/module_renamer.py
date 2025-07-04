@@ -108,10 +108,10 @@ def list_images_with_dates(directory, date_type):
             image_path = os.path.join(directory, filename)
             formatted_name = get_formatted_name(image_path, date_type)
             if formatted_name == "Invalid date":
-                print(f"{formatted_name}:        {filename}")
+                print(f"Invalid date:        {filename}")
                 continue
             elif formatted_name == "No date":
-                print(f"{formatted_name}:             {filename}")
+                print(f"No date:             {filename}")
                 continue
 
             line_len = 80
@@ -145,31 +145,34 @@ def rename_image(image_path, date_type):
 
 
 def rename_images_in_dir(directory, date_type):
-    return
-    # valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
+    valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
 
-    # for filename in os.listdir(directory):
-    #     if filename.lower().endswith(valid_extensions):
-    #         image_path = os.path.join(directory, filename)
-    #         date_created = get_image_date(image_path, date_type)
+    for filename in os.listdir(directory):
+        extension = filename.lower().split(".")[-1]
+        if extension in valid_extensions:
+            image_path = os.path.join(directory, filename)
+            formatted_name = get_formatted_name(image_path, date_type)
+            if formatted_name == "Invalid date":
+                print(f"{formatted_name}:        {filename}")
+                continue
+            elif formatted_name == "No date":
+                print(f"{formatted_name}:             {filename}")
+                continue
 
-    #         if date_created:
-    #             formatted_date = format_date(date_created)
-    #             if formatted_date:
-    #                 new_filename = formatted_date + os.path.splitext(filename)[1]
-    #                 for i in range(1, 100):
-    #                     try:
-    #                         new_path = os.path.join(directory, new_filename)
-    #                         # print(f"Image: {image_path} -> New Path: {new_path}")
-    #                         os.rename(image_path, new_path)
-    #                         print(f"Renamed: {filename} -> {new_filename}")
-    #                         break
-    #                     except FileExistsError:
-    #                         print(f"File {new_filename} already exists, trying with a number suffix.")
-    #                         new_filename = new_filename.split('.')[0] + f"_{i}." + new_filename.split('.')[-1]
-    #                         continue
+        #     new_filename = formatted_date + os.path.splitext(filename)[1]
+        #     for i in range(1, 100):
+        #         try:
+        #             new_path = os.path.join(directory, new_filename)
+        #             # print(f"Image: {image_path} -> New Path: {new_path}")
+        #             os.rename(image_path, new_path)
+        #             print(f"Renamed: {filename} -> {new_filename}")
+        #             break
+        #         except FileExistsError:
+        #             print(f"File {new_filename} already exists, trying with a number suffix.")
+        #             new_filename = new_filename.split('.')[0] + f"_{i}." + new_filename.split('.')[-1]
+        #             continue
 
-    #             else:
-    #                 print(f"Skipping {filename}: Invalid date format")
-    #         else:
-    #             print(f"Skipping {filename}: No date found")
+        #     else:
+        #         print(f"Skipping {filename}: Invalid date format")
+        # else:
+        #     print(f"Skipping {filename}: No date found")
