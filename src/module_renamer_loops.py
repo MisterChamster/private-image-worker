@@ -7,7 +7,8 @@ from .module_askers import ask_rename_action,            \
                            ask_rename_all_images
 from .module_renamer import check_single_image_dates,    \
                             list_images_with_dates,      \
-                            rename_image
+                            rename_image,                \
+                            rename_images_in_dir
 import pillow_heif
 pillow_heif.register_heif_opener()
 
@@ -85,7 +86,14 @@ def renameimagesonebyoneloop(directory):
 def renameallimagesloop(date_type):
     action = ask_rename_all_images(date_type)
     while True:
-        return "exit"
+        if action == "ls":
+            list_images_with_dates(os.getcwd(), date_type)
+            print()
+        elif action == "ren":
+            rename_images_in_dir()
+            print()
+        elif action == "rt" or action == "exit":
+            return action
 
 
 def renamestyleloop():
