@@ -82,6 +82,9 @@ def renameimagesonebyoneloop(directory):
     print("All files have been considered.\n")
 
 
+# def renameloop
+
+
 def renamestyleloop():
     while True:
         action = ask_rename_style_loop()
@@ -109,7 +112,7 @@ def renamestyleloop():
             return action
 
 
-def renameloop():
+def renameactionloop():
     while True:
         action = ask_rename_action()
 

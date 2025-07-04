@@ -1,5 +1,5 @@
 from .module_askers import ask_path, ask_mainloop_action
-from .module_renamer_loops import renameloop
+from .module_renamer_loops import renameactionloop
 from .module_converter_loops import convertloop
 from .module_common import list_images_in_dir
 from os import chdir
@@ -26,7 +26,7 @@ def mainloop():
             chdir(dir_main)
         elif action == "rnm":
             print()
-            outing = renameloop()
+            outing = renameactionloop()
             if outing == "exit":
                 return
         elif action =="cnv":
