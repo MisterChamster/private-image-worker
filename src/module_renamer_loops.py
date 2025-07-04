@@ -62,7 +62,19 @@ def convertdatesonebyoneloop(directory):
             image_path = os.path.join(directory, filename)
 
             action = ask_convert_dates_one_by_one(image_path)
-            if action == "rt" or action == "exit":
+            if action == "o":
+                pass
+            elif action == "d":
+                pass
+            elif action == "t":
+                pass
+            elif action == "c":
+                pass
+            elif action == "m":
+                pass
+            elif action == "next":
+                continue
+            elif action == "rt" or action == "exit":
                 return action
     print("All files have been considered.\n")
 

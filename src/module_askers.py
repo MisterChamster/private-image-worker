@@ -173,7 +173,7 @@ def ask_convert_dates_one_by_one(image_path):
             return "next"
         else:
             user_inputs.append("")
-            print("Enter - Skip.\n")
+            print("Enter - Skip.")
 
         print("rt    - Return.\n" \
         "exit  - Exit program.\n\n>> ", end="")
