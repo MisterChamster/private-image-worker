@@ -139,9 +139,12 @@ def rename_image_with_style(image_path, date_type):
                 formatted_date_name += f"_{i}"
                 continue
         print("File name not changed. How the hell did you achieve this?")
-    else:
+    elif formatted_date_name == "No date":
         og_filename = os.path.basename(image_path)
-        print(f"{og_filename} doesn't have a date of that type")
+        print(f"{og_filename}: No {date_type} type date.")
+    elif formatted_date_name == "Invalid date":
+        og_filename = os.path.basename(image_path)
+        print(f"{og_filename}: {date_type} date type is invalid.")
 
 
 def rename_images_in_dir(directory, date_type):
