@@ -212,4 +212,14 @@ def ask_rename_style_loop():
             return action
 
 
-# def ask_rename
+def ask_rename_all_images_loop(date_type):
+    while True:
+        print(":\n" \
+        "rt   - Return.\n" \
+        "exit - Exit program.\n\n>> ", end="")
+        action = str(input())
+
+        if action not in ["rt", "exit"]:
+            print("Incorrect input.\n")
+        else:
+            return action
