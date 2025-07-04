@@ -82,7 +82,7 @@ def renameimagesonebyoneloop(directory):
     print("All files have been considered.\n")
 
 
-def renameallimagesloop():
+def renamestyleloop():
     while True:
         action = ask_rename_style_loop()
         if action == "o":
@@ -126,7 +126,7 @@ def renameloop():
             if outing == "exit":
                 return outing
         elif action == "rai":
-            outing = renameallimagesloop()
+            outing = renamestyleloop()
             if outing == "exit":
                 return outing
         elif action == "rt" or action == "exit":
