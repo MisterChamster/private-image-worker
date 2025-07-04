@@ -3,11 +3,6 @@ from PIL.ExifTags import TAGS
 import os
 from datetime import datetime
 from pathlib import Path
-# from .module_askers import ask_rename_action,            \
-#                            ask_print_all_dates,          \
-#                            ask_print_all_files_dates,    \
-#                            ask_convert_dates_one_by_one, \
-#                            ask_convert_all_dates_loop
 import pillow_heif
 pillow_heif.register_heif_opener()
 

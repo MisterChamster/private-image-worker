@@ -1,6 +1,4 @@
 import os
-from PIL import Image
-# import pillow_heif
 from .module_common import list_images_in_dir
 from .module_askers import ask_convert_action,    \
                            ask_htp_action,        \

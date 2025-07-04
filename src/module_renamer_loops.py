@@ -1,8 +1,4 @@
-from PIL import Image
-from PIL.ExifTags import TAGS
 import os
-from datetime import datetime
-from pathlib import Path
 from .module_askers import ask_rename_action,            \
                            ask_print_all_dates,          \
                            ask_print_all_files_dates,    \
@@ -60,8 +56,8 @@ def convertdatesonebyoneloop(directory):
     for filename in os.listdir():
         if filename.lower().endswith(valid_extensions):
             image_path = os.path.join(directory, filename)
-
             action = ask_convert_dates_one_by_one(image_path)
+
             if action == "o":
                 pass
             elif action == "d":
