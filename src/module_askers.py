@@ -194,7 +194,7 @@ def ask_rename_images_one_by_one(image_path):
             return action
 
 
-def ask_rename_style_loop():
+def ask_rename_style():
     while True:
         print("Choose style of renaming images:\n" \
         "o    - DateTimeOriginal.\n"               \
@@ -212,7 +212,7 @@ def ask_rename_style_loop():
             return action
 
 
-def ask_rename_all_images_loop(date_type):
+def ask_rename_all_images(date_type):
     while True:
         print("Choose a renaming option:\n"                             \
        f"ls   - List all images names converted to {date_type} format." \

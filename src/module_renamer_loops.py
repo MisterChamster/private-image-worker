@@ -3,8 +3,8 @@ from .module_askers import ask_rename_action,            \
                            ask_print_all_dates,          \
                            ask_print_all_files_dates,    \
                            ask_rename_images_one_by_one, \
-                           ask_rename_style_loop,        \
-                           ask_rename_all_images_loop
+                           ask_rename_style,        \
+                           ask_rename_all_images
 from .module_renamer import check_single_image_dates,    \
                             list_images_with_dates,      \
                             rename_image
@@ -82,33 +82,33 @@ def renameimagesonebyoneloop(directory):
     print("All files have been considered.\n")
 
 
-def renameloop(date_type):
-    action = ask_rename_all_images_loop(date_type)
+def renameallimagesloop(date_type):
+    action = ask_rename_all_images(date_type)
     while True:
         return "exit"
 
 
 def renamestyleloop():
     while True:
-        action = ask_rename_style_loop()
+        action = ask_rename_style()
         if action == "o":
-            outing = renameloop("EXIF_DTO")
+            outing = renameallimagesloop("EXIF_DTO")
             if outing == "exit":
                 return outing
         elif action == "d":
-            outing = renameloop("EXIF_DTD")
+            outing = renameallimagesloop("EXIF_DTD")
             if outing == "exit":
                 return outing
         elif action == "t":
-            outing = renameloop("EXIF_DT")
+            outing = renameallimagesloop("EXIF_DT")
             if outing == "exit":
                 return outing
         elif action == "c":
-            outing = renameloop("FILE_CREAT")
+            outing = renameallimagesloop("FILE_CREAT")
             if outing == "exit":
                 return outing
         elif action == "m":
-            outing = renameloop("FILE_MOD")
+            outing = renameallimagesloop("FILE_MOD")
             if outing == "exit":
                 return outing
         elif action == "rt" or action == "exit":
