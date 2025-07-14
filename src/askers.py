@@ -22,7 +22,7 @@ def ask_mainloop_action():
 
 def ask_path():
     while True:
-        print("Enter path (to exit input 'exit'): \n>> ", end="")
+        print("Enter path\n(to exit input 'exit'): \n>> ", end="")
         dir_path = str(input())
         if os.path.exists(dir_path) or dir_path == "exit":
             return dir_path
