@@ -1,7 +1,7 @@
-from .module_askers import ask_path, ask_mainloop_action
-from .module_renamer_loops import renameactionloop
-from .module_converter_loops import convertloop
-from .module_common import list_images_in_dir
+from .askers import ask_path, ask_mainloop_action
+from .renamer_loops import renameactionloop
+from .converter_loops import convertloop
+from .common import list_images_in_dir
 from os import chdir
 
 

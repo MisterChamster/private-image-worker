@@ -1,12 +1,12 @@
 import os
-from .module_common import list_images_in_dir
-from .module_askers import ask_convert_action,    \
-                           ask_htp_action,        \
-                           ask_ptj_action
-from .module_converter import HEICtoPNG_no_del,   \
-                              HEICtoPNG_del,      \
-                              PNGtoJPG_no_del,    \
-                              PNGtoJPG_del
+from .common import list_images_in_dir
+from .askers import ask_convert_action,    \
+                    ask_htp_action,        \
+                    ask_ptj_action
+from .converter import HEICtoPNG_no_del,   \
+                       HEICtoPNG_del,      \
+                       PNGtoJPG_no_del,    \
+                       PNGtoJPG_del
 
 
 
