@@ -6,7 +6,7 @@ from os import chdir
 
 
 
-def mainloop():
+def main_loop():
     print()
     dir_main = ask_path()
     if dir_main == "exit":
