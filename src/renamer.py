@@ -69,7 +69,7 @@ def format_date(date_string, naming_style):
         return "Invalid date"
 
 
-def get_formatted_name(image_path, date_type, naming_style="IMG_[Y][M][D]_[H][M][S]"):
+def get_formatted_name(image_path, date_type, naming_style):
     image_date = get_image_date(image_path, date_type)
 
     formatted_name = ""
@@ -81,18 +81,18 @@ def get_formatted_name(image_path, date_type, naming_style="IMG_[Y][M][D]_[H][M]
     return formatted_name
 
 
-def check_single_image_dates(directory):
+def check_single_image_dates(directory, naming_style):
     """Generator function listing images with all possible date types."""
     valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
 
     for filename in os.listdir(directory):
         if filename.lower().endswith(valid_extensions):
             image_path = os.path.join(directory, filename)
-            formatted_EXIF_DTO_date   = get_formatted_name(image_path, "EXIF_DTO")
-            formatted_EXIF_DTD_date   = get_formatted_name(image_path, "EXIF_DTD")
-            formatted_EXIF_DT_date    = get_formatted_name(image_path, "EXIF_DT")
-            formatted_FILE_CREAT_date = get_formatted_name(image_path, "FILE_CREAT")
-            formatted_FILE_MOD_date   = get_formatted_name(image_path, "FILE_MOD")
+            formatted_EXIF_DTO_date   = get_formatted_name(image_path, "EXIF_DTO", naming_style)
+            formatted_EXIF_DTD_date   = get_formatted_name(image_path, "EXIF_DTD", naming_style)
+            formatted_EXIF_DT_date    = get_formatted_name(image_path, "EXIF_DT", naming_style)
+            formatted_FILE_CREAT_date = get_formatted_name(image_path, "FILE_CREAT", naming_style)
+            formatted_FILE_MOD_date   = get_formatted_name(image_path, "FILE_MOD", naming_style)
 
             yield filename + "\n" + \
                   "By DateTimeOriginal EXIF:  " + formatted_EXIF_DTO_date   + "\n" + \
@@ -102,7 +102,7 @@ def check_single_image_dates(directory):
                   "By file modification:      " + formatted_FILE_MOD_date   + "\n"
 
 
-def list_images_with_dates(directory, date_type):
+def list_images_with_dates(directory, date_type, naming_style):
     """Lists all images in the directory with date_type dates in the format IMG_[Y][M][D]_[H][M][S]."""
     valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
 
@@ -110,7 +110,7 @@ def list_images_with_dates(directory, date_type):
         extension = filename.lower().split(".")[-1]
         if extension in valid_extensions:
             image_path = os.path.join(directory, filename)
-            formatted_name = get_formatted_name(image_path, date_type)
+            formatted_name = get_formatted_name(image_path, date_type, naming_style)
             if formatted_name == "Invalid date":
                 print(f"Invalid date:        {filename}")
                 continue
@@ -125,8 +125,8 @@ def list_images_with_dates(directory, date_type):
             print(f"{formatted_name}: {filename}")
 
 
-def rename_image_with_style(image_path, date_type):
-    formatted_date_name = get_formatted_name(image_path, date_type)
+def rename_image_with_style(image_path, date_type, naming_style):
+    formatted_date_name = get_formatted_name(image_path, date_type, naming_style)
     if formatted_date_name != "No date" and formatted_date_name != "Invalid date":
         dirname = os.path.dirname(image_path)
         for i in range(1, 200):

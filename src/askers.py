@@ -149,13 +149,13 @@ def ask_print_all_files_dates():
             return action
 
 
-def ask_rename_images_one_by_one(image_path):
+def ask_rename_images_one_by_one(image_path, naming_style):
     filename = os.path.basename(image_path)
-    formatted_EXIF_DTO_date   = get_formatted_name(image_path, "EXIF_DTO")
-    formatted_EXIF_DTD_date   = get_formatted_name(image_path, "EXIF_DTD")
-    formatted_EXIF_DT_date    = get_formatted_name(image_path, "EXIF_DT")
-    formatted_FILE_CREAT_date = get_formatted_name(image_path, "FILE_CREAT")
-    formatted_FILE_MOD_date   = get_formatted_name(image_path, "FILE_MOD")
+    formatted_EXIF_DTO_date   = get_formatted_name(image_path, "EXIF_DTO", naming_style)
+    formatted_EXIF_DTD_date   = get_formatted_name(image_path, "EXIF_DTD", naming_style)
+    formatted_EXIF_DT_date    = get_formatted_name(image_path, "EXIF_DT", naming_style)
+    formatted_FILE_CREAT_date = get_formatted_name(image_path, "FILE_CREAT", naming_style)
+    formatted_FILE_MOD_date   = get_formatted_name(image_path, "FILE_MOD", naming_style)
     while True:
         user_inputs = ["rt", "exit"]
         anything_flag = False
