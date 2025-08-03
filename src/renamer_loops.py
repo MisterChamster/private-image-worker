@@ -124,7 +124,9 @@ def renamestyleloop():
 
 
 def renameactionloop():
+    naming_style = "IMG_[Y][M][D]_[H][M][S]"
     while True:
+        print(f"Current naming style: {naming_style}")
         action = ask_rename_action()
 
         if action == "pfd":
