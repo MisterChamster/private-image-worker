@@ -4,8 +4,10 @@ import os
 from datetime import datetime
 from pathlib import Path
 import pillow_heif
-pillow_heif.register_heif_opener()
 
+
+
+pillow_heif.register_heif_opener()
 
 
 def get_image_date(image_path: str, date_type: str):
