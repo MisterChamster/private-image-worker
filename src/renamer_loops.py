@@ -145,5 +145,7 @@ def renameactionloop():
             outing = renamestyleloop(naming_style)
             if outing == "exit":
                 return outing
+        elif action == "cns":
+            pass
         elif action == "rt" or action == "exit":
             return action

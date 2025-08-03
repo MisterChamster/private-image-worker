@@ -105,11 +105,12 @@ def ask_rename_action():
         "pad  - Print all images names converted to a date format...\n" \
         "roo  - Rename images one by one...\n"                          \
         "rai  - Rename all images to a date format...\n"                \
+        "cns  - Change naming style...\n"                               \
         "rt   - Return.\n"                                              \
         "exit - Exit program.\n\n>> ", end="")
         action = str(input())
 
-        if action not in ["pfd", "pad", "roo", "rai", "rt", "exit"]:
+        if action not in ["pfd", "pad", "roo", "rai", "cns", "rt", "exit"]:
             print("Incorrect input.\n")
         else:
             return action
