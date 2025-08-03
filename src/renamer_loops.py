@@ -4,6 +4,7 @@ from .askers import (ask_rename_action,
                      ask_print_all_files_dates,
                      ask_rename_images_one_by_one,
                      ask_rename_basis,
+                     ask_naming_style,
                      ask_rename_all_images)
 from .renamer import (check_single_image_dates,
                       list_images_with_dates,
@@ -124,7 +125,9 @@ def rename_basis_loop(naming_style):
 
 
 def change_naming_style_loop(naming_style):
-    return None
+    while True:
+        outing = ask_naming_style()
+        return None
 
 
 def rename_actionloop():

@@ -229,6 +229,11 @@ def ask_rename_basis():
             return action
 
 
+def ask_naming_style():
+    while True:
+        return
+
+
 def ask_rename_all_images(date_type):
     while True:
         print("Choose a renaming option:\n"                               \
