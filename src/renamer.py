@@ -70,10 +70,13 @@ def format_date(date_string):
 
 def get_formatted_name(image_path, date_type):
     image_date = get_image_date(image_path, date_type)
-    formatted_name   = format_date(image_date)            \
-        if image_date != "No date" and                    \
-            image_date is not None                        \
-        else "No date"
+
+    formatted_name = ""
+    if image_date != "No date" and image_date is not None:
+        formatted_name = format_date(image_date)
+    else:
+        formatted_name = "No date"
+
     return formatted_name
 
 
