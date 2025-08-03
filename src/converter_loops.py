@@ -27,6 +27,11 @@ def htploop():
             return action
 
 
+def htjloop():
+    print("Im coooonvertooooooong!")
+    return
+
+
 def ptjloop():
     while True:
         action = ask_ptj_action()
@@ -57,6 +62,12 @@ def convertloop():
         elif action == "htp":
             print()
             outing = htploop()
+            if outing == "exit":
+                return outing
+            print()
+        elif action == "htj":
+            print()
+            outing = htjloop()
             if outing == "exit":
                 return outing
             print()
