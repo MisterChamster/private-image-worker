@@ -4,6 +4,7 @@ A simple program made for renaming images (jpg, jpeg, png, tiff, heic) according
 ## Features
 - Simple conversion (heic -> png, heic -> jpg, png -> jpg)
 - Renaming based on 5 different image file properties
+- 3 different renaming styles
 - Enhanced preview options
 - Fast and lightweight
 - Quick and effective
