@@ -6,6 +6,8 @@ from .askers import (ask_convert_action,
                      ask_ptj_action)
 from .converter import (HEICtoPNG_no_del,
                         HEICtoPNG_del,
+                        HEICtoJPG_no_del,
+                        HEICtoJPG_del,
                         PNGtoJPG_no_del,
                         PNGtoJPG_del)
 
@@ -36,9 +38,11 @@ def htjloop():
             list_images_in_dir("heic")
             print()
         elif action == "hjn":
-            pass
+            HEICtoJPG_no_del(os.getcwd())
+            print()
         elif action == "hpd":
-            pass
+            HEICtoJPG_del(os.getcwd())
+            print()
         elif action == "rt" or action == "exit":
             return action
 
