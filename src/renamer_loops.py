@@ -1,5 +1,5 @@
 import os
-from src.askers import (ask_rename_action,
+from src.askers.common import (ask_rename_action,
                      ask_print_all_dates,
                      ask_print_all_files_dates,
                      ask_rename_images_one_by_one,

@@ -1,6 +1,6 @@
 import os
 from src.utils import list_images_in_dir
-from src.askers import (ask_convert_action,
+from src.askers.common import (ask_convert_action,
                      ask_htp_action,
                      ask_htj_action,
                      ask_ptj_action)
