@@ -34,11 +34,11 @@ def ask_path_filedialog(type, message):
     return sel_path
 
 
-def ask_path():
-    while True:
-        print("Enter path\n(to exit input 'exit'): \n>> ", end="")
-        dir_path = str(input())
-        if os.path.exists(dir_path) or dir_path == "exit":
-            return dir_path
-        else:
-            print("Invalid path.\n")
+# def ask_path():
+#     while True:
+#         print("Enter path\n(to exit input 'exit'): \n>> ", end="")
+#         dir_path = str(input())
+#         if os.path.exists(dir_path) or dir_path == "exit":
+#             return dir_path
+#         else:
+#             print("Invalid path.\n")
