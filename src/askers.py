@@ -231,7 +231,18 @@ def ask_rename_basis():
 
 def ask_naming_style():
     while True:
-        return
+        print("Choose naming style:\n"               \
+        "iso  - ISO 8601  IMG_[Y][M][D]_[H][M][S]\n" \
+        "eu   - European  IMG_[D][M][Y]_[H][M][S]\n" \
+        "us   - US Format IMG_[M][D][Y]_[H][M][S]\n" \
+        "rt   - Return.\n"                           \
+        "exit - Exit program.\n\n>> ", end="")
+        action = str(input())
+
+        if action not in ["iso", "eu", "us", "rt", "exit"]:
+            print("Incorrect input.\n")
+        else:
+            return action
 
 
 def ask_rename_all_images(date_type):
