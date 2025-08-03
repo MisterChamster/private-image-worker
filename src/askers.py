@@ -67,7 +67,7 @@ def ask_htp_action():
 
 def ask_htj_action():
     while True:
-        print("Choose heic to png action: \n" \
+        print("Choose heic to jpg action: \n" \
         "lsh  - List all .heic files in folder\n" \
         "hjn  - Convert .heic files to .jpg files (leave heic files)\n" \
         "hjd  - Convert .heic files to .jpg files (delete heic files)\n" \
