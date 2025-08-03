@@ -65,6 +65,12 @@ def ask_htp_action():
             return action
 
 
+def ask_htj_action():
+    while True:
+        print("Ur askan")
+        return
+
+
 def ask_ptj_action():
     while True:
         print("Choose png to jpg action: \n" \
