@@ -3,7 +3,7 @@ from .askers import (ask_rename_action,
                      ask_print_all_dates,
                      ask_print_all_files_dates,
                      ask_rename_images_one_by_one,
-                     ask_rename_style,
+                     ask_rename_basis,
                      ask_rename_all_images)
 from .renamer import (check_single_image_dates,
                       list_images_with_dates,
@@ -98,7 +98,7 @@ def rename_all_images_loop(date_type, naming_style):
 
 def rename_basis_loop(naming_style):
     while True:
-        action = ask_rename_style()
+        action = ask_rename_basis()
         if action == "o":
             outing = rename_all_images_loop("EXIF_DTO", naming_style)
             if outing == "exit":

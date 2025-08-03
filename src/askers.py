@@ -211,7 +211,7 @@ def ask_rename_images_one_by_one(image_path, naming_style):
             return action
 
 
-def ask_rename_style():
+def ask_rename_basis():
     while True:
         print("Choose style of renaming images:\n" \
         "o    - DateTimeOriginal.\n"               \
