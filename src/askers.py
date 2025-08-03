@@ -37,12 +37,13 @@ def ask_convert_action():
         "lsh  - List all .heic files in folder\n" \
         "lsp  - List all .png files in folder\n" \
         "htp  - .heic to .png...\n" \
+        "htj  - .heic to .jpg...\n" \
         "ptj  - .png to .jpg...\n" \
         "rt   - Return.\n" \
         "exit - Exit program.\n\n>> ", end="")
         action = str(input())
 
-        if action not in ["lsh", "htp", "lsp", "ptj", "rt", "exit"]:
+        if action not in ["lsh", "lsp", "htp", "htj", "ptj", "rt", "exit"]:
             print("Incorrect input.\n")
         else:
             return action
