@@ -31,8 +31,16 @@ def htploop():
 def htjloop():
     while True:
         action = ask_htj_action()
-        print("Im coooonvertooooooong!")
-        return
+
+        if action == "lsh":
+            list_images_in_dir("heic")
+            print()
+        elif action == "hjn":
+            pass
+        elif action == "hpd":
+            pass
+        elif action == "rt" or action == "exit":
+            return action
 
 
 def ptjloop():
