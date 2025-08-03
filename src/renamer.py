@@ -63,7 +63,7 @@ def format_date(date_string, naming_style):
     """Formats %Y:%m:%d %H:%M:%S according to naming_style."""
     try:
         dt = datetime.strptime(date_string, "%Y:%m:%d %H:%M:%S")
-        if naming_style == "IMG_[Y][M][D]_[H][M][S]":
+        if naming_style == "iso":
             return dt.strftime("IMG_%Y%m%d_%H%M%S")
     except ValueError:
         return "Invalid date"
