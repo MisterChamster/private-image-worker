@@ -1,4 +1,4 @@
-from .renamer import get_formatted_name
+from src.renamer import get_formatted_name
 import os
 
 

@@ -1,12 +1,12 @@
 import os
-from .askers import (ask_rename_action,
+from src.askers import (ask_rename_action,
                      ask_print_all_dates,
                      ask_print_all_files_dates,
                      ask_rename_images_one_by_one,
                      ask_rename_basis,
                      ask_naming_style,
                      ask_rename_all_images)
-from .renamer import (check_single_image_dates,
+from src.renamer import (check_single_image_dates,
                       list_images_with_dates,
                       rename_image_with_style,
                       rename_images_in_dir)
