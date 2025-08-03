@@ -229,8 +229,9 @@ def ask_rename_basis():
             return action
 
 
-def ask_naming_style():
+def ask_naming_style(naming_style):
     while True:
+        print(f"Current naming style: {naming_style}")
         print("Choose naming style:\n"               \
         "iso  - ISO 8601  IMG_[Y][M][D]_[H][M][S]\n" \
         "eu   - European  IMG_[D][M][Y]_[H][M][S]\n" \

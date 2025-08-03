@@ -124,12 +124,6 @@ def rename_basis_loop(naming_style):
             return action
 
 
-def change_naming_style_loop(naming_style):
-    while True:
-        outing = ask_naming_style()
-        return None
-
-
 def rename_actionloop():
     naming_style = "iso"
     while True:
@@ -153,8 +147,13 @@ def rename_actionloop():
             if outing == "exit":
                 return outing
         elif action == "cns":
-            outing = change_naming_style_loop(naming_style)
+            outing = ask_naming_style(naming_style)
             if outing == "exit":
                 return outing
+            elif outing == "rt":
+                pass
+            else:
+                print(outing)
+                naming_style = outing
         elif action == "rt" or action == "exit":
             return action
