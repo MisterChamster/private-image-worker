@@ -103,7 +103,7 @@ def check_single_image_dates(directory, naming_style):
 
 
 def list_images_with_dates(directory, date_type, naming_style):
-    """Lists all images in the directory with date_type dates in the format IMG_[Y][M][D]_[H][M][S]."""
+    """Lists all images in the directory with date_type dates with the appropriate naming style."""
     valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
 
     for filename in os.listdir(directory):
