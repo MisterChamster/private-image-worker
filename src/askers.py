@@ -67,8 +67,18 @@ def ask_htp_action():
 
 def ask_htj_action():
     while True:
-        print("Ur askan")
-        return
+        print("Choose heic to png action: \n" \
+        "lsh  - List all .heic files in folder\n" \
+        "hjn  - Convert .heic files to .jpg files (leave heic files)\n" \
+        "hjd  - Convert .heic files to .jpg files (delete heic files)\n" \
+        "rt   - Return.\n" \
+        "exit - Exit program.\n\n>> ", end="")
+        action = str(input())
+
+        if action not in ["lsh", "hjn", "hjd", "rt", "exit"]:
+            print("Incorrect input.\n")
+        else:
+            return action
 
 
 def ask_ptj_action():
