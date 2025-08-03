@@ -153,7 +153,7 @@ def rename_actionloop():
             elif outing == "rt":
                 pass
             else:
-                print(outing)
                 naming_style = outing
+                print()
         elif action == "rt" or action == "exit":
             return action
