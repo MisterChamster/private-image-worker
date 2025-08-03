@@ -1,15 +1,15 @@
 import os
 from src.utils import list_images_in_dir
-from src.askers.common import (ask_convert_action,
-                     ask_htp_action,
-                     ask_htj_action,
-                     ask_ptj_action)
+from src.askers.converting import (ask_convert_action,
+                                   ask_htp_action,
+                                   ask_htj_action,
+                                   ask_ptj_action)
 from src.converter import (HEICtoPNG_no_del,
-                        HEICtoPNG_del,
-                        HEICtoJPG_no_del,
-                        HEICtoJPG_del,
-                        PNGtoJPG_no_del,
-                        PNGtoJPG_del)
+                           HEICtoPNG_del,
+                           HEICtoJPG_no_del,
+                           HEICtoJPG_del,
+                           PNGtoJPG_no_del,
+                           PNGtoJPG_del)
 
 
 
