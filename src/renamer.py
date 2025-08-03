@@ -59,11 +59,12 @@ def get_image_date(image_path, date_type):
         "Wrong input mr programmer.")
 
 
-def format_date(date_string):
-    """Formats %Y:%m:%d %H:%M:%S date as IMG_[Y][M][D]_[H][M][S]."""
+def format_date(date_string, naming_style):
+    """Formats %Y:%m:%d %H:%M:%S according to naming_style."""
     try:
-        dt = datetime.strptime(date_string, "%Y:%m:%d %H:%M:%S")
-        return dt.strftime("IMG_%Y%m%d_%H%M%S")
+        if naming_style == "IMG_[Y][M][D]_[H][M][S]":
+            dt = datetime.strptime(date_string, "%Y:%m:%d %H:%M:%S")
+            return dt.strftime("IMG_%Y%m%d_%H%M%S")
     except ValueError:
         return "Invalid date"
 
@@ -73,7 +74,7 @@ def get_formatted_name(image_path, date_type):
 
     formatted_name = ""
     if image_date != "No date" and image_date is not None:
-        formatted_name = format_date(image_date)
+        formatted_name = format_date(image_date, "IMG_[Y][M][D]_[H][M][S]")
     else:
         formatted_name = "No date"
 
