@@ -150,7 +150,7 @@ def ask_print_all_files_dates():
             return action
 
 
-def ask_rename_images_one_by_one(image_path, naming_style):
+def ask_rename_images_one_by_one(image_path: str, naming_style: str):
     filename = os.path.basename(image_path)
     formatted_EXIF_DTO_date   = get_formatted_name(image_path, "EXIF_DTO", naming_style)
     formatted_EXIF_DTD_date   = get_formatted_name(image_path, "EXIF_DTD", naming_style)
@@ -229,7 +229,7 @@ def ask_rename_basis():
             return action
 
 
-def ask_naming_style(naming_style):
+def ask_naming_style(naming_style: str):
     while True:
         print(f"Current naming style: {naming_style}")
         print("Choose naming style:\n"               \
@@ -246,7 +246,7 @@ def ask_naming_style(naming_style):
             return action
 
 
-def ask_rename_all_images(date_type):
+def ask_rename_all_images(date_type: str):
     while True:
         print("Choose a renaming option:\n"                               \
        f"ls   - List all images names converted to {date_type} format.\n" \

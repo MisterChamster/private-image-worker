@@ -15,7 +15,7 @@ pillow_heif.register_heif_opener()
 
 
 
-def print_all_dates_loop(naming_style):
+def print_all_dates_loop(naming_style: str):
     gen = check_single_image_dates(os.getcwd(), naming_style)
     print(next(gen))
     while True:
@@ -32,7 +32,7 @@ def print_all_dates_loop(naming_style):
             return action
 
 
-def print_all_files_dates_loop(naming_style):
+def print_all_files_dates_loop(naming_style: str):
     while True:
         action = ask_print_all_files_dates()
         if action == "o":
@@ -54,7 +54,7 @@ def print_all_files_dates_loop(naming_style):
             return action
 
 
-def rename_images_onebyone_loop(directory, naming_style):
+def rename_images_onebyone_loop(directory: str, naming_style: str):
     valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
 
     for filename in os.listdir():
@@ -84,7 +84,7 @@ def rename_images_onebyone_loop(directory, naming_style):
     print("All files have been considered.\n")
 
 
-def rename_all_images_loop(date_type, naming_style):
+def rename_all_images_loop(date_type: str, naming_style: str):
     while True:
         action = ask_rename_all_images(date_type)
         if action == "ls":
@@ -97,7 +97,7 @@ def rename_all_images_loop(date_type, naming_style):
             return action
 
 
-def rename_basis_loop(naming_style):
+def rename_basis_loop(naming_style: str):
     while True:
         action = ask_rename_basis()
         if action == "o":

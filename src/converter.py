@@ -4,7 +4,7 @@ import pillow_heif
 
 
 
-def HEICtoPNG_no_del(directory):
+def HEICtoPNG_no_del(directory: str):
     for filename in os.listdir(directory):
         if filename.lower().endswith(".heic"):
             # create an Image object from the HEIC file
@@ -25,7 +25,7 @@ def HEICtoPNG_no_del(directory):
             image.save(new_filepath, format("png"))
 
 
-def HEICtoPNG_del(directory):
+def HEICtoPNG_del(directory: str):
     for filename in os.listdir(directory):
         if filename.lower().endswith(".heic"):
             # create an Image object from the HEIC file
@@ -50,7 +50,7 @@ def HEICtoPNG_del(directory):
             image.save(new_filepath, format("png"))
 
 
-def HEICtoJPG_no_del(directory):
+def HEICtoJPG_no_del(directory: str):
     for filename in os.listdir(directory):
         if filename.lower().endswith(".heic"):
             filepath = os.path.join(directory, filename)
@@ -61,7 +61,7 @@ def HEICtoJPG_no_del(directory):
             img.save(new_filename, format="JPEG")
 
 
-def HEICtoJPG_del(directory):
+def HEICtoJPG_del(directory: str):
     for filename in os.listdir(directory):
         if filename.lower().endswith(".heic"):
             filepath = os.path.join(directory, filename)
@@ -77,7 +77,7 @@ def HEICtoJPG_del(directory):
                 print("Couldn't remove " + filename)
 
 
-def PNGtoJPG_no_del(directory):
+def PNGtoJPG_no_del(directory: str):
     for filename in os.listdir(directory):
         if filename.lower().endswith(".png"):
             png_image = Image.open(filename)
@@ -87,7 +87,7 @@ def PNGtoJPG_no_del(directory):
             rgb_image.save(new_filename, "JPEG")
 
 
-def PNGtoJPG_del(directory):
+def PNGtoJPG_del(directory: str):
     for filename in os.listdir(directory):
         if filename.lower().endswith(".png"):
             png_image = Image.open(filename)
