@@ -2,7 +2,6 @@ import os
 
 
 
-# ========================== MAIN ==========================
 def ask_mainloop_action():
     while True:
         print("Choose action: \n" \
