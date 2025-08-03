@@ -105,11 +105,12 @@ def ask_rename_action():
         "pad  - Print all images names converted to a date format...\n" \
         "roo  - Rename images one by one...\n"                          \
         "rai  - Rename all images to a date format...\n"                \
+        "cns  - Change naming style...\n"                               \
         "rt   - Return.\n"                                              \
         "exit - Exit program.\n\n>> ", end="")
         action = str(input())
 
-        if action not in ["pfd", "pad", "roo", "rai", "rt", "exit"]:
+        if action not in ["pfd", "pad", "roo", "rai", "cns", "rt", "exit"]:
             print("Incorrect input.\n")
         else:
             return action
@@ -149,13 +150,13 @@ def ask_print_all_files_dates():
             return action
 
 
-def ask_rename_images_one_by_one(image_path):
+def ask_rename_images_one_by_one(image_path, naming_style):
     filename = os.path.basename(image_path)
-    formatted_EXIF_DTO_date   = get_formatted_name(image_path, "EXIF_DTO")
-    formatted_EXIF_DTD_date   = get_formatted_name(image_path, "EXIF_DTD")
-    formatted_EXIF_DT_date    = get_formatted_name(image_path, "EXIF_DT")
-    formatted_FILE_CREAT_date = get_formatted_name(image_path, "FILE_CREAT")
-    formatted_FILE_MOD_date   = get_formatted_name(image_path, "FILE_MOD")
+    formatted_EXIF_DTO_date   = get_formatted_name(image_path, "EXIF_DTO", naming_style)
+    formatted_EXIF_DTD_date   = get_formatted_name(image_path, "EXIF_DTD", naming_style)
+    formatted_EXIF_DT_date    = get_formatted_name(image_path, "EXIF_DT", naming_style)
+    formatted_FILE_CREAT_date = get_formatted_name(image_path, "FILE_CREAT", naming_style)
+    formatted_FILE_MOD_date   = get_formatted_name(image_path, "FILE_MOD", naming_style)
     while True:
         user_inputs = ["rt", "exit"]
         anything_flag = False
@@ -210,7 +211,7 @@ def ask_rename_images_one_by_one(image_path):
             return action
 
 
-def ask_rename_style():
+def ask_rename_basis():
     while True:
         print("Choose style of renaming images:\n" \
         "o    - DateTimeOriginal.\n"               \
@@ -223,6 +224,23 @@ def ask_rename_style():
         action = str(input())
 
         if action not in ["o", "d", "t", "c", "m", "rt", "exit"]:
+            print("Incorrect input.\n")
+        else:
+            return action
+
+
+def ask_naming_style(naming_style):
+    while True:
+        print(f"Current naming style: {naming_style}")
+        print("Choose naming style:\n"               \
+        "iso  - ISO 8601  IMG_[Y][M][D]_[H][M][S]\n" \
+        "eu   - European  IMG_[D][M][Y]_[H][M][S]\n" \
+        "us   - US Format IMG_[M][D][Y]_[H][M][S]\n" \
+        "rt   - Return.\n"                           \
+        "exit - Exit program.\n\n>> ", end="")
+        action = str(input())
+
+        if action not in ["iso", "eu", "us", "rt", "exit"]:
             print("Incorrect input.\n")
         else:
             return action

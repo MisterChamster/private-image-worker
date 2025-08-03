@@ -1,21 +1,22 @@
 import os
-from .askers import ask_rename_action,            \
-                    ask_print_all_dates,          \
-                    ask_print_all_files_dates,    \
-                    ask_rename_images_one_by_one, \
-                    ask_rename_style,             \
-                    ask_rename_all_images
-from .renamer import check_single_image_dates,    \
-                     list_images_with_dates,      \
-                     rename_image_with_style,     \
-                     rename_images_in_dir
+from .askers import (ask_rename_action,
+                     ask_print_all_dates,
+                     ask_print_all_files_dates,
+                     ask_rename_images_one_by_one,
+                     ask_rename_basis,
+                     ask_naming_style,
+                     ask_rename_all_images)
+from .renamer import (check_single_image_dates,
+                      list_images_with_dates,
+                      rename_image_with_style,
+                      rename_images_in_dir)
 import pillow_heif
 pillow_heif.register_heif_opener()
 
 
 
-def printalldatesloop():
-    gen = check_single_image_dates(os.getcwd())
+def print_all_dates_loop(naming_style):
+    gen = check_single_image_dates(os.getcwd(), naming_style)
     print(next(gen))
     while True:
         action = ask_print_all_dates()
@@ -31,50 +32,50 @@ def printalldatesloop():
             return action
 
 
-def printallfilesdatesloop():
+def print_all_files_dates_loop(naming_style):
     while True:
         action = ask_print_all_files_dates()
         if action == "o":
-            list_images_with_dates(os.getcwd(), "EXIF_DTO")
+            list_images_with_dates(os.getcwd(), "EXIF_DTO", naming_style)
             print()
         elif action == "d":
-            list_images_with_dates(os.getcwd(), "EXIF_DTD")
+            list_images_with_dates(os.getcwd(), "EXIF_DTD", naming_style)
             print()
         elif action == "t":
-            list_images_with_dates(os.getcwd(), "EXIF_DT")
+            list_images_with_dates(os.getcwd(), "EXIF_DT", naming_style)
             print()
         elif action == "c":
-            list_images_with_dates(os.getcwd(), "FILE_CREAT")
+            list_images_with_dates(os.getcwd(), "FILE_CREAT", naming_style)
             print()
         elif action == "m":
-            list_images_with_dates(os.getcwd(), "FILE_MOD")
+            list_images_with_dates(os.getcwd(), "FILE_MOD", naming_style)
             print()
         elif action == "rt" or action == "exit":
             return action
 
 
-def renameimagesonebyoneloop(directory):
+def rename_images_onebyone_loop(directory, naming_style):
     valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
 
     for filename in os.listdir():
         if filename.lower().endswith(valid_extensions):
             image_path = os.path.join(directory, filename)
-            action = ask_rename_images_one_by_one(image_path)
+            action = ask_rename_images_one_by_one(image_path, naming_style)
 
             if action == "o":
-                rename_image_with_style(image_path, "EXIF_DTO")
+                rename_image_with_style(image_path, "EXIF_DTO", naming_style)
                 print()
             elif action == "d":
-                rename_image_with_style(image_path, "EXIF_DTD")
+                rename_image_with_style(image_path, "EXIF_DTD", naming_style)
                 print()
             elif action == "t":
-                rename_image_with_style(image_path, "EXIF_DT")
+                rename_image_with_style(image_path, "EXIF_DT", naming_style)
                 print()
             elif action == "c":
-                rename_image_with_style(image_path, "FILE_CREAT")
+                rename_image_with_style(image_path, "FILE_CREAT", naming_style)
                 print()
             elif action == "m":
-                rename_image_with_style(image_path, "FILE_MOD")
+                rename_image_with_style(image_path, "FILE_MOD", naming_style)
                 print()
             elif action == "next":
                 continue
@@ -83,65 +84,76 @@ def renameimagesonebyoneloop(directory):
     print("All files have been considered.\n")
 
 
-def renameallimagesloop(date_type):
+def rename_all_images_loop(date_type, naming_style):
     while True:
         action = ask_rename_all_images(date_type)
         if action == "ls":
-            list_images_with_dates(os.getcwd(), date_type)
+            list_images_with_dates(os.getcwd(), date_type, naming_style)
             print()
         elif action == "ren":
-            rename_images_in_dir(os.getcwd(), date_type)
+            rename_images_in_dir(os.getcwd(), date_type, naming_style)
             print()
         elif action == "rt" or action == "exit":
             return action
 
 
-def renamestyleloop():
+def rename_basis_loop(naming_style):
     while True:
-        action = ask_rename_style()
+        action = ask_rename_basis()
         if action == "o":
-            outing = renameallimagesloop("EXIF_DTO")
+            outing = rename_all_images_loop("EXIF_DTO", naming_style)
             if outing == "exit":
                 return outing
         elif action == "d":
-            outing = renameallimagesloop("EXIF_DTD")
+            outing = rename_all_images_loop("EXIF_DTD", naming_style)
             if outing == "exit":
                 return outing
         elif action == "t":
-            outing = renameallimagesloop("EXIF_DT")
+            outing = rename_all_images_loop("EXIF_DT", naming_style)
             if outing == "exit":
                 return outing
         elif action == "c":
-            outing = renameallimagesloop("FILE_CREAT")
+            outing = rename_all_images_loop("FILE_CREAT", naming_style)
             if outing == "exit":
                 return outing
         elif action == "m":
-            outing = renameallimagesloop("FILE_MOD")
+            outing = rename_all_images_loop("FILE_MOD", naming_style)
             if outing == "exit":
                 return outing
         elif action == "rt" or action == "exit":
             return action
 
 
-def renameactionloop():
+def rename_actionloop():
+    naming_style = "iso"
     while True:
+        print(f"Current naming style: {naming_style}")
         action = ask_rename_action()
 
         if action == "pfd":
-            outing = printalldatesloop()
+            outing = print_all_dates_loop(naming_style)
             if outing == "exit":
                 return outing
         elif action == "pad":
-            outing = printallfilesdatesloop()
+            outing = print_all_files_dates_loop(naming_style)
             if outing == "exit":
                 return outing
         elif action == "roo":
-            outing = renameimagesonebyoneloop(os.getcwd())
+            outing = rename_images_onebyone_loop(os.getcwd(), naming_style)
             if outing == "exit":
                 return outing
         elif action == "rai":
-            outing = renamestyleloop()
+            outing = rename_basis_loop(naming_style)
             if outing == "exit":
                 return outing
+        elif action == "cns":
+            outing = ask_naming_style(naming_style)
+            if outing == "exit":
+                return outing
+            elif outing == "rt":
+                pass
+            else:
+                naming_style = outing
+                print()
         elif action == "rt" or action == "exit":
             return action
