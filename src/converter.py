@@ -51,11 +51,30 @@ def HEICtoPNG_del(directory):
 
 
 def HEICtoJPG_no_del(directory):
-    return
+    for filename in os.listdir(directory):
+        if filename.lower().endswith(".heic"):
+            filepath = os.path.join(directory, filename)
+            new_filename = os.path.splitext(filename)[0] + ".jpg"
+
+            print("Converting:", filename)
+            img = Image.open(filepath)
+            img.save(new_filename, format="JPEG")
 
 
 def HEICtoJPG_del(directory):
-    return
+    for filename in os.listdir(directory):
+        if filename.lower().endswith(".heic"):
+            filepath = os.path.join(directory, filename)
+            new_filename = os.path.splitext(filename)[0] + ".jpg"
+
+            print("Converting:", filename)
+            img = Image.open(filepath)
+            img.save(new_filename, format="JPEG")
+
+            try:
+                os.remove(filename)
+            except:
+                print("Couldn't remove " + filename)
 
 
 def PNGtoJPG_no_del(directory):
