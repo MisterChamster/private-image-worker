@@ -2,6 +2,7 @@ import os
 from .common import list_images_in_dir
 from .askers import (ask_convert_action,
                      ask_htp_action,
+                     ask_htj_action,
                      ask_ptj_action)
 from .converter import (HEICtoPNG_no_del,
                         HEICtoPNG_del,
@@ -28,8 +29,10 @@ def htploop():
 
 
 def htjloop():
-    print("Im coooonvertooooooong!")
-    return
+    while True:
+        action = ask_htj_action()
+        print("Im coooonvertooooooong!")
+        return
 
 
 def ptjloop():
