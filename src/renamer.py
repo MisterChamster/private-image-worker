@@ -65,6 +65,10 @@ def format_date(date_string, naming_style):
         dt = datetime.strptime(date_string, "%Y:%m:%d %H:%M:%S")
         if naming_style == "iso":
             return dt.strftime("IMG_%Y%m%d_%H%M%S")
+        elif naming_style == "eu":
+            return dt.strftime("IMG_%d%m%Y_%H%M%S")
+        elif naming_style == "us":
+            return dt.strftime("IMG_%m%d%Y_%H%M%S")
     except ValueError:
         return "Invalid date"
 
@@ -151,11 +155,11 @@ def rename_image_with_style(image_path, date_type, naming_style):
         print(f"{og_filename}: {date_type} date type is invalid.")
 
 
-def rename_images_in_dir(directory, date_type):
+def rename_images_in_dir(directory, date_type, naming_style):
     valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
 
     for filename in os.listdir(directory):
         extension = filename.lower().split(".")[-1]
         if extension in valid_extensions:
             image_path = os.path.join(directory, filename)
-            rename_image_with_style(image_path, date_type)
+            rename_image_with_style(image_path, date_type, naming_style)
