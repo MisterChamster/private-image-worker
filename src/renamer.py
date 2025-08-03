@@ -69,12 +69,12 @@ def format_date(date_string, naming_style):
         return "Invalid date"
 
 
-def get_formatted_name(image_path, date_type):
+def get_formatted_name(image_path, date_type, naming_style="IMG_[Y][M][D]_[H][M][S]"):
     image_date = get_image_date(image_path, date_type)
 
     formatted_name = ""
     if image_date != "No date" and image_date is not None:
-        formatted_name = format_date(image_date, "IMG_[Y][M][D]_[H][M][S]")
+        formatted_name = format_date(image_date, naming_style)
     else:
         formatted_name = "No date"
 
