@@ -123,6 +123,10 @@ def renamestyleloop(naming_style):
             return action
 
 
+def change_naming_style_loop(naming_style):
+    return None
+
+
 def renameactionloop():
     naming_style = "IMG_[Y][M][D]_[H][M][S]"
     while True:
@@ -146,6 +150,8 @@ def renameactionloop():
             if outing == "exit":
                 return outing
         elif action == "cns":
-            pass
+            outing = change_naming_style_loop(naming_style)
+            if outing == "exit":
+                return outing
         elif action == "rt" or action == "exit":
             return action
