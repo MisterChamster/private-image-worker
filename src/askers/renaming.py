@@ -134,6 +134,13 @@ def ask_rename_all_images(date_type: str):
 
 
 def ask_rename_basis():
+    returns_dict = {"o": "date_time_original",
+                    "d": "date_time_digitized",
+                    "t": "date_time",
+                    "c": "file_creation",
+                    "m": "file_modification",
+                    "rt": "return"}
+
     while True:
         print("Choose style of renaming images:\n" \
         "o    - DateTimeOriginal.\n"               \
@@ -147,10 +154,10 @@ def ask_rename_basis():
 
         if action == "exit":
             return None
-        elif action not in ["o", "d", "t", "c", "m", "rt"]:
-            print("Incorrect input.\n")
+        elif action in returns_dict:
+            return returns_dict[action]
         else:
-            return action
+            print("Incorrect input.\n")
 
 
 def ask_rename_action():

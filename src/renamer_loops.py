@@ -111,27 +111,27 @@ def rename_all_images_loop(date_type: str, naming_style: str):
 def rename_basis_loop(naming_style: str):
     while True:
         action = ask_rename_basis()
-        if action == "o":
+        if action == "date_time_original":
             outing = rename_all_images_loop("EXIF_DTO", naming_style)
             if outing == None:
                 return outing
-        elif action == "d":
+        elif action == "date_time_digitized":
             outing = rename_all_images_loop("EXIF_DTD", naming_style)
             if outing == None:
                 return outing
-        elif action == "t":
+        elif action == "date_time":
             outing = rename_all_images_loop("EXIF_DT", naming_style)
             if outing == None:
                 return outing
-        elif action == "c":
+        elif action == "file_creation":
             outing = rename_all_images_loop("FILE_CREAT", naming_style)
             if outing == None:
                 return outing
-        elif action == "m":
+        elif action == "file_modification":
             outing = rename_all_images_loop("FILE_MOD", naming_style)
             if outing == None:
                 return outing
-        elif action == "rt":
+        elif action == "return":
             return action
         elif action == None:
             return None
