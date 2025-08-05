@@ -188,6 +188,8 @@ def ask_rename_action():
 
 
 def ask_naming_style(naming_style: str):
+    returns_list = ["iso", "eu", "us", "rt"]
+
     while True:
         print(f"Current naming style: {naming_style}")
         print("Choose naming style:\n"               \
@@ -200,7 +202,7 @@ def ask_naming_style(naming_style: str):
 
         if action == "exit":
             return None
-        elif action not in ["iso", "eu", "us", "rt"]:
+        elif action not in returns_list:
             print("Incorrect input.\n")
         else:
             return action
