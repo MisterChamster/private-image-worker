@@ -34,5 +34,5 @@ def main_loop():
             outing = convertloop()
             if outing == "exit":
                 return
-        elif action == "exit":
+        elif action == None:
             return

@@ -13,7 +13,9 @@ def ask_mainloop_action():
         "exit - Exit program.\n\n>> ", end="")
         action = str(input())
 
-        if action not in ["ls", "cd", "rnm", "cnv", "exit"]:
+        if action == "exit":
+            return None
+        if action not in ["ls", "cd", "rnm", "cnv"]:
             print("Incorrect input.\n")
         else:
             return action
