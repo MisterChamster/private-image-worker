@@ -13,7 +13,7 @@ def ask_rename_action():
         "cns  - Change naming style...\n"                               \
         "rt   - Return.\n"                                              \
         "exit - Exit program.\n\n>> ", end="")
-        action = str(input())
+        action = input()
 
         if action not in ["pfd", "pad", "roo", "rai", "cns", "rt", "exit"]:
             print("Incorrect input.\n")
@@ -30,7 +30,7 @@ def ask_print_all_dates():
         "Enter - Next.\n"               \
         "rt    - Return.\n"             \
         "exit  - Exit program.\n\n>> ", end="")
-        action = str(input())
+        action = input()
 
         if action == "exit":
             return None
