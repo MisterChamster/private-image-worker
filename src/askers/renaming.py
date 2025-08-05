@@ -178,7 +178,9 @@ def ask_naming_style(naming_style: str):
         "exit - Exit program.\n\n>> ", end="")
         action = input()
 
-        if action not in ["iso", "eu", "us", "rt", "exit"]:
+        if action == "exit":
+            return None
+        elif action not in ["iso", "eu", "us", "rt"]:
             print("Incorrect input.\n")
         else:
             return action
