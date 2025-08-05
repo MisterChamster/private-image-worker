@@ -17,16 +17,16 @@ def htploop():
     while True:
         action = ask_htp_action()
 
-        if action == "lsh":
+        if action == "list_heic":
             list_images_in_dir("heic")
             print()
-        elif action == "hpn":
+        elif action == "heic_to_png_no_del":
             HEICtoPNG_no_del(os.getcwd())
             print()
-        elif action == "hpd":
+        elif action == "heic_to_png_del":
             HEICtoPNG_del(os.getcwd())
             print()
-        elif action == "rt":
+        elif action == "return":
             return action
         elif action == None:
             return None
