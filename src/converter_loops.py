@@ -84,19 +84,19 @@ def convertloop():
             print()
             outing = htploop()
             if outing == None:
-                return outing
+                return None
             print()
         elif action == "htj":
             print()
             outing = htjloop()
             if outing == None:
-                return outing
+                return None
             print()
         elif action == "ptj":
             print()
             outing = ptjloop()
             if outing == None:
-                return outing
+                return None
             print()
         elif action == "rt":
             return action
