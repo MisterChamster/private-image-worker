@@ -161,6 +161,13 @@ def ask_rename_basis():
 
 
 def ask_rename_action():
+    returns_dict = {"pfd": "print_dates_first_file",
+                    "pad": "print_all_dates",
+                    "roo": "rename_one_by_one",
+                    "rai": "rename_all_images",
+                    "cns": "change_naming_style",
+                    "rt":  "return"}
+
     while True:
         print("Choose rename action: \n"                                \
         "pfd  - Print all dates of the first file in folder...\n"       \
@@ -174,10 +181,10 @@ def ask_rename_action():
 
         if action == "exit":
             return None
-        elif action not in ["pfd", "pad", "roo", "rai", "cns", "rt"]:
-            print("Incorrect input.\n")
+        elif action in returns_dict:
+            return returns_dict[action]
         else:
-            return action
+            print("Incorrect input.\n")
 
 
 def ask_naming_style(naming_style: str):

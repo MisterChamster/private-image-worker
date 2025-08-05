@@ -143,23 +143,23 @@ def rename_actionloop():
         print(f"Current naming style: {naming_style}")
         action = ask_rename_action()
 
-        if action == "pfd":
+        if action == "print_dates_first_file":
             outing = print_all_dates_loop(naming_style)
             if outing == None:
                 return None
-        elif action == "pad":
+        elif action == "print_all_dates":
             outing = print_all_files_dates_loop(naming_style)
             if outing == None:
                 return None
-        elif action == "roo":
+        elif action == "rename_one_by_one":
             outing = rename_images_onebyone_loop(os.getcwd(), naming_style)
             if outing == None:
                 return None
-        elif action == "rai":
+        elif action == "rename_all_images":
             outing = rename_basis_loop(naming_style)
             if outing == None:
                 return None
-        elif action == "cns":
+        elif action == "change_naming_style":
             outing = ask_naming_style(naming_style)
             if outing == None:
                 return None
@@ -168,7 +168,7 @@ def rename_actionloop():
             else:
                 naming_style = outing
                 print()
-        elif action == "rt":
+        elif action == "return":
             return action
         elif action == None:
             return None
