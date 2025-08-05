@@ -88,7 +88,7 @@ def rename_images_onebyone_loop(directory: str, naming_style: str):
                 continue
             elif action == "rt":
                 return action
-            elif action == "exit":
+            elif action == None:
                 return action
     print("All files have been considered.\n")
 

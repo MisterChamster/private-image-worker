@@ -68,44 +68,46 @@ def ask_print_all_files_dates():
 
 
 def ask_rename_images_one_by_one(image_path: str, naming_style: str):
+    returns_dict = {"rt": "return"}
+
     filename = os.path.basename(image_path)
     formatted_EXIF_DTO_date   = get_formatted_name(image_path, "EXIF_DTO", naming_style)
     formatted_EXIF_DTD_date   = get_formatted_name(image_path, "EXIF_DTD", naming_style)
     formatted_EXIF_DT_date    = get_formatted_name(image_path, "EXIF_DT", naming_style)
     formatted_FILE_CREAT_date = get_formatted_name(image_path, "FILE_CREAT", naming_style)
     formatted_FILE_MOD_date   = get_formatted_name(image_path, "FILE_MOD", naming_style)
+
     while True:
-        user_inputs = ["rt", "exit"]
         anything_flag = False
         print(f"Renaming: {filename}")
         print("Choose renaming style:")
         if formatted_EXIF_DTO_date != "No date" and \
            formatted_EXIF_DTO_date != "Invalid date":
-            user_inputs.append("o")
+            returns_dict["o"] = "date_time_original"
             anything_flag = True
             print(f"o     - DateTimeOriginal EXIF:  {formatted_EXIF_DTO_date}")
 
         if formatted_EXIF_DTD_date != "No date" and \
            formatted_EXIF_DTD_date != "Invalid date":
-            user_inputs.append("d")
+            returns_dict["d"] = "date_time_digitized"
             anything_flag = True
             print(f"d     - DateTimeDigitized EXIF: {formatted_EXIF_DTD_date}")
 
         if formatted_EXIF_DT_date != "No date" and \
            formatted_EXIF_DT_date != "Invalid date":
-            user_inputs.append("t")
+            returns_dict["t"] = "date_time"
             anything_flag = True
             print(f"t     - DateTime EXIF:          {formatted_EXIF_DT_date}")
 
         if formatted_FILE_CREAT_date != "No date" and \
            formatted_FILE_CREAT_date != "Invalid date":
-            user_inputs.append("c")
+            returns_dict["c"] = "file_creation"
             anything_flag = True
             print(f"c     - File creation date:     {formatted_FILE_CREAT_date}")
 
         if formatted_FILE_MOD_date != "No date" and \
            formatted_FILE_MOD_date != "Invalid date":
-            user_inputs.append("m")
+            returns_dict["m"] = "file_modification"
             anything_flag = True
             print(f"m     - File modified date:     {formatted_FILE_MOD_date}")
 
@@ -113,19 +115,19 @@ def ask_rename_images_one_by_one(image_path: str, naming_style: str):
             print("No valid dates for this image. Skipping...")
             return "next"
         else:
-            user_inputs.append("")
+            returns_dict[""] = "next"
             print("Enter - Skip.")
 
         print("rt    - Return.\n" \
-        "exit  - Exit program.\n\n>> ", end="")
+              "exit  - Exit program.\n\n>> ", end="")
         action = input()
 
-        if action not in user_inputs:
-            print("Incorrect input.\n")
+        if action == "exit":
+            return None
+        if action in returns_dict:
+            return returns_dict[action]
         else:
-            if action == "":
-                return "next"
-            return action
+            print("Incorrect input.\n")
 
 
 def ask_rename_basis():
