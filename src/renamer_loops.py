@@ -58,7 +58,7 @@ def print_all_files_dates_loop(naming_style: str):
         elif action == "return":
             return action
         elif action == None:
-            return action
+            return None
 
 
 def rename_images_onebyone_loop(directory: str, naming_style: str):
