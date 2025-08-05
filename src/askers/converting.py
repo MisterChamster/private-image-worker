@@ -62,7 +62,9 @@ def ask_ptj_action():
         "exit - Exit program.\n\n>> ", end="")
         action = str(input())
 
-        if action not in ["lsp", "pjn", "pjd", "rt", "exit"]:
+        if action == "exit":
+            return None
+        if action not in ["lsp", "pjn", "pjd", "rt"]:
             print("Incorrect input.\n")
         else:
             return action

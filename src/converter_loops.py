@@ -64,8 +64,10 @@ def ptjloop():
         elif action == "pjd":
             PNGtoJPG_del(os.getcwd())
             print()
-        elif action == "rt" or action == "exit":
+        elif action == "rt":
             return action
+        elif action == "exit":
+            return None
 
 
 def convertloop():
@@ -93,7 +95,7 @@ def convertloop():
         elif action == "ptj":
             print()
             outing = ptjloop()
-            if outing == "exit":
+            if outing == None:
                 return outing
             print()
         elif action == "rt":
