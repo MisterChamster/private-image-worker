@@ -26,7 +26,9 @@ def ask_htp_action():
         "exit - Exit program.\n\n>> ", end="")
         action = str(input())
 
-        if action not in ["lsh", "hpn", "hpd", "rt", "exit"]:
+        if action == "exit":
+            return None
+        elif action not in ["lsh", "hpn", "hpd", "rt"]:
             print("Incorrect input.\n")
         else:
             return action

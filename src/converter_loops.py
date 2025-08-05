@@ -26,8 +26,10 @@ def htploop():
         elif action == "hpd":
             HEICtoPNG_del(os.getcwd())
             print()
-        elif action == "rt" or action == "exit":
+        elif action == "rt":
             return action
+        elif action == "exit":
+            return None
 
 
 def htjloop():
@@ -77,7 +79,7 @@ def convertloop():
         elif action == "htp":
             print()
             outing = htploop()
-            if outing == "exit":
+            if outing == None:
                 return outing
             print()
         elif action == "htj":
