@@ -45,8 +45,10 @@ def htjloop():
         elif action == "hjd":
             HEICtoJPG_del(os.getcwd())
             print()
-        elif action == "rt" or action == "exit":
+        elif action == "rt":
             return action
+        elif action == "exit":
+            return None
 
 
 def ptjloop():
@@ -85,7 +87,7 @@ def convertloop():
         elif action == "htj":
             print()
             outing = htjloop()
-            if outing == "exit":
+            if outing == None:
                 return outing
             print()
         elif action == "ptj":
