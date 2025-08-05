@@ -100,5 +100,5 @@ def convertloop():
             print()
         elif action == "rt":
             return action
-        elif action == "exit":
+        elif action == None:
             return None

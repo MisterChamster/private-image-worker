@@ -10,7 +10,9 @@ def ask_convert_action():
         "exit - Exit program.\n\n>> ", end="")
         action = input()
 
-        if action not in ["lsh", "lsp", "htp", "htj", "ptj", "rt", "exit"]:
+        if action == "exit":
+            return None
+        if action not in ["lsh", "lsp", "htp", "htj", "ptj", "rt"]:
             print("Incorrect input.\n")
         else:
             return action
