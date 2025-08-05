@@ -32,7 +32,7 @@ def main_loop():
         elif action =="cnv":
             print()
             outing = convertloop()
-            if outing == "exit":
+            if outing == None:
                 return
         elif action == None:
             return
