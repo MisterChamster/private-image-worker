@@ -29,7 +29,9 @@ def ask_print_all_dates():
         "exit  - Exit program.\n\n>> ", end="")
         action = str(input())
 
-        if action not in ["", "rt", "exit"]:
+        if action == "exit":
+            return None
+        elif action not in ["", "rt"]:
             print("Incorrect input.\n")
         else:
             if action == "":

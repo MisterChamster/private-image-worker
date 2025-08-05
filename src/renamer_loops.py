@@ -29,9 +29,12 @@ def print_all_dates_loop(naming_style: str):
             except:
                 print("All pictures have been checked.\n")
                 break
-        elif action == "rt" or action == "exit":
+        elif action == "rt":
             gen.close()
             return action
+        elif action == None:
+            gen.close()
+            return None
 
 
 def print_all_files_dates_loop(naming_style: str):
@@ -134,7 +137,7 @@ def rename_actionloop():
 
         if action == "pfd":
             outing = print_all_dates_loop(naming_style)
-            if outing == "exit":
+            if outing == None:
                 return None
         elif action == "pad":
             outing = print_all_files_dates_loop(naming_style)
