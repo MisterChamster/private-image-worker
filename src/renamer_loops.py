@@ -133,7 +133,7 @@ def rename_basis_loop(naming_style: str):
                 return outing
         elif action == "rt":
             return action
-        elif action == "exit":
+        elif action == None:
             return action
 
 

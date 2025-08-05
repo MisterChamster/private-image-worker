@@ -159,7 +159,9 @@ def ask_rename_basis():
         "exit - Exit program.\n\n>> ", end="")
         action = input()
 
-        if action not in ["o", "d", "t", "c", "m", "rt", "exit"]:
+        if action == "exit":
+            return None
+        elif action not in ["o", "d", "t", "c", "m", "rt"]:
             print("Incorrect input.\n")
         else:
             return action
