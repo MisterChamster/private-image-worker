@@ -27,7 +27,7 @@ def main_loop():
         elif action == "rename":
             print()
             outing = rename_actionloop()
-            if outing == "exit":
+            if outing == None:
                 return
         elif action =="convert":
             print()

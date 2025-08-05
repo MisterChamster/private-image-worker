@@ -135,27 +135,29 @@ def rename_actionloop():
         if action == "pfd":
             outing = print_all_dates_loop(naming_style)
             if outing == "exit":
-                return outing
+                return None
         elif action == "pad":
             outing = print_all_files_dates_loop(naming_style)
             if outing == "exit":
-                return outing
+                return None
         elif action == "roo":
             outing = rename_images_onebyone_loop(os.getcwd(), naming_style)
             if outing == "exit":
-                return outing
+                return None
         elif action == "rai":
             outing = rename_basis_loop(naming_style)
             if outing == "exit":
-                return outing
+                return None
         elif action == "cns":
             outing = ask_naming_style(naming_style)
             if outing == "exit":
-                return outing
+                return None
             elif outing == "rt":
                 pass
             else:
                 naming_style = outing
                 print()
-        elif action == "rt" or action == "exit":
+        elif action == "rt":
             return action
+        elif action == "exit":
+            return None
