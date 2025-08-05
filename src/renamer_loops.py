@@ -55,7 +55,9 @@ def print_all_files_dates_loop(naming_style: str):
         elif action == "m":
             list_images_with_dates(os.getcwd(), "FILE_MOD", naming_style)
             print()
-        elif action == "rt" or action == "exit":
+        elif action == "rt":
+            return action
+        elif action == "exit":
             return action
 
 
@@ -84,7 +86,9 @@ def rename_images_onebyone_loop(directory: str, naming_style: str):
                 print()
             elif action == "next":
                 continue
-            elif action == "rt" or action == "exit":
+            elif action == "rt":
+                return action
+            elif action == "exit":
                 return action
     print("All files have been considered.\n")
 
@@ -98,7 +102,9 @@ def rename_all_images_loop(date_type: str, naming_style: str):
         elif action == "ren":
             rename_images_in_dir(os.getcwd(), date_type, naming_style)
             print()
-        elif action == "rt" or action == "exit":
+        elif action == "rt":
+            return action
+        elif action == "exit":
             return action
 
 
@@ -125,7 +131,9 @@ def rename_basis_loop(naming_style: str):
             outing = rename_all_images_loop("FILE_MOD", naming_style)
             if outing == "exit":
                 return outing
-        elif action == "rt" or action == "exit":
+        elif action == "rt":
+            return action
+        elif action == "exit":
             return action
 
 
