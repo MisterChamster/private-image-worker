@@ -104,8 +104,8 @@ def rename_all_images_loop(date_type: str, naming_style: str):
             print()
         elif action == "rt":
             return action
-        elif action == "exit":
-            return action
+        elif action == None:
+            return None
 
 
 def rename_basis_loop(naming_style: str):
@@ -113,23 +113,23 @@ def rename_basis_loop(naming_style: str):
         action = ask_rename_basis()
         if action == "o":
             outing = rename_all_images_loop("EXIF_DTO", naming_style)
-            if outing == "exit":
+            if outing == None:
                 return outing
         elif action == "d":
             outing = rename_all_images_loop("EXIF_DTD", naming_style)
-            if outing == "exit":
+            if outing == None:
                 return outing
         elif action == "t":
             outing = rename_all_images_loop("EXIF_DT", naming_style)
-            if outing == "exit":
+            if outing == None:
                 return outing
         elif action == "c":
             outing = rename_all_images_loop("FILE_CREAT", naming_style)
-            if outing == "exit":
+            if outing == None:
                 return outing
         elif action == "m":
             outing = rename_all_images_loop("FILE_MOD", naming_style)
-            if outing == "exit":
+            if outing == None:
                 return outing
         elif action == "rt":
             return action

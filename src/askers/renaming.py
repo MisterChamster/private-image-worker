@@ -132,14 +132,16 @@ def ask_rename_images_one_by_one(image_path: str, naming_style: str):
 
 def ask_rename_all_images(date_type: str):
     while True:
-        print("Choose a renaming option:\n"                               \
-       f"ls   - List all images names converted to {date_type} format.\n" \
-       f"ren  - Rename all images to {date_type} format.\n"               \
-        "rt   - Return.\n"                                                \
-        "exit - Exit program.\n\n>> ", end="")
+        print("Choose a renaming option:\n"                                     \
+             f"ls   - List all images names converted to {date_type} format.\n" \
+             f"ren  - Rename all images to {date_type} format.\n"               \
+              "rt   - Return.\n"                                                \
+              "exit - Exit program.\n\n>> ", end="")
         action = input()
 
-        if action not in ["ls", "ren", "rt", "exit"]:
+        if action == "exit":
+            return None
+        elif action not in ["ls", "ren", "rt"]:
             print("Incorrect input.\n")
         else:
             return action
