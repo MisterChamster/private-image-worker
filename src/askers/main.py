@@ -21,7 +21,7 @@ def ask_mainloop_action():
         if action == "exit":
             return None
         if action in returns_dict:
-            return action
+            return returns_dict[action]
         else:
             print("Incorrect input.\n")
 

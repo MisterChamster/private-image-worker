@@ -20,7 +20,7 @@ def ask_convert_action():
         if action == "exit":
             return None
         if action in returns_dict:
-            return action
+            return returns_dict[action]
         else:
             print("Incorrect input.\n")
 
@@ -43,7 +43,7 @@ def ask_htp_action():
         if action == "exit":
             return None
         elif action in returns_dict:
-            return action
+            return returns_dict[action]
         else:
             print("Incorrect input.\n")
 
@@ -66,7 +66,7 @@ def ask_htj_action():
         if action == "exit":
             return None
         elif action in returns_dict:
-            return action
+            return returns_dict[action]
         else:
             print("Incorrect input.\n")
 
