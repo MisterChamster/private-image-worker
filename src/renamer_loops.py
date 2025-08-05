@@ -89,7 +89,7 @@ def rename_images_onebyone_loop(directory: str, naming_style: str):
             elif action == "rt":
                 return action
             elif action == None:
-                return action
+                return None
     print("All files have been considered.\n")
 
 
@@ -149,11 +149,11 @@ def rename_actionloop():
                 return None
         elif action == "pad":
             outing = print_all_files_dates_loop(naming_style)
-            if outing == "exit":
+            if outing == None:
                 return None
         elif action == "roo":
             outing = rename_images_onebyone_loop(os.getcwd(), naming_style)
-            if outing == "exit":
+            if outing == None:
                 return None
         elif action == "rai":
             outing = rename_basis_loop(naming_style)
