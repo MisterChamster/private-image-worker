@@ -49,6 +49,11 @@ def ask_htp_action():
 
 
 def ask_htj_action():
+    returns_dict = {"lsh": "list_heic",
+                    "hjn": "heic_to_jpg_no_del",
+                    "hjd": "heic_to_jpg_del",
+                    "rt":  "return"}
+
     while True:
         print("Choose heic to jpg action: \n" \
         "lsh  - List all .heic files in folder\n" \
@@ -60,10 +65,10 @@ def ask_htj_action():
 
         if action == "exit":
             return None
-        elif action not in ["lsh", "hjn", "hjd", "rt"]:
-            print("Incorrect input.\n")
-        else:
+        elif action in returns_dict:
             return action
+        else:
+            print("Incorrect input.\n")
 
 
 def ask_ptj_action():

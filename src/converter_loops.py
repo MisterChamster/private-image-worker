@@ -36,16 +36,16 @@ def htjloop():
     while True:
         action = ask_htj_action()
 
-        if action == "lsh":
+        if action == "list_heic":
             list_images_in_dir("heic")
             print()
-        elif action == "hjn":
+        elif action == "heic_to_jpg_no_del":
             HEICtoJPG_no_del(os.getcwd())
             print()
-        elif action == "hjd":
+        elif action == "heic_to_jpg_del":
             HEICtoJPG_del(os.getcwd())
             print()
-        elif action == "rt":
+        elif action == "return":
             return action
         elif action == None:
             return None
