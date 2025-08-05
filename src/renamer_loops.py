@@ -40,22 +40,22 @@ def print_all_dates_loop(naming_style: str):
 def print_all_files_dates_loop(naming_style: str):
     while True:
         action = ask_print_all_files_dates()
-        if action == "o":
+        if action == "date_time_original":
             list_images_with_dates(os.getcwd(), "EXIF_DTO", naming_style)
             print()
-        elif action == "d":
+        elif action == "date_time_digitized":
             list_images_with_dates(os.getcwd(), "EXIF_DTD", naming_style)
             print()
-        elif action == "t":
+        elif action == "date_time":
             list_images_with_dates(os.getcwd(), "EXIF_DT", naming_style)
             print()
-        elif action == "c":
+        elif action == "file_creation":
             list_images_with_dates(os.getcwd(), "FILE_CREAT", naming_style)
             print()
-        elif action == "m":
+        elif action == "file_modification":
             list_images_with_dates(os.getcwd(), "FILE_MOD", naming_style)
             print()
-        elif action == "rt":
+        elif action == "return":
             return action
         elif action == None:
             return action

@@ -41,6 +41,13 @@ def ask_print_all_dates():
 
 
 def ask_print_all_files_dates():
+    returns_dict = {"o": "date_time_original",
+                    "d": "date_time_digitized",
+                    "t": "date_time",
+                    "c": "file_creation",
+                    "m": "file_modification",
+                    "rt": "return"}
+
     while True:
         print("Choose printing format:\n"          \
         "o    - DateTimeOriginal.\n"               \
@@ -54,10 +61,10 @@ def ask_print_all_files_dates():
 
         if action == "exit":
             return None
-        elif action not in ["o", "d", "t", "c", "m", "rt"]:
-            print("Incorrect input.\n")
+        elif action in returns_dict:
+            return returns_dict[action]
         else:
-            return action
+            print("Incorrect input.\n")
 
 
 def ask_rename_images_one_by_one(image_path: str, naming_style: str):
