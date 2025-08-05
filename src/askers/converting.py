@@ -1,4 +1,11 @@
 def ask_convert_action():
+    returns_dict = {"lsh": "list_heic",
+                    "lsp": "list_png",
+                    "htp": "heic_to_png",
+                    "htj": "heic_to_jpg",
+                    "ptj": "png_to_jpg",
+                    "rt":  "return"}
+
     while True:
         print("Choose convert action: \n" \
         "lsh  - List all .heic files in folder\n" \
@@ -8,15 +15,22 @@ def ask_convert_action():
         "ptj  - .png to .jpg...\n" \
         "rt   - Return.\n" \
         "exit - Exit program.\n\n>> ", end="")
-        action = str(input())
+        action = input()
 
-        if action not in ["lsh", "lsp", "htp", "htj", "ptj", "rt", "exit"]:
-            print("Incorrect input.\n")
+        if action == "exit":
+            return None
+        if action in returns_dict:
+            return returns_dict[action]
         else:
-            return action
+            print("Incorrect input.\n")
 
 
 def ask_htp_action():
+    returns_dict = {"lsh": "list_heic",
+                    "hpn": "heic_to_png_no_del",
+                    "hpd": "heic_to_png_del",
+                    "rt":  "return"}
+
     while True:
         print("Choose heic to png action: \n" \
         "lsh  - List all .heic files in folder\n" \
@@ -24,15 +38,22 @@ def ask_htp_action():
         "hpd  - Convert .heic files to .png files (delete heic files)\n" \
         "rt   - Return.\n" \
         "exit - Exit program.\n\n>> ", end="")
-        action = str(input())
+        action = input()
 
-        if action not in ["lsh", "hpn", "hpd", "rt", "exit"]:
-            print("Incorrect input.\n")
+        if action == "exit":
+            return None
+        elif action in returns_dict:
+            return returns_dict[action]
         else:
-            return action
+            print("Incorrect input.\n")
 
 
 def ask_htj_action():
+    returns_dict = {"lsh": "list_heic",
+                    "hjn": "heic_to_jpg_no_del",
+                    "hjd": "heic_to_jpg_del",
+                    "rt":  "return"}
+
     while True:
         print("Choose heic to jpg action: \n" \
         "lsh  - List all .heic files in folder\n" \
@@ -40,15 +61,22 @@ def ask_htj_action():
         "hjd  - Convert .heic files to .jpg files (delete heic files)\n" \
         "rt   - Return.\n" \
         "exit - Exit program.\n\n>> ", end="")
-        action = str(input())
+        action = input()
 
-        if action not in ["lsh", "hjn", "hjd", "rt", "exit"]:
-            print("Incorrect input.\n")
+        if action == "exit":
+            return None
+        elif action in returns_dict:
+            return returns_dict[action]
         else:
-            return action
+            print("Incorrect input.\n")
 
 
 def ask_ptj_action():
+    returns_dict = {"lsp": "list_png",
+                    "pjn": "png_to_jpg_no_del",
+                    "pjd": "png_to_jpg_del",
+                    "rt":  "return"}
+
     while True:
         print("Choose png to jpg action: \n" \
         "lsp  - List all .png files in folder\n" \
@@ -56,9 +84,11 @@ def ask_ptj_action():
         "pjd  - Convert .png files to .jpg files (delete png files)\n" \
         "rt   - Return.\n" \
         "exit - Exit program.\n\n>> ", end="")
-        action = str(input())
+        action = input()
 
-        if action not in ["lsp", "pjn", "pjd", "rt", "exit"]:
-            print("Incorrect input.\n")
+        if action == "exit":
+            return None
+        if action in returns_dict:
+            return returns_dict[action]
         else:
-            return action
+            print("Incorrect input.\n")

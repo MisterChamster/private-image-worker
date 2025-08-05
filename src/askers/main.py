@@ -4,6 +4,11 @@ from tkinter import filedialog
 
 
 def ask_mainloop_action():
+    returns_dict = {"ls": "list",
+                    "cd": "change_dir",
+                    "rnm": "rename",
+                    "cnv": "convert"}
+
     while True:
         print("Choose action: \n" \
         "ls   - List all images in folder.\n" \
@@ -13,10 +18,12 @@ def ask_mainloop_action():
         "exit - Exit program.\n\n>> ", end="")
         action = str(input())
 
-        if action not in ["ls", "cd", "rnm", "cnv", "exit"]:
-            print("Incorrect input.\n")
+        if action == "exit":
+            return None
+        if action in returns_dict:
+            return returns_dict[action]
         else:
-            return action
+            print("Incorrect input.\n")
 
 
 def ask_path_filedialog(type: str, message: str):
