@@ -3,26 +3,6 @@ import os
 
 
 
-def ask_rename_action():
-    while True:
-        print("Choose rename action: \n"                                \
-        "pfd  - Print all dates of the first file in folder...\n"       \
-        "pad  - Print all images names converted to a date format...\n" \
-        "roo  - Rename images one by one...\n"                          \
-        "rai  - Rename all images to a date format...\n"                \
-        "cns  - Change naming style...\n"                               \
-        "rt   - Return.\n"                                              \
-        "exit - Exit program.\n\n>> ", end="")
-        action = input()
-
-        if action == "exit":
-            return None
-        elif action not in ["pfd", "pad", "roo", "rai", "cns", "rt"]:
-            print("Incorrect input.\n")
-        else:
-            return action
-
-
 def ask_print_all_dates():
     returns_dict = {"": "next",
                     "rt": "return"}
@@ -164,6 +144,26 @@ def ask_rename_basis():
         if action == "exit":
             return None
         elif action not in ["o", "d", "t", "c", "m", "rt"]:
+            print("Incorrect input.\n")
+        else:
+            return action
+
+
+def ask_rename_action():
+    while True:
+        print("Choose rename action: \n"                                \
+        "pfd  - Print all dates of the first file in folder...\n"       \
+        "pad  - Print all images names converted to a date format...\n" \
+        "roo  - Rename images one by one...\n"                          \
+        "rai  - Rename all images to a date format...\n"                \
+        "cns  - Change naming style...\n"                               \
+        "rt   - Return.\n"                                              \
+        "exit - Exit program.\n\n>> ", end="")
+        action = input()
+
+        if action == "exit":
+            return None
+        elif action not in ["pfd", "pad", "roo", "rai", "cns", "rt"]:
             print("Incorrect input.\n")
         else:
             return action
