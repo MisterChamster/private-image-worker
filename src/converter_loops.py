@@ -28,7 +28,7 @@ def htploop():
             print()
         elif action == "rt":
             return action
-        elif action == "exit":
+        elif action == None:
             return None
 
 
@@ -47,7 +47,7 @@ def htjloop():
             print()
         elif action == "rt":
             return action
-        elif action == "exit":
+        elif action == None:
             return None
 
 
@@ -66,7 +66,7 @@ def ptjloop():
             print()
         elif action == "rt":
             return action
-        elif action == "exit":
+        elif action == None:
             return None
 
 
