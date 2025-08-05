@@ -96,13 +96,13 @@ def rename_images_onebyone_loop(directory: str, naming_style: str):
 def rename_all_images_loop(date_type: str, naming_style: str):
     while True:
         action = ask_rename_all_images(date_type)
-        if action == "ls":
+        if action == "list_images_new_names":
             list_images_with_dates(os.getcwd(), date_type, naming_style)
             print()
-        elif action == "ren":
+        elif action == "rename_all_images":
             rename_images_in_dir(os.getcwd(), date_type, naming_style)
             print()
-        elif action == "rt":
+        elif action == "return":
             return action
         elif action == None:
             return None
