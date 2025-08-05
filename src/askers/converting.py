@@ -1,4 +1,11 @@
 def ask_convert_action():
+    returns_dict = {"lsh": "list_heic",
+                    "lsp": "list_png",
+                    "htp": "heic_to_png",
+                    "htj": "heic_to_jpg",
+                    "ptj": "png_to_jpg",
+                    "rt":  "return"}
+
     while True:
         print("Choose convert action: \n" \
         "lsh  - List all .heic files in folder\n" \
@@ -12,10 +19,10 @@ def ask_convert_action():
 
         if action == "exit":
             return None
-        if action not in ["lsh", "lsp", "htp", "htj", "ptj", "rt"]:
-            print("Incorrect input.\n")
-        else:
+        if action in returns_dict:
             return action
+        else:
+            print("Incorrect input.\n")
 
 
 def ask_htp_action():

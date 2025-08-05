@@ -74,31 +74,31 @@ def convertloop():
     while True:
         action = ask_convert_action()
 
-        if action == "lsh":
+        if action == "list_heic":
             list_images_in_dir("heic")
             print()
-        elif action == "lsp":
+        elif action == "list_png":
             list_images_in_dir("png")
             print()
-        elif action == "htp":
+        elif action == "heic_to_png":
             print()
             outing = htploop()
             if outing == None:
                 return None
             print()
-        elif action == "htj":
+        elif action == "heic_to_jpg":
             print()
             outing = htjloop()
             if outing == None:
                 return None
             print()
-        elif action == "ptj":
+        elif action == "png_to_jpg":
             print()
             outing = ptjloop()
             if outing == None:
                 return None
             print()
-        elif action == "rt":
+        elif action == "return":
             return action
         elif action == None:
             return None
