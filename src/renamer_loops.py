@@ -57,7 +57,7 @@ def print_all_files_dates_loop(naming_style: str):
             print()
         elif action == "rt":
             return action
-        elif action == "exit":
+        elif action == None:
             return action
 
 

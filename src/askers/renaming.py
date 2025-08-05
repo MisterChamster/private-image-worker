@@ -51,7 +51,9 @@ def ask_print_all_files_dates():
         "exit - Exit program.\n\n>> ", end="")
         action = str(input())
 
-        if action not in ["o", "d", "t", "c", "m", "rt", "exit"]:
+        if action == "exit":
+            return None
+        elif action not in ["o", "d", "t", "c", "m", "rt"]:
             print("Incorrect input.\n")
         else:
             return action
