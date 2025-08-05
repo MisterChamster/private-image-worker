@@ -29,7 +29,7 @@ def print_all_dates_loop(naming_style: str):
             except:
                 print("All pictures have been checked.\n")
                 break
-        elif action == "rt":
+        elif action == "return":
             gen.close()
             return action
         elif action == None:

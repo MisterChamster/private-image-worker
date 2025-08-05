@@ -22,6 +22,9 @@ def ask_rename_action():
 
 
 def ask_print_all_dates():
+    returns_dict = {"": "next",
+                    "rt": "return"}
+
     while True:
         print("Show next file dates?\n" \
         "Enter - Next.\n"               \
@@ -31,12 +34,10 @@ def ask_print_all_dates():
 
         if action == "exit":
             return None
-        elif action not in ["", "rt"]:
-            print("Incorrect input.\n")
+        elif action in returns_dict:
+            return returns_dict[action]
         else:
-            if action == "":
-                return "next"
-            return action
+            print("Incorrect input.\n")
 
 
 def ask_print_all_files_dates():
