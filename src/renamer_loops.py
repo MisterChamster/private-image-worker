@@ -134,7 +134,7 @@ def rename_basis_loop(naming_style: str):
         elif action == "rt":
             return action
         elif action == None:
-            return action
+            return None
 
 
 def rename_actionloop():
@@ -157,7 +157,7 @@ def rename_actionloop():
                 return None
         elif action == "rai":
             outing = rename_basis_loop(naming_style)
-            if outing == "exit":
+            if outing == None:
                 return None
         elif action == "cns":
             outing = ask_naming_style(naming_style)
