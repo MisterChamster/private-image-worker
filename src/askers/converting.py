@@ -72,6 +72,11 @@ def ask_htj_action():
 
 
 def ask_ptj_action():
+    returns_dict = {"lsp": "list_png",
+                    "pjn": "png_to_jpg_no_del",
+                    "pjd": "png_to_jpg_del",
+                    "rt":  "return"}
+
     while True:
         print("Choose png to jpg action: \n" \
         "lsp  - List all .png files in folder\n" \
@@ -83,7 +88,7 @@ def ask_ptj_action():
 
         if action == "exit":
             return None
-        if action not in ["lsp", "pjn", "pjd", "rt"]:
-            print("Incorrect input.\n")
+        if action in returns_dict:
+            return returns_dict[action]
         else:
-            return action
+            print("Incorrect input.\n")

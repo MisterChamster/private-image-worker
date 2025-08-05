@@ -55,16 +55,16 @@ def ptjloop():
     while True:
         action = ask_ptj_action()
 
-        if action == "lsp":
+        if action == "list_png":
             list_images_in_dir("png")
             print()
-        elif action == "pjn":
+        elif action == "png_to_jpg_no_del":
             PNGtoJPG_no_del(os.getcwd())
             print()
-        elif action == "pjd":
+        elif action == "png_to_jpg_del":
             PNGtoJPG_del(os.getcwd())
             print()
-        elif action == "rt":
+        elif action == "return":
             return action
         elif action == None:
             return None
