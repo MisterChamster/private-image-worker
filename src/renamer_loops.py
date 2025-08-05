@@ -163,9 +163,7 @@ def rename_actionloop():
             outing = ask_naming_style(naming_style)
             if outing == None:
                 return None
-            elif outing == "rt":
-                pass
-            else:
+            elif outing != "rt":
                 naming_style = outing
                 print()
         elif action == "return":
