@@ -130,6 +130,21 @@ def ask_rename_images_one_by_one(image_path: str, naming_style: str):
             print("Incorrect input.\n")
 
 
+def ask_rename_all_images(date_type: str):
+    while True:
+        print("Choose a renaming option:\n"                               \
+       f"ls   - List all images names converted to {date_type} format.\n" \
+       f"ren  - Rename all images to {date_type} format.\n"               \
+        "rt   - Return.\n"                                                \
+        "exit - Exit program.\n\n>> ", end="")
+        action = input()
+
+        if action not in ["ls", "ren", "rt", "exit"]:
+            print("Incorrect input.\n")
+        else:
+            return action
+
+
 def ask_rename_basis():
     while True:
         print("Choose style of renaming images:\n" \
@@ -160,21 +175,6 @@ def ask_naming_style(naming_style: str):
         action = input()
 
         if action not in ["iso", "eu", "us", "rt", "exit"]:
-            print("Incorrect input.\n")
-        else:
-            return action
-
-
-def ask_rename_all_images(date_type: str):
-    while True:
-        print("Choose a renaming option:\n"                               \
-       f"ls   - List all images names converted to {date_type} format.\n" \
-       f"ren  - Rename all images to {date_type} format.\n"               \
-        "rt   - Return.\n"                                                \
-        "exit - Exit program.\n\n>> ", end="")
-        action = input()
-
-        if action not in ["ls", "ren", "rt", "exit"]:
             print("Incorrect input.\n")
         else:
             return action
