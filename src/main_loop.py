@@ -16,20 +16,20 @@ def main_loop():
     while True:
         print()
         action = ask_mainloop_action()
-        if action == "ls":
+        if action == "list":
             list_images_in_dir()
             print()
-        elif action == "cd":
+        elif action == "change_dir":
             dir_main = ask_path_filedialog("d", "Choose images directory")
             if dir_main == "":
                 return
             chdir(dir_main)
-        elif action == "rnm":
+        elif action == "rename":
             print()
             outing = rename_actionloop()
             if outing == "exit":
                 return
-        elif action =="cnv":
+        elif action =="convert":
             print()
             outing = convertloop()
             if outing == None:
