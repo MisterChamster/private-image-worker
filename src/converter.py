@@ -31,7 +31,11 @@ def HEICtoPNG_del(directory: str):
             # create an Image object from the HEIC file
             filepath = os.path.join(directory, filename)
             print("Converting:", filename)
-            heif_file = pillow_heif.read_heif(filepath)
+            try:
+                heif_file = pillow_heif.read_heif(filepath)
+            except ValueError:
+                print(f"File {filename} could not be coverted.")
+                continue
             image = Image.frombytes(
                 heif_file.mode,
                 heif_file.size,
