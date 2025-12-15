@@ -10,11 +10,11 @@ def ask_mainloop_action():
                     "cnv": "convert"}
 
     while True:
-        print("Choose action: \n" \
-        "ls   - List all images in folder.\n" \
-        "cd   - Change program working directory.\n" \
-        "rnm  - Rename...\n" \
-        "cnv  - Convert...\n" \
+        print("Choose action: \n"
+        "ls   - List all images in folder.\n"
+        "cd   - Change program working directory.\n"
+        "rnm  - Rename...\n"
+        "cnv  - Convert...\n"
         "exit - Exit program.\n\n>> ", end="")
         action = input().strip()
 

@@ -7,13 +7,13 @@ def ask_convert_action():
                     "rt":  "return"}
 
     while True:
-        print("Choose convert action: \n" \
-        "lsh  - List all .heic files in folder\n" \
-        "lsp  - List all .png files in folder\n" \
-        "htp  - .heic to .png...\n" \
-        "htj  - .heic to .jpg...\n" \
-        "ptj  - .png to .jpg...\n" \
-        "rt   - Return.\n" \
+        print("Choose convert action: \n"
+        "lsh  - List all .heic files in folder\n"
+        "lsp  - List all .png files in folder\n"
+        "htp  - .heic to .png...\n"
+        "htj  - .heic to .jpg...\n"
+        "ptj  - .png to .jpg...\n"
+        "rt   - Return.\n"
         "exit - Exit program.\n\n>> ", end="")
         action = input().strip()
 
@@ -32,11 +32,11 @@ def ask_htp_action():
                     "rt":  "return"}
 
     while True:
-        print("Choose heic to png action: \n" \
-        "lsh  - List all .heic files in folder\n" \
-        "hpn  - Convert .heic files to .png files (leave heic files)\n" \
-        "hpd  - Convert .heic files to .png files (delete heic files)\n" \
-        "rt   - Return.\n" \
+        print("Choose heic to png action: \n"
+        "lsh  - List all .heic files in folder\n"
+        "hpn  - Convert .heic files to .png files (leave heic files)\n"
+        "hpd  - Convert .heic files to .png files (delete heic files)\n"
+        "rt   - Return.\n"
         "exit - Exit program.\n\n>> ", end="")
         action = input().strip()
 
@@ -55,11 +55,11 @@ def ask_htj_action():
                     "rt":  "return"}
 
     while True:
-        print("Choose heic to jpg action: \n" \
-        "lsh  - List all .heic files in folder\n" \
-        "hjn  - Convert .heic files to .jpg files (leave heic files)\n" \
-        "hjd  - Convert .heic files to .jpg files (delete heic files)\n" \
-        "rt   - Return.\n" \
+        print("Choose heic to jpg action: \n"
+        "lsh  - List all .heic files in folder\n"
+        "hjn  - Convert .heic files to .jpg files (leave heic files)\n"
+        "hjd  - Convert .heic files to .jpg files (delete heic files)\n"
+        "rt   - Return.\n"
         "exit - Exit program.\n\n>> ", end="")
         action = input().strip()
 
@@ -78,10 +78,10 @@ def ask_ptj_action():
                     "rt":  "return"}
 
     while True:
-        print("Choose png to jpg action: \n" \
-        "lsp  - List all .png files in folder\n" \
-        "pjn  - Convert .png files to .jpg files (leave png files)\n" \
-        "pjd  - Convert .png files to .jpg files (delete png files)\n" \
+        print("Choose png to jpg action: \n"
+        "lsp  - List all .png files in folder\n"
+        "pjn  - Convert .png files to .jpg files (leave png files)\n"
+        "pjd  - Convert .png files to .jpg files (delete png files)\n"
         "rt   - Return.\n" \
         "exit - Exit program.\n\n>> ", end="")
         action = input().strip()

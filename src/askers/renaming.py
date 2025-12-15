@@ -8,9 +8,9 @@ def ask_print_all_dates():
                     "rt": "return"}
 
     while True:
-        print("Show next file dates?\n" \
-        "Enter - Next.\n"               \
-        "rt    - Return.\n"             \
+        print("Show next file dates?\n"
+        "Enter - Next.\n"
+        "rt    - Return.\n"
         "exit  - Exit program.\n\n>> ", end="")
         action = input().strip()
 
@@ -31,13 +31,13 @@ def ask_print_all_files_dates():
                     "rt": "return"}
 
     while True:
-        print("Choose printing format:\n"          \
-        "o    - DateTimeOriginal.\n"               \
-        "d    - DateTimeDigitized.\n"              \
-        "t    - DateTime.\n"                       \
-        "c    - File creation.\n"                  \
-        "m    - File modification.\n"              \
-        "rt   - Return.\n"                         \
+        print("Choose printing format:\n"
+        "o    - DateTimeOriginal.\n"
+        "d    - DateTimeDigitized.\n"
+        "t    - DateTime.\n"
+        "c    - File creation.\n"
+        "m    - File modification.\n"
+        "rt   - Return.\n"
         "exit - Exit program.\n\n>> ", end="")
         action = input().strip()
 
@@ -118,10 +118,10 @@ def ask_rename_all_images(date_type: str):
                     "rt":  "return"}
 
     while True:
-        print("Choose a renaming option:\n"                                     \
-             f"ls   - List all images names converted to {date_type} format.\n" \
-             f"rai  - Rename all images to {date_type} format.\n"               \
-              "rt   - Return.\n"                                                \
+        print("Choose a renaming option:\n"
+             f"ls   - List all images names converted to {date_type} format.\n"
+             f"rai  - Rename all images to {date_type} format.\n"
+              "rt   - Return.\n"
               "exit - Exit program.\n\n>> ", end="")
         action = input().strip()
 
@@ -142,13 +142,13 @@ def ask_rename_basis():
                     "rt": "return"}
 
     while True:
-        print("Choose style of renaming images:\n" \
-        "o    - DateTimeOriginal.\n"               \
-        "d    - DateTimeDigitized.\n"              \
-        "t    - DateTime.\n"                       \
-        "c    - File creation.\n"                  \
-        "m    - File modification.\n"              \
-        "rt   - Return.\n"                         \
+        print("Choose style of renaming images:\n"
+        "o    - DateTimeOriginal.\n"
+        "d    - DateTimeDigitized.\n"
+        "t    - DateTime.\n"
+        "c    - File creation.\n"
+        "m    - File modification.\n"
+        "rt   - Return.\n"
         "exit - Exit program.\n\n>> ", end="")
         action = input().strip()
 
@@ -169,13 +169,13 @@ def ask_rename_action():
                     "rt":  "return"}
 
     while True:
-        print("Choose rename action: \n"                                \
-        "pfd  - Print all dates of the first file in folder...\n"       \
-        "pad  - Print all images names converted to a date format...\n" \
-        "roo  - Rename images one by one...\n"                          \
-        "rai  - Rename all images to a date format...\n"                \
-        "cns  - Change naming style...\n"                               \
-        "rt   - Return.\n"                                              \
+        print("Choose rename action: \n"
+        "pfd  - Print all dates of the first file in folder...\n"
+        "pad  - Print all images names converted to a date format...\n"
+        "roo  - Rename images one by one...\n"
+        "rai  - Rename all images to a date format...\n"
+        "cns  - Change naming style...\n"
+        "rt   - Return.\n"
         "exit - Exit program.\n\n>> ", end="")
         action = input().strip()
 
@@ -192,11 +192,11 @@ def ask_naming_style(naming_style: str):
 
     while True:
         print(f"Current naming style: {naming_style}")
-        print("Choose naming style:\n"               \
-        "iso  - ISO 8601  IMG_[Y][M][D]_[H][M][S]\n" \
-        "eu   - European  IMG_[D][M][Y]_[H][M][S]\n" \
-        "us   - US Format IMG_[M][D][Y]_[H][M][S]\n" \
-        "rt   - Return.\n"                           \
+        print("Choose naming style:\n"
+        "iso  - ISO 8601  IMG_[Y][M][D]_[H][M][S]\n"
+        "eu   - European  IMG_[D][M][Y]_[H][M][S]\n"
+        "us   - US Format IMG_[M][D][Y]_[H][M][S]\n"
+        "rt   - Return.\n"
         "exit - Exit program.\n\n>> ", end="")
         action = input().strip()
 
