@@ -12,7 +12,7 @@ def ask_print_all_dates():
         "Enter - Next.\n"               \
         "rt    - Return.\n"             \
         "exit  - Exit program.\n\n>> ", end="")
-        action = input()
+        action = input().strip()
 
         if action == "exit":
             return None
@@ -39,7 +39,7 @@ def ask_print_all_files_dates():
         "m    - File modification.\n"              \
         "rt   - Return.\n"                         \
         "exit - Exit program.\n\n>> ", end="")
-        action = input()
+        action = input().strip()
 
         if action == "exit":
             return None
@@ -102,7 +102,7 @@ def ask_rename_images_one_by_one(image_path: str, naming_style: str):
 
         print("rt    - Return.\n" \
               "exit  - Exit program.\n\n>> ", end="")
-        action = input()
+        action = input().strip()
 
         if action == "exit":
             return None
@@ -123,7 +123,7 @@ def ask_rename_all_images(date_type: str):
              f"rai  - Rename all images to {date_type} format.\n"               \
               "rt   - Return.\n"                                                \
               "exit - Exit program.\n\n>> ", end="")
-        action = input()
+        action = input().strip()
 
         if action == "exit":
             return None
@@ -150,7 +150,7 @@ def ask_rename_basis():
         "m    - File modification.\n"              \
         "rt   - Return.\n"                         \
         "exit - Exit program.\n\n>> ", end="")
-        action = input()
+        action = input().strip()
 
         if action == "exit":
             return None
@@ -177,7 +177,7 @@ def ask_rename_action():
         "cns  - Change naming style...\n"                               \
         "rt   - Return.\n"                                              \
         "exit - Exit program.\n\n>> ", end="")
-        action = input()
+        action = input().strip()
 
         if action == "exit":
             return None
@@ -198,7 +198,7 @@ def ask_naming_style(naming_style: str):
         "us   - US Format IMG_[M][D][Y]_[H][M][S]\n" \
         "rt   - Return.\n"                           \
         "exit - Exit program.\n\n>> ", end="")
-        action = input()
+        action = input().strip()
 
         if action == "exit":
             return None

@@ -16,7 +16,7 @@ def ask_mainloop_action():
         "rnm  - Rename...\n" \
         "cnv  - Convert...\n" \
         "exit - Exit program.\n\n>> ", end="")
-        action = str(input())
+        action = input().strip()
 
         if action == "exit":
             return None
@@ -39,13 +39,3 @@ def ask_path_filedialog(type: str, message: str):
 
     os.chdir(original_path)
     return sel_path
-
-
-# def ask_path():
-#     while True:
-#         print("Enter path\n(to exit input 'exit'): \n>> ", end="")
-#         dir_path = str(input())
-#         if os.path.exists(dir_path) or dir_path == "exit":
-#             return dir_path
-#         else:
-#             print("Invalid path.\n")
