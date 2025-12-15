@@ -16,10 +16,9 @@ def ask_print_all_dates():
 
         if action == "exit":
             return None
-        elif action in returns_dict:
+        if action in returns_dict:
             return returns_dict[action]
-        else:
-            print("Incorrect input.\n")
+        print("Incorrect input.\n")
 
 
 def ask_print_all_files_dates():
@@ -43,10 +42,9 @@ def ask_print_all_files_dates():
 
         if action == "exit":
             return None
-        elif action in returns_dict:
+        if action in returns_dict:
             return returns_dict[action]
-        else:
-            print("Incorrect input.\n")
+        print("Incorrect input.\n")
 
 
 def ask_rename_images_one_by_one(image_path: str, naming_style: str):
@@ -100,7 +98,7 @@ def ask_rename_images_one_by_one(image_path: str, naming_style: str):
             returns_dict[""] = "next"
             print("Enter - Skip.")
 
-        print("rt    - Return.\n" \
+        print("rt    - Return.\n"
               "exit  - Exit program.\n\n>> ", end="")
         action = input().strip()
 
@@ -108,8 +106,7 @@ def ask_rename_images_one_by_one(image_path: str, naming_style: str):
             return None
         if action in returns_dict:
             return returns_dict[action]
-        else:
-            print("Incorrect input.\n")
+        print("Incorrect input.\n")
 
 
 def ask_rename_all_images(date_type: str):
@@ -127,10 +124,9 @@ def ask_rename_all_images(date_type: str):
 
         if action == "exit":
             return None
-        elif action in returns_dict:
+        if action in returns_dict:
             return returns_dict[action]
-        else:
-            print("Incorrect input.\n")
+        print("Incorrect input.\n")
 
 
 def ask_rename_basis():
@@ -154,10 +150,9 @@ def ask_rename_basis():
 
         if action == "exit":
             return None
-        elif action in returns_dict:
+        if action in returns_dict:
             return returns_dict[action]
-        else:
-            print("Incorrect input.\n")
+        print("Incorrect input.\n")
 
 
 def ask_rename_action():
@@ -181,10 +176,9 @@ def ask_rename_action():
 
         if action == "exit":
             return None
-        elif action in returns_dict:
+        if action in returns_dict:
             return returns_dict[action]
-        else:
-            print("Incorrect input.\n")
+        print("Incorrect input.\n")
 
 
 def ask_naming_style(naming_style: str):
@@ -202,7 +196,6 @@ def ask_naming_style(naming_style: str):
 
         if action == "exit":
             return None
-        elif action not in returns_list:
-            print("Incorrect input.\n")
-        else:
+        if action in returns_list:
             return action
+        print("Incorrect input.\n")

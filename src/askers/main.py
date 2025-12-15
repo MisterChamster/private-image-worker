@@ -22,8 +22,7 @@ def ask_mainloop_action():
             return None
         if action in returns_dict:
             return returns_dict[action]
-        else:
-            print("Incorrect input.\n")
+        print("Incorrect input.\n")
 
 
 def ask_path_filedialog(type: str, message: str):

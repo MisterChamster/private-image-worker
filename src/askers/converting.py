@@ -21,8 +21,7 @@ def ask_convert_action():
             return None
         if action in returns_dict:
             return returns_dict[action]
-        else:
-            print("Incorrect input.\n")
+        print("Incorrect input.\n")
 
 
 def ask_htp_action():
@@ -42,10 +41,9 @@ def ask_htp_action():
 
         if action == "exit":
             return None
-        elif action in returns_dict:
+        if action in returns_dict:
             return returns_dict[action]
-        else:
-            print("Incorrect input.\n")
+        print("Incorrect input.\n")
 
 
 def ask_htj_action():
@@ -65,10 +63,9 @@ def ask_htj_action():
 
         if action == "exit":
             return None
-        elif action in returns_dict:
+        if action in returns_dict:
             return returns_dict[action]
-        else:
-            print("Incorrect input.\n")
+        print("Incorrect input.\n")
 
 
 def ask_ptj_action():
@@ -90,5 +87,4 @@ def ask_ptj_action():
             return None
         if action in returns_dict:
             return returns_dict[action]
-        else:
-            print("Incorrect input.\n")
+        print("Incorrect input.\n")
