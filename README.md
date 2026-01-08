@@ -12,8 +12,8 @@ A simple program made for renaming images (jpg, jpeg, png, tiff, heic) according
 
 ## Installation
 ```bash
-git clone https://github.com/MisterChamster/private-image-worker.git image-worker
-cd image-worker
+git clone https://github.com/MisterChamster/private-image-worker.git img-worker
+cd img-worker
 ```
 
 ## Usage
