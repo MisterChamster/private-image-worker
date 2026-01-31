@@ -1,21 +1,22 @@
 def ask_convert_action():
-    returns_dict = {"lsh": "list_heic",
-                    "lsp": "list_png",
-                    "htp": "heic_to_png",
-                    "htj": "heic_to_jpg",
-                    "ptj": "png_to_jpg",
-                    "rt":  "return"}
+    returns_dict = {
+        "lsh": "list_heic",
+        "lsp": "list_png",
+        "htp": "heic_to_png",
+        "htj": "heic_to_jpg",
+        "ptj": "png_to_jpg",
+        "rt":  "return"}
 
     while True:
         print("Choose convert action: \n"
-        "lsh  - List all .heic files in folder\n"
-        "lsp  - List all .png files in folder\n"
-        "htp  - .heic to .png...\n"
-        "htj  - .heic to .jpg...\n"
-        "ptj  - .png to .jpg...\n"
-        "rt   - Return.\n"
-        "exit - Exit program.\n\n>> ", end="")
-        action = input().strip()
+               "lsh  - List all .heic files in folder\n"
+               "lsp  - List all .png files in folder\n"
+               "htp  - .heic to .png...\n"
+               "htj  - .heic to .jpg...\n"
+               "ptj  - .png to .jpg...\n"
+               "rt   - Return\n"
+               "exit - Exit program\n\n>> ", end="")
+        action = input().strip().lower()
 
         if action == "exit":
             return None
@@ -35,9 +36,9 @@ def ask_htp_action():
         "lsh  - List all .heic files in folder\n"
         "hpn  - Convert .heic files to .png files (leave heic files)\n"
         "hpd  - Convert .heic files to .png files (delete heic files)\n"
-        "rt   - Return.\n"
-        "exit - Exit program.\n\n>> ", end="")
-        action = input().strip()
+        "rt   - Return\n"
+        "exit - Exit program\n\n>> ", end="")
+        action = input().strip().lower()
 
         if action == "exit":
             return None
@@ -57,9 +58,9 @@ def ask_htj_action():
         "lsh  - List all .heic files in folder\n"
         "hjn  - Convert .heic files to .jpg files (leave heic files)\n"
         "hjd  - Convert .heic files to .jpg files (delete heic files)\n"
-        "rt   - Return.\n"
-        "exit - Exit program.\n\n>> ", end="")
-        action = input().strip()
+        "rt   - Return\n"
+        "exit - Exit program\n\n>> ", end="")
+        action = input().strip().lower()
 
         if action == "exit":
             return None
@@ -79,9 +80,9 @@ def ask_ptj_action():
         "lsp  - List all .png files in folder\n"
         "pjn  - Convert .png files to .jpg files (leave png files)\n"
         "pjd  - Convert .png files to .jpg files (delete png files)\n"
-        "rt   - Return.\n" \
-        "exit - Exit program.\n\n>> ", end="")
-        action = input().strip()
+        "rt   - Return\n" \
+        "exit - Exit program\n\n>> ", end="")
+        action = input().strip().lower()
 
         if action == "exit":
             return None
