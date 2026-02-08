@@ -4,14 +4,15 @@ import os
 
 
 def ask_print_all_dates():
-    returns_dict = {"":   "next",
-                    "rt": "return"}
+    returns_dict = {
+        "":   "next",
+        "rt": "return"}
 
     while True:
         print("Show next file dates?\n"
-        "Enter - Next\n"
-        "rt    - Return\n"
-        "exit  - Exit program\n\n>> ", end="")
+              "Enter - Next\n"
+              "rt    - Return\n"
+              "exit  - Exit program\n\n>> ", end="")
         action = input().strip().lower()
 
         if action == "exit":
@@ -22,22 +23,23 @@ def ask_print_all_dates():
 
 
 def ask_print_all_files_dates():
-    returns_dict = {"o":  "date_time_original",
-                    "d":  "date_time_digitized",
-                    "t":  "date_time",
-                    "c":  "file_creation",
-                    "m":  "file_modification",
-                    "rt": "return"}
+    returns_dict = {
+        "o":  "date_time_original",
+        "d":  "date_time_digitized",
+        "t":  "date_time",
+        "c":  "file_creation",
+        "m":  "file_modification",
+        "rt": "return"}
 
     while True:
         print("Choose printing format:\n"
-        "o    - DateTimeOriginal\n"
-        "d    - DateTimeDigitized\n"
-        "t    - DateTime\n"
-        "c    - File creation\n"
-        "m    - File modification\n"
-        "rt   - Return\n"
-        "exit - Exit program\n\n>> ", end="")
+              "o    - DateTimeOriginal\n"
+              "d    - DateTimeDigitized\n"
+              "t    - DateTime\n"
+              "c    - File creation\n"
+              "m    - File modification\n"
+              "rt   - Return\n"
+              "exit - Exit program\n\n>> ", end="")
         action = input().strip().lower()
 
         if action == "exit":
@@ -110,9 +112,10 @@ def ask_rename_images_one_by_one(image_path: str, naming_style: str):
 
 
 def ask_rename_all_images(date_type: str):
-    returns_dict = {"ls":  "list_images_new_names",
-                    "rai": "rename_all_images",
-                    "rt":  "return"}
+    returns_dict = {
+        "ls":  "list_images_new_names",
+        "rai": "rename_all_images",
+        "rt":  "return"}
 
     while True:
         print("Choose a renaming option:\n"
@@ -130,12 +133,13 @@ def ask_rename_all_images(date_type: str):
 
 
 def ask_rename_basis():
-    returns_dict = {"o": "date_time_original",
-                    "d": "date_time_digitized",
-                    "t": "date_time",
-                    "c": "file_creation",
-                    "m": "file_modification",
-                    "rt": "return"}
+    returns_dict = {
+        "o": "date_time_original",
+        "d": "date_time_digitized",
+        "t": "date_time",
+        "c": "file_creation",
+        "m": "file_modification",
+        "rt": "return"}
 
     while True:
         print("Choose style of renaming images:\n"
@@ -156,12 +160,13 @@ def ask_rename_basis():
 
 
 def ask_rename_action():
-    returns_dict = {"pfd": "print_dates_first_file",
-                    "pad": "print_all_dates",
-                    "roo": "rename_one_by_one",
-                    "rai": "rename_all_images",
-                    "cns": "change_naming_style",
-                    "rt":  "return"}
+    returns_dict = {
+        "pfd": "print_dates_first_file",
+        "pad": "print_all_dates",
+        "roo": "rename_one_by_one",
+        "rai": "rename_all_images",
+        "cns": "change_naming_style",
+        "rt":  "return"}
 
     while True:
         print("Choose rename action: \n"

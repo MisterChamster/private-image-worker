@@ -4,18 +4,19 @@ from tkinter import filedialog
 
 
 def ask_mainloop_action():
-    returns_dict = {"ls": "list",
-                    "cd": "change_dir",
-                    "rnm": "rename",
-                    "cnv": "convert"}
+    returns_dict = {
+        "ls": "list",
+        "cd": "change_dir",
+        "rnm": "rename",
+        "cnv": "convert"}
 
     while True:
         print("Choose action: \n"
-        "ls   - List all images in folder.\n"
-        "cd   - Change program working directory.\n"
-        "rnm  - Rename...\n"
-        "cnv  - Convert...\n"
-        "exit - Exit program\n\n>> ", end="")
+              "ls   - List all images in folder.\n"
+              "cd   - Change program working directory.\n"
+              "rnm  - Rename...\n"
+              "cnv  - Convert...\n"
+              "exit - Exit program\n\n>> ", end="")
         action = input().strip().lower()
 
         if action == "exit":
