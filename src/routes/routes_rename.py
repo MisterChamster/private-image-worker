@@ -1,7 +1,8 @@
 import os
+import pillow_heif
+
 import src.askers.askers_renaming as ask_rnm
 import src.renaming_tools as rnm_tools
-import pillow_heif
 
 pillow_heif.register_heif_opener()
 
