@@ -167,9 +167,14 @@ def rename_basis_loop(naming_style: str) -> str | None:
 
 
 def rename_actionloop() -> str | None:
+    styles_dict = {
+        "iso": "IMG_[Y][M][D]_[H][M][S]",
+        "eu":  "IMG_[D][M][Y]_[H][M][S]",
+        "us":  "IMG_[M][D][Y]_[H][M][S]"}
     naming_style = "iso"
+
     while True:
-        print(f"Current naming style: {naming_style}")
+        print(f"Current naming style: {naming_style} {styles_dict[naming_style]}")
         action = ask_rnm.ask_rename_action()
         print()
 

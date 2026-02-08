@@ -56,8 +56,8 @@ def get_image_date(image_path: str, date_type: str) -> str:
             return modified
 
     else:
-        raise ValueError("module_renamer.py/get_image_date error: " \
-        "Wrong input mr programmer.")
+        raise ValueError("module_renamer.py/get_image_date error: "
+                         "Wrong input mr programmer.")
 
 
 def format_date(date_string: str, naming_style: str) -> str | None:
