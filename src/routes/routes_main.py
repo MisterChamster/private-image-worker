@@ -31,14 +31,14 @@ def main_loop() -> None:
         elif action == "rename":
             print()
             outing = rename_actionloop()
-            if outing == None:
+            if not outing:
                 return
 
         elif action =="convert":
             print()
             outing = convertloop()
-            if outing == None:
+            if not outing:
                 return
 
-        elif action == None:
+        elif not action:
             return

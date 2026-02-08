@@ -26,7 +26,7 @@ def print_all_dates_loop(naming_style: str) -> str | None:
             gen.close()
             return action
 
-        elif action == None:
+        elif not action:
             gen.close()
             return
 
@@ -35,6 +35,7 @@ def print_all_files_dates_loop(naming_style: str) -> str | None:
     while True:
         action = ask_rnm.ask_print_all_files_dates()
         print()
+
         if action == "date_time_original":
             rnm_tools.list_images_with_dates(os.getcwd(), "EXIF_DTO", naming_style)
             print()
@@ -58,7 +59,7 @@ def print_all_files_dates_loop(naming_style: str) -> str | None:
         elif action == "return":
             return action
 
-        elif action == None:
+        elif not action:
             return
 
 
@@ -100,7 +101,7 @@ def rename_images_onebyone_loop(
             elif action == "rt":
                 return action
 
-            elif action == None:
+            elif not action:
                 return
     print("All files have been considered.\n")
 
@@ -124,7 +125,7 @@ def rename_all_images_loop(
         elif action == "return":
             return action
 
-        elif action == None:
+        elif not action:
             return
 
 
@@ -135,33 +136,33 @@ def rename_basis_loop(naming_style: str) -> str | None:
 
         if action == "date_time_original":
             outing = rename_all_images_loop("EXIF_DTO", naming_style)
-            if outing == None:
+            if not outing:
                 return outing
 
         elif action == "date_time_digitized":
             outing = rename_all_images_loop("EXIF_DTD", naming_style)
-            if outing == None:
+            if not outing:
                 return outing
 
         elif action == "date_time":
             outing = rename_all_images_loop("EXIF_DT", naming_style)
-            if outing == None:
+            if not outing:
                 return outing
 
         elif action == "file_creation":
             outing = rename_all_images_loop("FILE_CREAT", naming_style)
-            if outing == None:
+            if not outing:
                 return outing
 
         elif action == "file_modification":
             outing = rename_all_images_loop("FILE_MOD", naming_style)
-            if outing == None:
+            if not outing:
                 return outing
 
         elif action == "return":
             return action
 
-        elif action == None:
+        elif not action:
             return
 
 
@@ -174,28 +175,28 @@ def rename_actionloop() -> str | None:
 
         if action == "print_dates_first_file":
             outing = print_all_dates_loop(naming_style)
-            if outing == None:
+            if not outing:
                 return
 
         elif action == "print_all_dates":
             outing = print_all_files_dates_loop(naming_style)
-            if outing == None:
+            if not outing:
                 return
 
         elif action == "rename_one_by_one":
             outing = rename_images_onebyone_loop(os.getcwd(), naming_style)
-            if outing == None:
+            if not outing:
                 return
 
         elif action == "rename_all_images":
             outing = rename_basis_loop(naming_style)
-            if outing == None:
+            if not outing:
                 return
 
         elif action == "change_naming_style":
             outing = ask_rnm.ask_naming_style(naming_style)
             print()
-            if outing == None:
+            if not outing:
                 return
             elif outing != "rt":
                 naming_style = outing
@@ -204,5 +205,5 @@ def rename_actionloop() -> str | None:
         elif action == "return":
             return action
 
-        elif action == None:
+        elif not action:
             return

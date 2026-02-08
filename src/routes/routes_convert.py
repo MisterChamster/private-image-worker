@@ -26,7 +26,7 @@ def htploop() -> str | None:
         elif action == "return":
             return action
 
-        elif action == None:
+        elif not action:
             return
 
 
@@ -50,7 +50,7 @@ def htjloop() -> str | None:
         elif action == "return":
             return action
 
-        elif action == None:
+        elif not action:
             return
 
 
@@ -74,7 +74,7 @@ def ptjloop() -> str | None:
         elif action == "return":
             return action
 
-        elif action == None:
+        elif not action:
             return
 
 
@@ -115,5 +115,5 @@ def convertloop() -> str | None:
         elif action == "return":
             return action
 
-        elif action == None:
+        elif not action:
             return
