@@ -1,4 +1,4 @@
-def ask_convert_action():
+def ask_convert_action() -> str | None:
     returns_dict = {
         "lsh": "list_heic",
         "lsp": "list_png",
@@ -19,13 +19,13 @@ def ask_convert_action():
         action = input().strip().lower()
 
         if action == "exit":
-            return None
+            return
         if action in returns_dict:
             return returns_dict[action]
         print("Incorrect input.\n")
 
 
-def ask_htp_action():
+def ask_htp_action() -> str | None:
     returns_dict = {
         "lsh": "list_heic",
         "hpn": "heic_to_png_no_del",
@@ -42,13 +42,13 @@ def ask_htp_action():
         action = input().strip().lower()
 
         if action == "exit":
-            return None
+            return
         if action in returns_dict:
             return returns_dict[action]
         print("Incorrect input.\n")
 
 
-def ask_htj_action():
+def ask_htj_action() -> str | None:
     returns_dict = {
         "lsh": "list_heic",
         "hjn": "heic_to_jpg_no_del",
@@ -65,13 +65,13 @@ def ask_htj_action():
         action = input().strip().lower()
 
         if action == "exit":
-            return None
+            return
         if action in returns_dict:
             return returns_dict[action]
         print("Incorrect input.\n")
 
 
-def ask_ptj_action():
+def ask_ptj_action() -> str | None:
     returns_dict = {
         "lsp": "list_png",
         "pjn": "png_to_jpg_no_del",
@@ -88,7 +88,7 @@ def ask_ptj_action():
         action = input().strip().lower()
 
         if action == "exit":
-            return None
+            return
         if action in returns_dict:
             return returns_dict[action]
         print("Incorrect input.\n")

@@ -3,7 +3,7 @@ from tkinter import filedialog
 
 
 
-def ask_mainloop_action():
+def ask_mainloop_action() -> str | None:
     returns_dict = {
         "ls": "list",
         "cd": "change_dir",
@@ -20,13 +20,13 @@ def ask_mainloop_action():
         action = input().strip().lower()
 
         if action == "exit":
-            return None
+            return
         if action in returns_dict:
             return returns_dict[action]
         print("Incorrect input.\n")
 
 
-def ask_path_filedialog(type: str, message: str):
+def ask_path_filedialog(type: str, message: str) -> str:
     original_path = os.getcwd()
     desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
     os.chdir(desktop_path)

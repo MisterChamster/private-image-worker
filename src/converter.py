@@ -4,7 +4,7 @@ import pillow_heif
 
 
 
-def HEICtoPNG_no_del(directory: str):
+def HEICtoPNG_no_del(directory: str) -> None:
     for filename in os.listdir(directory):
         if filename.lower().endswith(".heic"):
             # create an Image object from the HEIC file
@@ -15,8 +15,7 @@ def HEICtoPNG_no_del(directory: str):
                 heif_file.mode,
                 heif_file.size,
                 heif_file.data,
-                "raw",
-            )
+                "raw",)
 
             # create a new filename for the PNG file
             new_filename = os.path.splitext(filename)[0] + ".png"
@@ -25,7 +24,7 @@ def HEICtoPNG_no_del(directory: str):
             image.save(new_filepath, format("png"))
 
 
-def HEICtoPNG_del(directory: str):
+def HEICtoPNG_del(directory: str) -> None:
     for filename in os.listdir(directory):
         if filename.lower().endswith(".heic"):
             # create an Image object from the HEIC file
@@ -40,8 +39,7 @@ def HEICtoPNG_del(directory: str):
                 heif_file.mode,
                 heif_file.size,
                 heif_file.data,
-                "raw",
-            )
+                "raw",)
 
             # create a new filename for the PNG file
             new_filename = os.path.splitext(filename)[0] + ".png"
@@ -54,7 +52,7 @@ def HEICtoPNG_del(directory: str):
             image.save(new_filepath, format("png"))
 
 
-def HEICtoJPG_no_del(directory: str):
+def HEICtoJPG_no_del(directory: str) -> None:
     for filename in os.listdir(directory):
         if filename.lower().endswith(".heic"):
             filepath = os.path.join(directory, filename)
@@ -65,7 +63,7 @@ def HEICtoJPG_no_del(directory: str):
             img.save(new_filename, format="JPEG")
 
 
-def HEICtoJPG_del(directory: str):
+def HEICtoJPG_del(directory: str) -> None:
     for filename in os.listdir(directory):
         if filename.lower().endswith(".heic"):
             filepath = os.path.join(directory, filename)
@@ -81,7 +79,7 @@ def HEICtoJPG_del(directory: str):
                 print("Couldn't remove " + filename)
 
 
-def PNGtoJPG_no_del(directory: str):
+def PNGtoJPG_no_del(directory: str) -> None:
     for filename in os.listdir(directory):
         if filename.lower().endswith(".png"):
             png_image = Image.open(filename)
@@ -91,7 +89,7 @@ def PNGtoJPG_no_del(directory: str):
             rgb_image.save(new_filename, "JPEG")
 
 
-def PNGtoJPG_del(directory: str):
+def PNGtoJPG_del(directory: str) -> None:
     for filename in os.listdir(directory):
         if filename.lower().endswith(".png"):
             png_image = Image.open(filename)

@@ -6,7 +6,7 @@ from os import chdir
 
 
 
-def main_loop():
+def main_loop() -> None:
     print()
     dir_main = ask_path_filedialog("d", "Choose images directory")
     if dir_main == "":
@@ -19,20 +19,24 @@ def main_loop():
         if action == "list":
             list_images_in_dir()
             print()
+
         elif action == "change_dir":
             dir_main = ask_path_filedialog("d", "Choose images directory")
             if dir_main == "":
                 return
             chdir(dir_main)
+
         elif action == "rename":
             print()
             outing = rename_actionloop()
             if outing == None:
                 return
+
         elif action =="convert":
             print()
             outing = convertloop()
             if outing == None:
                 return
+
         elif action == None:
             return

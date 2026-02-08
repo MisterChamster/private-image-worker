@@ -3,7 +3,7 @@ import os
 
 
 
-def ask_print_all_dates():
+def ask_print_all_dates() -> str | None:
     returns_dict = {
         "":   "next",
         "rt": "return"}
@@ -16,13 +16,13 @@ def ask_print_all_dates():
         action = input().strip().lower()
 
         if action == "exit":
-            return None
+            return
         if action in returns_dict:
             return returns_dict[action]
         print("Incorrect input.\n")
 
 
-def ask_print_all_files_dates():
+def ask_print_all_files_dates() -> str | None:
     returns_dict = {
         "o":  "date_time_original",
         "d":  "date_time_digitized",
@@ -43,13 +43,13 @@ def ask_print_all_files_dates():
         action = input().strip().lower()
 
         if action == "exit":
-            return None
+            return
         if action in returns_dict:
             return returns_dict[action]
         print("Incorrect input.\n")
 
 
-def ask_rename_images_one_by_one(image_path: str, naming_style: str):
+def ask_rename_images_one_by_one(image_path: str, naming_style: str) -> str | None:
     returns_dict = {"rt": "return"}
 
     filename = os.path.basename(image_path)
@@ -105,13 +105,13 @@ def ask_rename_images_one_by_one(image_path: str, naming_style: str):
         action = input().strip()
 
         if action == "exit":
-            return None
+            return
         if action in returns_dict:
             return returns_dict[action]
         print("Incorrect input.\n")
 
 
-def ask_rename_all_images(date_type: str):
+def ask_rename_all_images(date_type: str) -> str | None:
     returns_dict = {
         "ls":  "list_images_new_names",
         "rai": "rename_all_images",
@@ -126,13 +126,13 @@ def ask_rename_all_images(date_type: str):
         action = input().strip().lower()
 
         if action == "exit":
-            return None
+            return
         if action in returns_dict:
             return returns_dict[action]
         print("Incorrect input.\n")
 
 
-def ask_rename_basis():
+def ask_rename_basis() -> str | None:
     returns_dict = {
         "o": "date_time_original",
         "d": "date_time_digitized",
@@ -153,13 +153,13 @@ def ask_rename_basis():
         action = input().strip().lower()
 
         if action == "exit":
-            return None
+            return
         if action in returns_dict:
             return returns_dict[action]
         print("Incorrect input.\n")
 
 
-def ask_rename_action():
+def ask_rename_action() -> str | None:
     returns_dict = {
         "pfd": "print_dates_first_file",
         "pad": "print_all_dates",
@@ -169,7 +169,7 @@ def ask_rename_action():
         "rt":  "return"}
 
     while True:
-        print("Choose rename action: \n"
+        print("Choose rename action:\n"
               "pfd  - Print all dates of the first file in folder...\n"
               "pad  - Print all images names converted to a date format...\n"
               "roo  - Rename images one by one...\n"
@@ -180,27 +180,27 @@ def ask_rename_action():
         action = input().strip().lower()
 
         if action == "exit":
-            return None
+            return
         if action in returns_dict:
             return returns_dict[action]
         print("Incorrect input.\n")
 
 
-def ask_naming_style(naming_style: str):
+def ask_naming_style(naming_style: str) -> str | None:
     returns_list = ["iso", "eu", "us", "rt"]
 
     while True:
-        print(f"Current naming style: {naming_style}")
-        print("Choose naming style:\n"
-              "iso  - ISO 8601  IMG_[Y][M][D]_[H][M][S]\n"
-              "eu   - European  IMG_[D][M][Y]_[H][M][S]\n"
-              "us   - US Format IMG_[M][D][Y]_[H][M][S]\n"
-              "rt   - Return.\n"
-              "exit - Exit program.\n\n>> ", end="")
+        print(f"Current naming style: {naming_style}\n"
+               "Choose naming style:\n"
+               "iso  - ISO 8601  IMG_[Y][M][D]_[H][M][S]\n"
+               "eu   - European  IMG_[D][M][Y]_[H][M][S]\n"
+               "us   - US Format IMG_[M][D][Y]_[H][M][S]\n"
+               "rt   - Return.\n"
+               "exit - Exit program.\n\n>> ", end="")
         action = input().strip().lower()
 
         if action == "exit":
-            return None
+            return
         if action in returns_list:
             return action
         print("Incorrect input.\n")
