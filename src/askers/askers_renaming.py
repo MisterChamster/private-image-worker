@@ -1,4 +1,4 @@
-from src.renamer import get_formatted_name
+import src.renaming_tools as rnm_tools
 import os
 
 
@@ -53,11 +53,11 @@ def ask_rename_images_one_by_one(image_path: str, naming_style: str):
     returns_dict = {"rt": "return"}
 
     filename = os.path.basename(image_path)
-    formatted_EXIF_DTO_date   = get_formatted_name(image_path, "EXIF_DTO", naming_style)
-    formatted_EXIF_DTD_date   = get_formatted_name(image_path, "EXIF_DTD", naming_style)
-    formatted_EXIF_DT_date    = get_formatted_name(image_path, "EXIF_DT", naming_style)
-    formatted_FILE_CREAT_date = get_formatted_name(image_path, "FILE_CREAT", naming_style)
-    formatted_FILE_MOD_date   = get_formatted_name(image_path, "FILE_MOD", naming_style)
+    formatted_EXIF_DTO_date   = rnm_tools.get_formatted_name(image_path, "EXIF_DTO", naming_style)
+    formatted_EXIF_DTD_date   = rnm_tools.get_formatted_name(image_path, "EXIF_DTD", naming_style)
+    formatted_EXIF_DT_date    = rnm_tools.get_formatted_name(image_path, "EXIF_DT", naming_style)
+    formatted_FILE_CREAT_date = rnm_tools.get_formatted_name(image_path, "FILE_CREAT", naming_style)
+    formatted_FILE_MOD_date   = rnm_tools.get_formatted_name(image_path, "FILE_MOD", naming_style)
 
     while True:
         anything_flag = False

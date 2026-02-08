@@ -1,15 +1,6 @@
 import os
-from src.askers.askers_renaming import (ask_rename_action,
-                                 ask_print_all_dates,
-                                 ask_print_all_files_dates,
-                                 ask_rename_images_one_by_one,
-                                 ask_rename_basis,
-                                 ask_naming_style,
-                                 ask_rename_all_images)
-from src.renamer import (check_single_image_dates,
-                         list_images_with_dates,
-                         rename_image_with_style,
-                         rename_images_in_dir)
+import src.askers.askers_renaming as ask_rnm
+import src.renaming_tools as rnm_tools
 import pillow_heif
 
 
@@ -18,10 +9,10 @@ pillow_heif.register_heif_opener()
 
 
 def print_all_dates_loop(naming_style: str):
-    gen = check_single_image_dates(os.getcwd(), naming_style)
+    gen = rnm_tools.check_single_image_dates(os.getcwd(), naming_style)
     print(next(gen))
     while True:
-        action = ask_print_all_dates()
+        action = ask_rnm.ask_print_all_dates()
 
         if action == "next":
             try:
@@ -39,21 +30,21 @@ def print_all_dates_loop(naming_style: str):
 
 def print_all_files_dates_loop(naming_style: str):
     while True:
-        action = ask_print_all_files_dates()
+        action = ask_rnm.ask_print_all_files_dates()
         if action == "date_time_original":
-            list_images_with_dates(os.getcwd(), "EXIF_DTO", naming_style)
+            rnm_tools.list_images_with_dates(os.getcwd(), "EXIF_DTO", naming_style)
             print()
         elif action == "date_time_digitized":
-            list_images_with_dates(os.getcwd(), "EXIF_DTD", naming_style)
+            rnm_tools.list_images_with_dates(os.getcwd(), "EXIF_DTD", naming_style)
             print()
         elif action == "date_time":
-            list_images_with_dates(os.getcwd(), "EXIF_DT", naming_style)
+            rnm_tools.list_images_with_dates(os.getcwd(), "EXIF_DT", naming_style)
             print()
         elif action == "file_creation":
-            list_images_with_dates(os.getcwd(), "FILE_CREAT", naming_style)
+            rnm_tools.list_images_with_dates(os.getcwd(), "FILE_CREAT", naming_style)
             print()
         elif action == "file_modification":
-            list_images_with_dates(os.getcwd(), "FILE_MOD", naming_style)
+            rnm_tools.list_images_with_dates(os.getcwd(), "FILE_MOD", naming_style)
             print()
         elif action == "return":
             return action
@@ -67,22 +58,22 @@ def rename_images_onebyone_loop(directory: str, naming_style: str):
     for filename in os.listdir():
         if filename.lower().endswith(valid_extensions):
             image_path = os.path.join(directory, filename)
-            action = ask_rename_images_one_by_one(image_path, naming_style)
+            action = ask_rnm.ask_rename_images_one_by_one(image_path, naming_style)
 
             if action == "o":
-                rename_image_with_style(image_path, "EXIF_DTO", naming_style)
+                rnm_tools.rename_image_with_style(image_path, "EXIF_DTO", naming_style)
                 print()
             elif action == "d":
-                rename_image_with_style(image_path, "EXIF_DTD", naming_style)
+                rnm_tools.rename_image_with_style(image_path, "EXIF_DTD", naming_style)
                 print()
             elif action == "t":
-                rename_image_with_style(image_path, "EXIF_DT", naming_style)
+                rnm_tools.rename_image_with_style(image_path, "EXIF_DT", naming_style)
                 print()
             elif action == "c":
-                rename_image_with_style(image_path, "FILE_CREAT", naming_style)
+                rnm_tools.rename_image_with_style(image_path, "FILE_CREAT", naming_style)
                 print()
             elif action == "m":
-                rename_image_with_style(image_path, "FILE_MOD", naming_style)
+                rnm_tools.rename_image_with_style(image_path, "FILE_MOD", naming_style)
                 print()
             elif action == "next":
                 continue
@@ -95,12 +86,12 @@ def rename_images_onebyone_loop(directory: str, naming_style: str):
 
 def rename_all_images_loop(date_type: str, naming_style: str):
     while True:
-        action = ask_rename_all_images(date_type)
+        action = ask_rnm.ask_rename_all_images(date_type)
         if action == "list_images_new_names":
-            list_images_with_dates(os.getcwd(), date_type, naming_style)
+            rnm_tools.list_images_with_dates(os.getcwd(), date_type, naming_style)
             print()
         elif action == "rename_all_images":
-            rename_images_in_dir(os.getcwd(), date_type, naming_style)
+            rnm_tools.rename_images_in_dir(os.getcwd(), date_type, naming_style)
             print()
         elif action == "return":
             return action
@@ -110,7 +101,7 @@ def rename_all_images_loop(date_type: str, naming_style: str):
 
 def rename_basis_loop(naming_style: str):
     while True:
-        action = ask_rename_basis()
+        action = ask_rnm.ask_rename_basis()
         if action == "date_time_original":
             outing = rename_all_images_loop("EXIF_DTO", naming_style)
             if outing == None:
@@ -141,7 +132,7 @@ def rename_actionloop():
     naming_style = "iso"
     while True:
         print(f"Current naming style: {naming_style}")
-        action = ask_rename_action()
+        action = ask_rnm.ask_rename_action()
 
         if action == "print_dates_first_file":
             outing = print_all_dates_loop(naming_style)
@@ -160,7 +151,7 @@ def rename_actionloop():
             if outing == None:
                 return None
         elif action == "change_naming_style":
-            outing = ask_naming_style(naming_style)
+            outing = ask_rnm.ask_naming_style(naming_style)
             if outing == None:
                 return None
             elif outing != "rt":
