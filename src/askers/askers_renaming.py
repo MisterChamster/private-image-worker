@@ -50,7 +50,10 @@ def ask_print_all_files_dates() -> str | None:
         print("Incorrect input.\n")
 
 
-def ask_rename_images_one_by_one(image_path: str, naming_style: str) -> str | None:
+def ask_rename_images_one_by_one(
+    image_path: str,
+    naming_style: str
+) -> str | None:
     returns_dict = {"rt": "return"}
 
     filename = os.path.basename(image_path)

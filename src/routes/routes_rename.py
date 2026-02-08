@@ -62,7 +62,10 @@ def print_all_files_dates_loop(naming_style: str) -> str | None:
             return
 
 
-def rename_images_onebyone_loop(directory: str, naming_style: str) -> str | None:
+def rename_images_onebyone_loop(
+    directory: str,
+    naming_style: str
+) -> str | None:
     valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
 
     for filename in os.listdir():
@@ -102,7 +105,10 @@ def rename_images_onebyone_loop(directory: str, naming_style: str) -> str | None
     print("All files have been considered.\n")
 
 
-def rename_all_images_loop(date_type: str, naming_style: str) -> str | None:
+def rename_all_images_loop(
+    date_type: str,
+    naming_style: str
+) -> str | None:
     while True:
         action = ask_rnm.ask_rename_all_images(date_type)
         print()
