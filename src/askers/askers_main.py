@@ -3,29 +3,30 @@ from tkinter import filedialog
 
 
 
-def ask_mainloop_action():
-    returns_dict = {"ls": "list",
-                    "cd": "change_dir",
-                    "rnm": "rename",
-                    "cnv": "convert"}
+def ask_mainloop_action() -> str | None:
+    returns_dict = {
+        "ls": "list",
+        "cd": "change_dir",
+        "rnm": "rename",
+        "cnv": "convert"}
 
     while True:
         print("Choose action: \n"
-        "ls   - List all images in folder.\n"
-        "cd   - Change program working directory.\n"
-        "rnm  - Rename...\n"
-        "cnv  - Convert...\n"
-        "exit - Exit program\n\n>> ", end="")
+              "ls   - List all images in folder\n"
+              "cd   - Change program working directory\n"
+              "rnm  - Rename...\n"
+              "cnv  - Convert...\n"
+              "exit - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action == "exit":
-            return None
+            return
         if action in returns_dict:
             return returns_dict[action]
         print("Incorrect input.\n")
 
 
-def ask_path_filedialog(type: str, message: str):
+def ask_path_filedialog(type: str, message: str) -> str:
     original_path = os.getcwd()
     desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
     os.chdir(desktop_path)

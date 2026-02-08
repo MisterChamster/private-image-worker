@@ -1,38 +1,44 @@
-from src.askers.main import ask_path_filedialog, ask_mainloop_action
-from src.renamer_loops import rename_actionloop
-from src.converter_loops import convertloop
-from src.utils import list_images_in_dir
 from os import chdir
 
+import src.askers.askers_main as ask_main
+from src.routes.routes_rename import rename_actionloop
+from src.routes.routes_convert import convertloop
+from src.utils import list_images_in_dir
 
 
-def main_loop():
+
+def main_loop() -> None:
     print()
-    dir_main = ask_path_filedialog("d", "Choose images directory")
+    dir_main = ask_main.ask_path_filedialog("d", "Choose images directory")
     if dir_main == "":
         return
     chdir(dir_main)
 
     while True:
         print()
-        action = ask_mainloop_action()
+        action = ask_main.ask_mainloop_action()
+        print()
         if action == "list":
             list_images_in_dir()
             print()
+
         elif action == "change_dir":
-            dir_main = ask_path_filedialog("d", "Choose images directory")
+            dir_main = ask_main.ask_path_filedialog("d", "Choose images directory")
             if dir_main == "":
                 return
             chdir(dir_main)
+
         elif action == "rename":
             print()
             outing = rename_actionloop()
-            if outing == None:
+            if not outing:
                 return
+
         elif action =="convert":
             print()
             outing = convertloop()
-            if outing == None:
+            if not outing:
                 return
-        elif action == None:
+
+        elif not action:
             return

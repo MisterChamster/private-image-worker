@@ -2,7 +2,7 @@ from os import listdir, getcwd
 
 
 
-def list_images_in_dir(format = "all"):
+def list_images_in_dir(format: str = "all") -> None:
     """Lists all images in current directory with specified format."""
     valid_extensions = ()
     if format == "all":
