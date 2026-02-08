@@ -98,10 +98,10 @@ def ask_rename_images_one_by_one(image_path: str, naming_style: str) -> str | No
             return "next"
         else:
             returns_dict[""] = "next"
-            print("Enter - Skip.")
+            print("Enter - Skip")
 
-        print("rt    - Return.\n"
-              "exit  - Exit program.\n\n>> ", end="")
+        print("rt    - Return\n"
+              "exit  - Exit program\n\n>> ", end="")
         action = input().strip()
 
         if action == "exit":
@@ -119,10 +119,10 @@ def ask_rename_all_images(date_type: str) -> str | None:
 
     while True:
         print("Choose a renaming option:\n"
-             f"ls   - List all images names converted to {date_type} format.\n"
-             f"rai  - Rename all images to {date_type} format.\n"
-              "rt   - Return.\n"
-              "exit - Exit program.\n\n>> ", end="")
+             f"ls   - List all images names converted to {date_type} format\n"
+             f"rai  - Rename all images to {date_type} format\n"
+              "rt   - Return\n"
+              "exit - Exit program\n\n>> ", end="")
         action = input().strip().lower()
 
         if action == "exit":
@@ -143,13 +143,13 @@ def ask_rename_basis() -> str | None:
 
     while True:
         print("Choose style of renaming images:\n"
-              "o    - DateTimeOriginal.\n"
-              "d    - DateTimeDigitized.\n"
-              "t    - DateTime.\n"
-              "c    - File creation.\n"
-              "m    - File modification.\n"
-              "rt   - Return.\n"
-              "exit - Exit program.\n\n>> ", end="")
+              "o    - DateTimeOriginal\n"
+              "d    - DateTimeDigitized\n"
+              "t    - DateTime\n"
+              "c    - File creation\n"
+              "m    - File modification\n"
+              "rt   - Return\n"
+              "exit - Exit program\n\n>> ", end="")
         action = input().strip().lower()
 
         if action == "exit":
@@ -175,8 +175,8 @@ def ask_rename_action() -> str | None:
               "roo  - Rename images one by one...\n"
               "rai  - Rename all images to a date format...\n"
               "cns  - Change naming style...\n"
-              "rt   - Return.\n"
-              "exit - Exit program.\n\n>> ", end="")
+              "rt   - Return\n"
+              "exit - Exit program\n\n>> ", end="")
         action = input().strip().lower()
 
         if action == "exit":
@@ -195,8 +195,8 @@ def ask_naming_style(naming_style: str) -> str | None:
                "iso  - ISO 8601  IMG_[Y][M][D]_[H][M][S]\n"
                "eu   - European  IMG_[D][M][Y]_[H][M][S]\n"
                "us   - US Format IMG_[M][D][Y]_[H][M][S]\n"
-               "rt   - Return.\n"
-               "exit - Exit program.\n\n>> ", end="")
+               "rt   - Return\n"
+               "exit - Exit program\n\n>> ", end="")
         action = input().strip().lower()
 
         if action == "exit":
