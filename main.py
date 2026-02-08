@@ -1,4 +1,4 @@
-from src.main_loop import main_loop
+from src.routes_main import main_loop
 
 
 main_loop()
