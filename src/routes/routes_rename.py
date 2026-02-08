@@ -13,6 +13,7 @@ def print_all_dates_loop(naming_style: str) -> str | None:
     print(next(gen))
     while True:
         action = ask_rnm.ask_print_all_dates()
+        print()
 
         if action == "next":
             try:
@@ -33,6 +34,7 @@ def print_all_dates_loop(naming_style: str) -> str | None:
 def print_all_files_dates_loop(naming_style: str) -> str | None:
     while True:
         action = ask_rnm.ask_print_all_files_dates()
+        print()
         if action == "date_time_original":
             rnm_tools.list_images_with_dates(os.getcwd(), "EXIF_DTO", naming_style)
             print()
@@ -67,6 +69,7 @@ def rename_images_onebyone_loop(directory: str, naming_style: str) -> str | None
         if filename.lower().endswith(valid_extensions):
             image_path = os.path.join(directory, filename)
             action = ask_rnm.ask_rename_images_one_by_one(image_path, naming_style)
+            print()
 
             if action == "o":
                 rnm_tools.rename_image_with_style(image_path, "EXIF_DTO", naming_style)
@@ -102,6 +105,8 @@ def rename_images_onebyone_loop(directory: str, naming_style: str) -> str | None
 def rename_all_images_loop(date_type: str, naming_style: str) -> str | None:
     while True:
         action = ask_rnm.ask_rename_all_images(date_type)
+        print()
+
         if action == "list_images_new_names":
             rnm_tools.list_images_with_dates(os.getcwd(), date_type, naming_style)
             print()
@@ -120,6 +125,8 @@ def rename_all_images_loop(date_type: str, naming_style: str) -> str | None:
 def rename_basis_loop(naming_style: str) -> str | None:
     while True:
         action = ask_rnm.ask_rename_basis()
+        print()
+
         if action == "date_time_original":
             outing = rename_all_images_loop("EXIF_DTO", naming_style)
             if outing == None:
@@ -157,6 +164,7 @@ def rename_actionloop() -> str | None:
     while True:
         print(f"Current naming style: {naming_style}")
         action = ask_rnm.ask_rename_action()
+        print()
 
         if action == "print_dates_first_file":
             outing = print_all_dates_loop(naming_style)
@@ -177,9 +185,10 @@ def rename_actionloop() -> str | None:
             outing = rename_basis_loop(naming_style)
             if outing == None:
                 return
-        
+
         elif action == "change_naming_style":
             outing = ask_rnm.ask_naming_style(naming_style)
+            print()
             if outing == None:
                 return
             elif outing != "rt":

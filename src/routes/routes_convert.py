@@ -9,6 +9,7 @@ import src.converting_tools as cnv
 def htploop() -> str | None:
     while True:
         action = ask_cnv.ask_htp_action()
+        print()
 
         if action == "list_heic":
             list_images_in_dir("heic")
@@ -32,6 +33,7 @@ def htploop() -> str | None:
 def htjloop() -> str | None:
     while True:
         action = ask_cnv.ask_htj_action()
+        print()
 
         if action == "list_heic":
             list_images_in_dir("heic")
@@ -55,6 +57,7 @@ def htjloop() -> str | None:
 def ptjloop() -> str | None:
     while True:
         action = ask_cnv.ask_ptj_action()
+        print()
 
         if action == "list_png":
             list_images_in_dir("png")
@@ -78,6 +81,7 @@ def ptjloop() -> str | None:
 def convertloop() -> str | None:
     while True:
         action = ask_cnv.ask_convert_action()
+        print()
 
         if action == "list_heic":
             list_images_in_dir("heic")
