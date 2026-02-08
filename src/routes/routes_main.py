@@ -17,6 +17,7 @@ def main_loop() -> None:
     while True:
         print()
         action = ask_main.ask_mainloop_action()
+        print()
         if action == "list":
             list_images_in_dir()
             print()
