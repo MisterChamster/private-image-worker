@@ -1,4 +1,4 @@
-from src.askers.main import ask_path_filedialog, ask_mainloop_action
+from src.askers.askers_main import ask_path_filedialog, ask_mainloop_action
 from src.renamer_loops import rename_actionloop
 from src.converter_loops import convertloop
 from src.utils import list_images_in_dir
