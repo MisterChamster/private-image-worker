@@ -16,7 +16,7 @@ def ask_mainloop_action() -> str | None:
               "cd   - Change program working directory\n"
               "rnm  - Rename...\n"
               "cnv  - Convert...\n"
-              "exit - Exit program\n\n>> ", end="")
+              "exit - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action == "exit":

@@ -15,7 +15,7 @@ def ask_convert_action() -> str | None:
               "htj  - .heic to .jpg...\n"
               "ptj  - .png to .jpg...\n"
               "rt   - Return\n"
-              "exit - Exit program\n\n>> ", end="")
+              "exit - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action == "exit":
@@ -38,7 +38,7 @@ def ask_htp_action() -> str | None:
               "hpn  - Convert .heic files to .png files (leave heic files)\n"
               "hpd  - Convert .heic files to .png files (delete heic files)\n"
               "rt   - Return\n"
-              "exit - Exit program\n\n>> ", end="")
+              "exit - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action == "exit":
@@ -61,7 +61,7 @@ def ask_htj_action() -> str | None:
               "hjn  - Convert .heic files to .jpg files (leave heic files)\n"
               "hjd  - Convert .heic files to .jpg files (delete heic files)\n"
               "rt   - Return\n"
-              "exit - Exit program\n\n>> ", end="")
+              "exit - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action == "exit":
@@ -84,7 +84,7 @@ def ask_ptj_action() -> str | None:
               "pjn  - Convert .png files to .jpg files (leave png files)\n"
               "pjd  - Convert .png files to .jpg files (delete png files)\n"
               "rt   - Return\n"
-              "exit - Exit program\n\n>> ", end="")
+              "exit - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action == "exit":

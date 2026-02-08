@@ -13,7 +13,7 @@ def ask_print_all_dates() -> str | None:
         print("Show next file dates?\n"
               "Enter - Next\n"
               "rt    - Return\n"
-              "exit  - Exit program\n\n>> ", end="")
+              "exit  - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action == "exit":
@@ -40,7 +40,7 @@ def ask_print_all_files_dates() -> str | None:
               "c    - File creation\n"
               "m    - File modification\n"
               "rt   - Return\n"
-              "exit - Exit program\n\n>> ", end="")
+              "exit - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action == "exit":
@@ -102,7 +102,7 @@ def ask_rename_images_one_by_one(image_path: str, naming_style: str) -> str | No
             print("Enter - Skip")
 
         print("rt    - Return\n"
-              "exit  - Exit program\n\n>> ", end="")
+              "exit  - Exit program\n>> ", end="")
         action = input().strip()
 
         if action == "exit":
@@ -123,7 +123,7 @@ def ask_rename_all_images(date_type: str) -> str | None:
              f"ls   - List all images names converted to {date_type} format\n"
              f"rai  - Rename all images to {date_type} format\n"
               "rt   - Return\n"
-              "exit - Exit program\n\n>> ", end="")
+              "exit - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action == "exit":
@@ -150,7 +150,7 @@ def ask_rename_basis() -> str | None:
               "c    - File creation\n"
               "m    - File modification\n"
               "rt   - Return\n"
-              "exit - Exit program\n\n>> ", end="")
+              "exit - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action == "exit":
@@ -177,7 +177,7 @@ def ask_rename_action() -> str | None:
               "rai  - Rename all images to a date format...\n"
               "cns  - Change naming style...\n"
               "rt   - Return\n"
-              "exit - Exit program\n\n>> ", end="")
+              "exit - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action == "exit":
@@ -197,7 +197,7 @@ def ask_naming_style(naming_style: str) -> str | None:
                "eu   - European  IMG_[D][M][Y]_[H][M][S]\n"
                "us   - US Format IMG_[M][D][Y]_[H][M][S]\n"
                "rt   - Return\n"
-               "exit - Exit program\n\n>> ", end="")
+               "exit - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action == "exit":
