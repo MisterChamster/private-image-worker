@@ -4,7 +4,7 @@ from src.askers.askers_converting import (ask_convert_action,
                                    ask_htp_action,
                                    ask_htj_action,
                                    ask_ptj_action)
-from src.converter import (HEICtoPNG_no_del,
+from src.converting_tools import (HEICtoPNG_no_del,
                            HEICtoPNG_del,
                            HEICtoJPG_no_del,
                            HEICtoJPG_del,
