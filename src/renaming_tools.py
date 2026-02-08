@@ -47,12 +47,10 @@ def get_image_date(image_path: str, date_type: str) -> str:
         if date_type == "FILE_CREAT":
             created = str(datetime.fromtimestamp(stats.st_birthtime))
             created = (":".join(created.split("-"))).split(".")[0]
-            # print(created)
             return created
         elif date_type == "FILE_MOD":
             modified = str(datetime.fromtimestamp(stats.st_mtime))
             modified = ":".join(modified.split("-")).split(".")[0]
-            # print(modified)
             return modified
 
     else:
