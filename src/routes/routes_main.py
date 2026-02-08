@@ -9,7 +9,7 @@ from src.utils import list_images_in_dir
 
 def main_loop() -> None:
     print()
-    dir_main = ask_main.ask_path_filedialog("d", "Choose images directory")
+    dir_main = ask_main.ask_path_filedialog("dir", "Choose images directory")
     if dir_main == "":
         return
     chdir(dir_main)
@@ -23,7 +23,7 @@ def main_loop() -> None:
             print()
 
         elif action == "change_dir":
-            dir_main = ask_main.ask_path_filedialog("d", "Choose images directory")
+            dir_main = ask_main.ask_path_filedialog("dir", "Choose images directory")
             if dir_main == "":
                 return
             chdir(dir_main)

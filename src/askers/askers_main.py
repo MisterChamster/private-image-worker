@@ -32,9 +32,9 @@ def ask_path_filedialog(type: str, message: str) -> str:
     os.chdir(desktop_path)
 
     sel_path = ""
-    if type == "f":
+    if type == "file":
         sel_path = filedialog.askopenfilename(title=message)
-    elif type == "d":
+    elif type == "dir":
         sel_path = filedialog.askdirectory(title=message)
 
     os.chdir(original_path)

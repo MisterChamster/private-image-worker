@@ -171,7 +171,7 @@ def rename_images_in_dir(
     date_type: str,
     naming_style: str
 ) -> None:
-    valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
+    valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'jfif', 'heic')
 
     for filename in os.listdir(directory):
         extension = filename.lower().split(".")[-1]
