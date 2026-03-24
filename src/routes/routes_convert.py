@@ -2,7 +2,7 @@ from pathlib import Path
 
 import src.utils as utils
 import src.askers.askers_converting as ask_cnv
-import src.converting_tools as cnv
+import src.converting_dir_tools as cnv
 
 
 
@@ -20,11 +20,11 @@ def htp_loop(dir_path: Path) -> bool:
             print()
 
         elif action == "heic_to_png_no_del":
-            cnv.HEICtoPNG_no_del(dir_path)
+            cnv.HEICtoPNG_dir_no_del(dir_path)
             print()
 
         elif action == "heic_to_png_del":
-            cnv.HEICtoPNG_del(dir_path)
+            cnv.HEICtoPNG_dir_del(dir_path)
             print()
 
         elif action in exit_flags:
@@ -45,11 +45,11 @@ def htj_loop(dir_path: Path) -> bool:
             print()
 
         elif action == "heic_to_jpg_no_del":
-            cnv.HEICtoJPG_no_del(dir_path)
+            cnv.HEICtoJPG_dir_no_del(dir_path)
             print()
 
         elif action == "heic_to_jpg_del":
-            cnv.HEICtoJPG_del(dir_path)
+            cnv.HEICtoJPG_dir_del(dir_path)
             print()
 
         elif action in exit_flags:
@@ -70,11 +70,11 @@ def ptj_loop(dir_path: Path) -> bool:
             print()
 
         elif action == "png_to_jpg_no_del":
-            cnv.PNGtoJPG_no_del(dir_path)
+            cnv.PNGtoJPG_dir_no_del(dir_path)
             print()
 
         elif action == "png_to_jpg_del":
-            cnv.PNGtoJPG_del(dir_path)
+            cnv.PNGtoJPG_dir_del(dir_path)
             print()
 
         elif action in exit_flags:

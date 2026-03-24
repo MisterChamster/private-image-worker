@@ -5,7 +5,7 @@ import pillow_heif
 
 # TEMPPPPPP join del and not del
 
-def HEICtoPNG_no_del(images_dir: Path) -> None:
+def HEICtoPNG_dir_no_del(images_dir: Path) -> None:
     for file_path in images_dir.iterdir():
         file_name = file_path.name
         ext = file_path.suffix
@@ -27,7 +27,7 @@ def HEICtoPNG_no_del(images_dir: Path) -> None:
         image.save(new_filepath, format("png"))
 
 
-def HEICtoPNG_del(images_dir: Path) -> None:
+def HEICtoPNG_dir_del(images_dir: Path) -> None:
     for file_path in images_dir.iterdir():
         file_name = file_path.name
         ext = file_path.suffix
@@ -58,7 +58,7 @@ def HEICtoPNG_del(images_dir: Path) -> None:
             print("Couldn't remove " + file_name)
 
 
-def HEICtoJPG_no_del(images_dir: Path) -> None:
+def HEICtoJPG_dir_no_del(images_dir: Path) -> None:
     for file_path in images_dir.iterdir():
         file_name = file_path.name
         ext = file_path.suffix
@@ -75,7 +75,7 @@ def HEICtoJPG_no_del(images_dir: Path) -> None:
         img.save(new_filepath, format="JPEG")
 
 
-def HEICtoJPG_del(images_dir: Path) -> None:
+def HEICtoJPG_dir_del(images_dir: Path) -> None:
     for file_path in images_dir.iterdir():
         file_name = file_path.name
         ext = file_path.suffix
@@ -97,10 +97,8 @@ def HEICtoJPG_del(images_dir: Path) -> None:
             print("Couldn't remove " + file_name)
 
 
-def PNGtoJPG_no_del(images_dir: Path) -> None:
+def PNGtoJPG_dir_no_del(images_dir: Path) -> None:
     for file_path in images_dir.iterdir():
-        # TEMPPPPPP
-        images_dir = str(images_dir)
         file_name = file_path.name
         ext = file_path.suffix
 
@@ -117,10 +115,8 @@ def PNGtoJPG_no_del(images_dir: Path) -> None:
         rgb_image.save(new_filepath, "JPEG")
 
 
-def PNGtoJPG_del(images_dir: Path) -> None:
+def PNGtoJPG_dir_del(images_dir: Path) -> None:
     for file_path in images_dir.iterdir():
-        # TEMPPPPPP
-        images_dir = str(images_dir)
         file_name = file_path.name
         ext = file_path.suffix
 
