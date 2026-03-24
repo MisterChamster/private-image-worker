@@ -13,10 +13,15 @@ def print_all_dates_loop_cwd(
         dir_path: Path,
         naming_style: str
 ) -> bool:
+    exit_flags = {
+        "return": False,
+        "exit": True}
+
     gen = rnm_tools.check_single_image_dates(
         dir_path,
         naming_style)
     print(next(gen))
+
     while True:
         action = ask_rnm.ask_print_all_dates()
         print()
@@ -28,48 +33,38 @@ def print_all_dates_loop_cwd(
                 print("All pictures have been checked.\n")
                 break
 
-        elif action == "return":
+        elif action in exit_flags:
             gen.close()
-            return False
-
-        elif action == "exit":
-            gen.close()
-            return True
+            return exit_flags[action]
 
 
 def print_all_files_dates_loop(
         dir_path: Path,
         naming_style: str
         ) -> bool:
+    date_types = {
+        "date_time_original": "EXIF_DTO",
+        "date_time_digitized": "EXIF_DTD",
+        "date_time": "EXIF_DT",
+        "file_creation": "FILE_CREAT",
+        "file_modification": "FILE_MOD"}
+    exit_flags = {
+        "return": False,
+        "exit": True}
+
     while True:
         action = ask_rnm.ask_print_all_files_dates()
         print()
 
-        if action == "date_time_original":
-            rnm_tools.list_images_with_dates(dir_path, "EXIF_DTO", naming_style)
+        if action in date_types:
+            rnm_tools.list_images_with_dates(
+                dir_path,
+                date_types[action],
+                naming_style)
             print()
 
-        elif action == "date_time_digitized":
-            rnm_tools.list_images_with_dates(dir_path, "EXIF_DTD", naming_style)
-            print()
-
-        elif action == "date_time":
-            rnm_tools.list_images_with_dates(dir_path, "EXIF_DT", naming_style)
-            print()
-
-        elif action == "file_creation":
-            rnm_tools.list_images_with_dates(dir_path, "FILE_CREAT", naming_style)
-            print()
-
-        elif action == "file_modification":
-            rnm_tools.list_images_with_dates(dir_path, "FILE_MOD", naming_style)
-            print()
-
-        elif action == "return":
-            return False
-
-        elif action == "exit":
-            return True
+        elif action in exit_flags:
+            return exit_flags[action]
 
 
 def rename_images_onebyone_loop(
@@ -167,13 +162,16 @@ def rename_basis_loop(
                 date_types[action],
                 naming_style)
             if exit_flag:
-                return True
+                return exit_flags["exit"]
 
         elif action in exit_flags:
             return exit_flags[action]
 
 
-def rename_actionloop(dir_path: Path) -> str | None:
+def rename_actionloop(dir_path: Path) -> bool:
+    exit_flags = {
+        "return": False,
+        "exit": True}
     styles_dict = {
         "iso": "IMG_[Y][M][D]_[H][M][S]",
         "eu":  "IMG_[D][M][Y]_[H][M][S]",
@@ -191,34 +189,31 @@ def rename_actionloop(dir_path: Path) -> str | None:
         if action == "print_dates_first_file":
             exit_flag = print_all_dates_loop_cwd(dir_path, naming_style)
             if exit_flag:
-                return
+                return exit_flags["exit"]
 
         elif action == "print_all_dates":
             exit_flag = print_all_files_dates_loop(dir_path, naming_style)
             if exit_flag:
-                return
+                return exit_flags["exit"]
 
         elif action == "rename_one_by_one":
             exit_flag = rename_images_onebyone_loop(dir_path, naming_style)
             if exit_flag:
-                return
+                return exit_flags["exit"]
 
         elif action == "rename_all_images":
             exit_flag = rename_basis_loop(dir_path, naming_style)
             if exit_flag:
-                return
+                return exit_flags["exit"]
 
         elif action == "change_naming_style":
             outing = ask_rnm.ask_naming_style(naming_style)
             print()
             if outing == "exit":
-                return
+                return exit_flags["exit"]
             elif outing != "return":
                 naming_style = outing
                 print()
 
-        elif action == "return":
-            return action
-
-        elif action == "exit":
-            return
+        elif action in exit_flags:
+            return exit_flags[action]

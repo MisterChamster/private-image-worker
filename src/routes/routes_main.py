@@ -28,8 +28,8 @@ def main_loop() -> None:
 
         elif action == "rename":
             print()
-            outing = rnm_routes.rename_actionloop(dir_main)
-            if not outing:
+            exit_flag = rnm_routes.rename_actionloop(dir_main)
+            if exit_flag:
                 return
 
         elif action =="convert":
