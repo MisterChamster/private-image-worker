@@ -63,8 +63,9 @@ def get_image_date_md(
             return modified
 
     else:
-        raise ValueError("module_renamer.py/get_image_date error: "
-                         "Wrong input mr programmer.")
+        raise ValueError(
+            "module_renamer.py/get_image_date error: "
+            "Wrong input mr programmer.")
 
 
 def format_date(date_string: str, naming_style: str) -> str | None:
@@ -151,10 +152,12 @@ def list_images_with_dates(
 
 
 def rename_image_with_style(
-    image_path: str,
+    image_path: Path,
     date_type: str,
     naming_style: str
 ) -> None:
+    # TEMPPPPPP
+    image_path = str(image_path)
     # TEMPPPPPP
     formatted_date_name = get_formatted_name(Path(image_path), date_type, naming_style)
     if formatted_date_name != "No date" and formatted_date_name != "Invalid date":
@@ -173,9 +176,11 @@ def rename_image_with_style(
                 formatted_date_name += f"_{i}"
                 continue
         print("File name not changed. How the hell did you achieve this?")
+
     elif formatted_date_name == "No date":
         og_filename = os.path.basename(image_path)
         print(f"{og_filename}: No {date_type} type date.")
+
     elif formatted_date_name == "Invalid date":
         og_filename = os.path.basename(image_path)
         print(f"{og_filename}: {date_type} date type is invalid.")
@@ -186,12 +191,9 @@ def rename_images_in_dir(
     date_type: str,
     naming_style: str
 ) -> None:
-    # TEMPPPPPP
-    images_dir = str(images_dir)
-    valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'jfif', 'heic')
+    valid_extensions = ('.jpg', '.jpeg', '.png', '.tiff', '.jfif', '.heic')
 
-    for filename in os.listdir(images_dir):
-        extension = filename.lower().split(".")[-1]
+    for file_path in images_dir.iterdir():
+        extension = file_path.suffix.lower()
         if extension in valid_extensions:
-            image_path = os.path.join(images_dir, filename)
-            rename_image_with_style(image_path, date_type, naming_style)
+            rename_image_with_style(file_path, date_type, naming_style)

@@ -71,38 +71,27 @@ def rename_images_onebyone_loop(
     dir_path: Path,
     naming_style: str
 ) -> bool:
+    date_types = {
+        "date_time_original": "EXIF_DTO",
+        "date_time_digitized": "EXIF_DTD",
+        "date_time": "EXIF_DT",
+        "file_creation": "FILE_CREAT",
+        "file_modification": "FILE_MOD"}
     exit_flags = {
         "return": False,
         "exit": True}
-    # TEMPPPPPP
-    dir_path = str(dir_path)
-    valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
+    valid_extensions = ('.jpg', '.jpeg', '.png', '.tiff', '.heic')
 
-    for filename in os.listdir():
-        if filename.lower().endswith(valid_extensions):
-            image_path = os.path.join(dir_path, filename)
-            # TEMPPPPPP
-            action = ask_rnm.ask_rename_images_one_by_one(Path(image_path), naming_style)
+    for file_path in dir_path.iterdir():
+        if file_path.suffix.lower() in valid_extensions:
+            action = ask_rnm.ask_rename_images_one_by_one(file_path, naming_style)
             print()
 
-            if action == "date_time_original":
-                rnm_tools.rename_image_with_style(image_path, "EXIF_DTO", naming_style)
-                print()
-
-            elif action == "date_time_digitized":
-                rnm_tools.rename_image_with_style(image_path, "EXIF_DTD", naming_style)
-                print()
-
-            elif action == "date_time":
-                rnm_tools.rename_image_with_style(image_path, "EXIF_DT", naming_style)
-                print()
-
-            elif action == "file_creation":
-                rnm_tools.rename_image_with_style(image_path, "FILE_CREAT", naming_style)
-                print()
-
-            elif action == "file_modification":
-                rnm_tools.rename_image_with_style(image_path, "FILE_MOD", naming_style)
+            if action in date_types:
+                rnm_tools.rename_image_with_style(
+                    file_path,
+                    date_types[action],
+                    naming_style)
                 print()
 
             elif action == "next":
