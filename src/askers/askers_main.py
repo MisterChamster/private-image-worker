@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from tkinter import filedialog
 
 
@@ -26,7 +27,7 @@ def ask_mainloop_action() -> str | None:
 
 
 def ask_path_filedialog(type: str, message: str) -> str:
-    original_path = os.getcwd()
+    original_path = Path.cwd()
     desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
     os.chdir(desktop_path)
 

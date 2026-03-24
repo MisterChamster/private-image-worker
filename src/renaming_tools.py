@@ -88,13 +88,13 @@ def get_formatted_name(
     return formatted_name
 
 
-def check_single_image_dates(directory: str, naming_style: str):
+def check_single_image_dates(images_dir: str, naming_style: str):
     """Generator function listing images with all possible date types."""
     valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
 
-    for filename in os.listdir(directory):
+    for filename in os.listdir(images_dir):
         if filename.lower().endswith(valid_extensions):
-            image_path = os.path.join(directory, filename)
+            image_path = os.path.join(images_dir, filename)
             formatted_EXIF_DTO_date   = get_formatted_name(image_path, "EXIF_DTO", naming_style)
             formatted_EXIF_DTD_date   = get_formatted_name(image_path, "EXIF_DTD", naming_style)
             formatted_EXIF_DT_date    = get_formatted_name(image_path, "EXIF_DT", naming_style)
@@ -110,17 +110,17 @@ def check_single_image_dates(directory: str, naming_style: str):
 
 
 def list_images_with_dates(
-    directory: str,
+    images_dir: str,
     date_type: str,
     naming_style: str
 ) -> None:
     """Lists all images in the directory with date_type dates with the appropriate naming style."""
     valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
 
-    for filename in os.listdir(directory):
+    for filename in os.listdir(images_dir):
         extension = filename.lower().split(".")[-1]
         if extension in valid_extensions:
-            image_path = os.path.join(directory, filename)
+            image_path = os.path.join(images_dir, filename)
             formatted_name = get_formatted_name(image_path, date_type, naming_style)
             if formatted_name == "Invalid date":
                 print(f"Invalid date:        {filename}")
@@ -167,14 +167,14 @@ def rename_image_with_style(
 
 
 def rename_images_in_dir(
-    directory: str,
+    images_dir: str,
     date_type: str,
     naming_style: str
 ) -> None:
     valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'jfif', 'heic')
 
-    for filename in os.listdir(directory):
+    for filename in os.listdir(images_dir):
         extension = filename.lower().split(".")[-1]
         if extension in valid_extensions:
-            image_path = os.path.join(directory, filename)
+            image_path = os.path.join(images_dir, filename)
             rename_image_with_style(image_path, date_type, naming_style)
