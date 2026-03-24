@@ -121,11 +121,13 @@ def check_single_image_dates(images_dir: Path, naming_style: str):
 
 
 def list_images_with_dates(
-    images_dir: str,
+    images_dir: Path,
     date_type: str,
     naming_style: str
 ) -> None:
     """Lists all images in the directory with date_type dates with the appropriate naming style."""
+    # TEMPPPPPP
+    images_dir = str(images_dir)
     valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
 
     for filename in os.listdir(images_dir):
@@ -180,10 +182,12 @@ def rename_image_with_style(
 
 
 def rename_images_in_dir(
-    images_dir: str,
+    images_dir: Path,
     date_type: str,
     naming_style: str
 ) -> None:
+    # TEMPPPPPP
+    images_dir = str(images_dir)
     valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'jfif', 'heic')
 
     for filename in os.listdir(images_dir):
