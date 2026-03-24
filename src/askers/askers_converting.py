@@ -11,23 +11,23 @@ def ask_convert_action() -> Literal[
         "return",
         "exit"]:
     returns_dict = {
-        "lsh": "list_heic",
-        "lsp": "list_png",
-        "htp": "heic_to_png",
-        "htj": "heic_to_jpg",
-        "ptj": "png_to_jpg",
-        "rt":  "return",
-        "e":   "exit"}
+        "lh": "list_heic",
+        "lp": "list_png",
+        "hp": "heic_to_png",
+        "hj": "heic_to_jpg",
+        "pj": "png_to_jpg",
+        "rt": "return",
+        "e":  "exit"}
 
     while True:
         print("Choose convert action:\n"
-              "lsh - List all .heic files in folder\n"
-              "lsp - List all .png files in folder\n"
-              "htp - .heic to .png...\n"
-              "htj - .heic to .jpg...\n"
-              "ptj - .png to .jpg...\n"
-              "rt  - Return\n"
-              "e   - Exit program\n>> ", end="")
+              "lh - List all .heic files in folder\n"
+              "lp - List all .png files in folder\n"
+              "hp - .heic to .png...\n"
+              "hj - .heic to .jpg...\n"
+              "pj - .png to .jpg...\n"
+              "rt - Return\n"
+              "e  - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action in returns_dict:
@@ -42,19 +42,19 @@ def ask_htp_action() -> Literal[
     "return",
     "exit"]:
     returns_dict = {
-        "lsh": "list_heic",
-        "hpn": "heic_to_png_no_del",
-        "hpd": "heic_to_png_del",
-        "rt":  "return",
-        "e":   "exit"}
+        "lh": "list_heic",
+        "hn": "heic_to_png_no_del",
+        "hd": "heic_to_png_del",
+        "r":  "return",
+        "e":  "exit"}
 
     while True:
         print("Choose heic to png action:\n"
-              "lsh - List all .heic files in folder\n"
-              "hpn - Convert .heic files to .png files (leave heic files)\n"
-              "hpd - Convert .heic files to .png files (delete heic files)\n"
-              "rt  - Return\n"
-              "e   - Exit program\n>> ", end="")
+              "lh - List all .heic files in folder\n"
+              "hn - Convert .heic files to .png files (leave heic files)\n"
+              "hd - Convert .heic files to .png files (delete heic files)\n"
+              "r  - Return\n"
+              "e  - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action in returns_dict:
@@ -69,19 +69,19 @@ def ask_htj_action() -> Literal[
     "return",
     "exit"]:
     returns_dict = {
-        "lsh": "list_heic",
-        "hjn": "heic_to_jpg_no_del",
-        "hjd": "heic_to_jpg_del",
-        "rt":  "return",
-        "e":   "exit"}
+        "lh": "list_heic",
+        "hn": "heic_to_jpg_no_del",
+        "hd": "heic_to_jpg_del",
+        "r":  "return",
+        "e":  "exit"}
 
     while True:
         print("Choose heic to jpg action:\n"
-              "lsh - List all .heic files in folder\n"
-              "hjn - Convert .heic files to .jpg files (leave heic files)\n"
-              "hjd - Convert .heic files to .jpg files (delete heic files)\n"
-              "rt  - Return\n"
-              "e   - Exit program\n>> ", end="")
+              "lh - List all .heic files in folder\n"
+              "hn - Convert .heic files to .jpg files (leave heic files)\n"
+              "hd - Convert .heic files to .jpg files (delete heic files)\n"
+              "r  - Return\n"
+              "e  - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action in returns_dict:
@@ -96,19 +96,19 @@ def ask_ptj_action() -> Literal[
     "return",
     "exit"]:
     returns_dict = {
-        "lsp": "list_png",
-        "pjn": "png_to_jpg_no_del",
-        "pjd": "png_to_jpg_del",
-        "rt":  "return",
-        "e":   "exit"}
+        "lp": "list_png",
+        "pn": "png_to_jpg_no_del",
+        "pd": "png_to_jpg_del",
+        "r":  "return",
+        "e":  "exit"}
 
     while True:
         print("Choose png to jpg action:\n"
-              "lsp - List all .png files in folder\n"
-              "pjn - Convert .png files to .jpg files (leave png files)\n"
-              "pjd - Convert .png files to .jpg files (delete png files)\n"
-              "rt  - Return\n"
-              "e   - Exit program\n>> ", end="")
+              "lp - List all .png files in folder\n"
+              "pn - Convert .png files to .jpg files (leave png files)\n"
+              "pd - Convert .png files to .jpg files (delete png files)\n"
+              "r  - Return\n"
+              "e  - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action in returns_dict:

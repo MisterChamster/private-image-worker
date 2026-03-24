@@ -9,6 +9,7 @@ def list_images_in_dir(
         ) -> None:
     """Lists all images in current directory with specified format."""
     valid_extensions = ()
+
     if format == "all":
         valid_extensions = ('.jpg', '.jpeg', '.png', '.tiff', '.heic')
     elif format == "heic":
@@ -23,4 +24,4 @@ def list_images_in_dir(
     for file_path in dir_path.iterdir():
         if (file_path.suffix.lower() in valid_extensions and
             not file_path.stem.startswith(".")):
-            print(file_path)
+            print(file_path.name)

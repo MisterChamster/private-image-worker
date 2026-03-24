@@ -1,8 +1,6 @@
-from os import chdir
-
 import src.askers.askers_main as ask_main
-from src.routes.routes_rename import rename_actionloop
-from src.routes.routes_convert import convertloop
+import src.routes.routes_rename as rnm_routes
+import src.routes.routes_convert as cnv_routes
 import src.utils as utils
 
 
@@ -28,14 +26,14 @@ def main_loop() -> None:
 
         elif action == "rename":
             print()
-            outing = rename_actionloop(dir_main)
-            if not outing:
+            exit_flag = rnm_routes.rename_actionloop(dir_main)
+            if exit_flag:
                 return
 
         elif action =="convert":
             print()
-            outing = convertloop(dir_main)
-            if not outing:
+            exit_flag = cnv_routes.convert_loop(dir_main)
+            if exit_flag:
                 return
 
         elif action == "exit":

@@ -1,25 +1,30 @@
-import os
+from os import chdir, path
 from pathlib import Path
 from typing import Literal
 from tkinter import filedialog
 
 
 
-def ask_mainloop_action() -> str:
+def ask_mainloop_action() -> Literal[
+    "list",
+    "change_dir",
+    "rename",
+    "convert",
+    "exit"]:
     returns_dict = {
         "ls":  "list",
+        "rn": "rename",
+        "cv": "convert",
         "cd":  "change_dir",
-        "rnm": "rename",
-        "cnv": "convert",
         "e":   "exit"}
 
     while True:
         print("Choose action: \n"
-              "ls  - List all images in folder\n"
-              "cd  - Change program working directory\n"
-              "rnm - Rename...\n"
-              "cnv - Convert...\n"
-              "e   - Exit program\n>> ", end="")
+              "ls - List all images in folder\n"
+              "rn - Rename...\n"
+              "cv - Convert...\n"
+              "cd - Change program working directory\n"
+              "e  - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action in returns_dict:
@@ -32,8 +37,8 @@ def ask_path_filedialog(
         message: str
         ) -> Path | None:
     original_path = Path.cwd()
-    desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
-    os.chdir(desktop_path)
+    desktop_path = path.join(path.expanduser("~"), "Desktop")
+    chdir(desktop_path)
 
     sel_path = ""
     if node_type == "file":
@@ -41,7 +46,7 @@ def ask_path_filedialog(
     elif node_type == "dir":
         sel_path = filedialog.askdirectory(title=message)
 
-    os.chdir(original_path)
+    chdir(original_path)
     if sel_path == "":
         return
 
