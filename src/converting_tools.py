@@ -10,12 +10,12 @@ def HEICtoPNG_no_del(images_dir: Path) -> None:
         # TEMPPPPPP
         images_dir = str(images_dir)
         file_name = file_path.name
+        ext = file_path.suffix
 
-        if file_name.lower().endswith(".heic"):
+        if ext.lower() == ".heic":
             # create an Image object from the HEIC file
-            filepath = os.path.join(images_dir, file_name)
             print("Converting:", file_name)
-            heif_file = pillow_heif.read_heif(filepath)
+            heif_file = pillow_heif.read_heif(file_path)
             image = Image.frombytes(
                 heif_file.mode,
                 heif_file.size,
@@ -34,8 +34,9 @@ def HEICtoPNG_del(images_dir: Path) -> None:
         # TEMPPPPPP
         images_dir = str(images_dir)
         file_name = file_path.name
+        ext = file_path.suffix
 
-        if file_name.lower().endswith(".heic"):
+        if ext.lower() == ".heic":
             # create an Image object from the HEIC file
             filepath = os.path.join(images_dir, file_name)
             print("Converting:", file_name)
@@ -66,8 +67,9 @@ def HEICtoJPG_no_del(images_dir: Path) -> None:
         # TEMPPPPPP
         images_dir = str(images_dir)
         file_name = file_path.name
+        ext = file_path.suffix
 
-        if file_name.lower().endswith(".heic"):
+        if ext.lower() == ".heic":
             filepath = os.path.join(images_dir, file_name)
             new_filename = os.path.splitext(file_name)[0] + ".jpg"
 
@@ -81,8 +83,9 @@ def HEICtoJPG_del(images_dir: Path) -> None:
         # TEMPPPPPP
         images_dir = str(images_dir)
         file_name = file_path.name
+        ext = file_path.suffix
 
-        if file_name.lower().endswith(".heic"):
+        if ext.lower() == ".heic":
             filepath = os.path.join(images_dir, file_name)
             new_filename = os.path.splitext(file_name)[0] + ".jpg"
 
@@ -101,8 +104,9 @@ def PNGtoJPG_no_del(images_dir: Path) -> None:
         # TEMPPPPPP
         images_dir = str(images_dir)
         file_name = file_path.name
+        ext = file_path.suffix
 
-        if file_name.lower().endswith(".png"):
+        if ext.lower() == ".png":
             png_image = Image.open(file_name)
             print("Converting:", file_name)
             rgb_image = png_image.convert("RGB")
@@ -115,8 +119,9 @@ def PNGtoJPG_del(images_dir: Path) -> None:
         # TEMPPPPPP
         images_dir = str(images_dir)
         file_name = file_path.name
+        ext = file_path.suffix
 
-        if file_name.lower().endswith(".png"):
+        if ext.lower() == ".png":
             png_image = Image.open(file_name)
             print("Converting:", file_name)
             rgb_image = png_image.convert("RGB")
