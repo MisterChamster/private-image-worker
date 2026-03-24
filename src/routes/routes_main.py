@@ -3,7 +3,7 @@ from os import chdir
 import src.askers.askers_main as ask_main
 from src.routes.routes_rename import rename_actionloop
 from src.routes.routes_convert import convertloop
-from src.utils import list_images_in_cwd
+from src.utils import list_images_in_dir
 
 
 
@@ -19,7 +19,7 @@ def main_loop() -> None:
         action = ask_main.ask_mainloop_action()
         print()
         if action == "list":
-            list_images_in_cwd()
+            list_images_in_dir(dir_main)
             print()
 
         elif action == "change_dir":
