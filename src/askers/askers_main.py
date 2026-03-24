@@ -1,4 +1,4 @@
-import os
+from os import chdir, path
 from pathlib import Path
 from typing import Literal
 from tkinter import filedialog
@@ -37,8 +37,8 @@ def ask_path_filedialog(
         message: str
         ) -> Path | None:
     original_path = Path.cwd()
-    desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
-    os.chdir(desktop_path)
+    desktop_path = path.join(path.expanduser("~"), "Desktop")
+    chdir(desktop_path)
 
     sel_path = ""
     if node_type == "file":
@@ -46,7 +46,7 @@ def ask_path_filedialog(
     elif node_type == "dir":
         sel_path = filedialog.askdirectory(title=message)
 
-    os.chdir(original_path)
+    chdir(original_path)
     if sel_path == "":
         return
 
