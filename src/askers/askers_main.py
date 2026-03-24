@@ -13,18 +13,18 @@ def ask_mainloop_action() -> Literal[
     "exit"]:
     returns_dict = {
         "ls":  "list",
+        "rn": "rename",
+        "cv": "convert",
         "cd":  "change_dir",
-        "rnm": "rename",
-        "cnv": "convert",
         "e":   "exit"}
 
     while True:
         print("Choose action: \n"
-              "ls  - List all images in folder\n"
-              "cd  - Change program working directory\n"
-              "rnm - Rename...\n"
-              "cnv - Convert...\n"
-              "e   - Exit program\n>> ", end="")
+              "ls - List all images in folder\n"
+              "rn - Rename...\n"
+              "cv - Convert...\n"
+              "cd - Change program working directory\n"
+              "e  - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action in returns_dict:

@@ -145,7 +145,7 @@ def list_images_with_dates(
             continue
 
         line_len = 80
-        rest_len = len(f": {formatted_name}")
+        rest_len = len(f"from {formatted_name}")
         if len(filename) > line_len + rest_len:
             filename = filename[:line_len + rest_len-3-4] + "..." + extension
         print(f"{formatted_name}: {filename}")
@@ -166,7 +166,7 @@ def rename_image_with_style(
 
             try:
                 os.rename(image_path, new_filepath)
-                print(f"Renamed:  {new_filename} <- {og_file_name}")
+                print(f"Renamed: {new_filename} from {og_file_name}")
                 return
 
             except FileExistsError:

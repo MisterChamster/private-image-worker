@@ -28,6 +28,7 @@ def print_all_dates_loop_cwd(
         if action == "next":
             try:
                 print(next(gen))
+                print()
             except:
                 print("All pictures have been checked.\n")
                 break
@@ -53,7 +54,7 @@ def print_all_files_dates_loop(
 
     while True:
         action = ask_rnm.ask_print_all_files_dates()
-        print()
+        print("\n")
 
         if action in date_types:
             rnm_tools.list_images_with_dates(
@@ -81,6 +82,7 @@ def rename_images_onebyone_loop(
         "exit": True}
     valid_extensions = ('.jpg', '.jpeg', '.png', '.tiff', '.heic')
 
+    print()
     for file_path in dir_path.iterdir():
         if file_path.suffix.lower() in valid_extensions:
             action = ask_rnm.ask_rename_images_one_by_one(file_path, naming_style)
@@ -91,9 +93,10 @@ def rename_images_onebyone_loop(
                     file_path,
                     date_types[action],
                     naming_style)
-                print()
+                print("\n\n")
 
             elif action == "next":
+                print("\n")
                 continue
 
             elif action in exit_flags:
@@ -116,11 +119,11 @@ def rename_all_images_loop(
 
         if action == "list_images_new_names":
             rnm_tools.list_images_with_dates(dir_path, date_type, naming_style)
-            print()
+            print("\n")
 
         elif action == "rename_all_images":
             rnm_tools.rename_images_in_dir(dir_path, date_type, naming_style)
-            print()
+            print("\n")
 
         elif action in exit_flags:
             return exit_flags[action]
@@ -142,7 +145,7 @@ def rename_basis_loop(
 
     while True:
         action = ask_rnm.ask_rename_basis()
-        print()
+        print("\n")
 
         if action in date_types:
             exit_flag = rename_all_images_loop(
@@ -167,9 +170,9 @@ def rename_actionloop(dir_path: Path) -> bool:
     naming_style = "iso"
 
     while True:
-        print(f"Current naming style: {naming_style} {styles_dict[naming_style]}")
+        print(f"Current naming style: {naming_style} {styles_dict[naming_style]}\n")
         action = ask_rnm.ask_rename_action()
-        print()
+        print("\n")
 
         if action == "print_dates_first_file":
             exit_flag = print_all_dates_loop_cwd(dir_path, naming_style)
