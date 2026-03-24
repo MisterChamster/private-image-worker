@@ -17,15 +17,15 @@ def htp_loop(dir_path: Path) -> bool:
 
         if action == "list_heic":
             utils.list_images_in_dir(dir_path, "heic")
-            print()
+            print("\n")
 
         elif action == "heic_to_png_no_del":
             cnv.HEICtoPNG_dir(dir_path)
-            print()
+            print("\n")
 
         elif action == "heic_to_png_del":
             cnv.HEICtoPNG_dir(dir_path, True)
-            print()
+            print("\n")
 
         elif action in exit_flags:
             return exit_flags[action]
@@ -42,15 +42,15 @@ def htj_loop(dir_path: Path) -> bool:
 
         if action == "list_heic":
             utils.list_images_in_dir(dir_path, "heic")
-            print()
+            print("\n")
 
         elif action == "heic_to_jpg_no_del":
             cnv.HEICtoJPG_dir(dir_path)
-            print()
+            print("\n")
 
         elif action == "heic_to_jpg_del":
             cnv.HEICtoJPG_dir(dir_path, True)
-            print()
+            print("\n")
 
         elif action in exit_flags:
             return exit_flags[action]
@@ -67,15 +67,15 @@ def ptj_loop(dir_path: Path) -> bool:
 
         if action == "list_png":
             utils.list_images_in_dir(dir_path, "png")
-            print()
+            print("\n")
 
         elif action == "png_to_jpg_no_del":
             cnv.PNGtoJPG_dir(dir_path)
-            print()
+            print("\n")
 
         elif action == "png_to_jpg_del":
             cnv.PNGtoJPG_dir(dir_path, True)
-            print()
+            print("\n")
 
         elif action in exit_flags:
             return exit_flags[action]
@@ -92,11 +92,11 @@ def convert_loop(dir_path: Path) -> bool:
 
         if action == "list_heic":
             utils.list_images_in_dir(dir_path, "heic")
-            print()
+            print("\n")
 
         elif action == "list_png":
             utils.list_images_in_dir(dir_path, "png")
-            print()
+            print("\n")
 
         elif action == "heic_to_png":
             print()

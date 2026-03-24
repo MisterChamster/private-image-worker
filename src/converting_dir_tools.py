@@ -41,7 +41,7 @@ def PNGtoJPG_dir(images_dir: Path, del_flag: bool = False) -> None:
         if ext.lower() != ".png":
             continue
 
-        conv_file(file_path)
+        conv_file.PNGtoJPG(file_path)
 
         if del_flag:
             try:
