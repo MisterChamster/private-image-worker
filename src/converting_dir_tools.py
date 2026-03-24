@@ -9,13 +9,16 @@ def HEICtoPNG_dir_no_del(images_dir: Path) -> None:
     for file_path in images_dir.iterdir():
         file_name = file_path.name
         ext = file_path.suffix
-
         if ext.lower() != ".heic":
             continue
 
-        # create an Image object from the HEIC file
+        try:
+            heif_file = pillow_heif.read_heif(file_path)
+        except ValueError:
+            print(f"Can't open {file_name}")
+            continue
+
         print("Converting:", file_name)
-        heif_file = pillow_heif.read_heif(file_path)
         image = Image.frombytes(
             heif_file.mode,
             heif_file.size,
@@ -31,17 +34,16 @@ def HEICtoPNG_dir_del(images_dir: Path) -> None:
     for file_path in images_dir.iterdir():
         file_name = file_path.name
         ext = file_path.suffix
-
         if ext.lower() != ".heic":
             continue
 
-        # create an Image object from the HEIC file
-        print("Converting:", file_name)
         try:
             heif_file = pillow_heif.read_heif(file_path)
         except ValueError:
-            print(f"File {file_name} could not be coverted.")
+            print(f"Can't open {file_name}")
             continue
+
+        print("Converting:", file_name)
         image = Image.frombytes(
             heif_file.mode,
             heif_file.size,
@@ -62,14 +64,16 @@ def HEICtoJPG_dir_no_del(images_dir: Path) -> None:
     for file_path in images_dir.iterdir():
         file_name = file_path.name
         ext = file_path.suffix
-
         if ext.lower() != ".heic":
             continue
 
-        print("Converting:", file_name)
-        # TEMPPPPPP put this in try block!!!
-        img = Image.open(file_path)
+        try:
+            img = Image.open(file_path)
+        except ValueError:
+            print(f"Can't open {file_name}")
+            continue
 
+        print("Converting:", file_name)
         new_filename = file_path.stem + ".jpg"
         new_filepath = images_dir / new_filename
         img.save(new_filepath, format="JPEG")
@@ -79,14 +83,16 @@ def HEICtoJPG_dir_del(images_dir: Path) -> None:
     for file_path in images_dir.iterdir():
         file_name = file_path.name
         ext = file_path.suffix
-
         if ext.lower() != ".heic":
             continue
 
-        print("Converting:", file_name)
-        # TEMPPPPPP put this in try block!!!
-        img = Image.open(file_path)
+        try:
+            img = Image.open(file_path)
+        except ValueError:
+            print(f"Can't open {file_name}")
+            continue
 
+        print("Converting:", file_name)
         new_filename = file_path.stem + ".jpg"
         new_filepath = images_dir / new_filename
         img.save(new_filepath, format="JPEG")
@@ -101,15 +107,17 @@ def PNGtoJPG_dir_no_del(images_dir: Path) -> None:
     for file_path in images_dir.iterdir():
         file_name = file_path.name
         ext = file_path.suffix
-
         if ext.lower() != ".png":
             continue
 
-        print("Converting:", file_name)
-        # TEMPPPPPP put this in try block!!!
-        png_image = Image.open(file_path)
-        rgb_image = png_image.convert("RGB")
+        try:
+            png_image = Image.open(file_path)
+        except ValueError:
+            print(f"Can't open {file_name}")
+            continue
 
+        print("Converting:", file_name)
+        rgb_image = png_image.convert("RGB")
         new_filename = file_path.stem + ".jpg"
         new_filepath = images_dir / new_filename
         rgb_image.save(new_filepath, "JPEG")
@@ -119,15 +127,17 @@ def PNGtoJPG_dir_del(images_dir: Path) -> None:
     for file_path in images_dir.iterdir():
         file_name = file_path.name
         ext = file_path.suffix
-
         if ext.lower() != ".png":
             continue
 
-        print("Converting:", file_name)
-        # TEMPPPPPP put this in try block!!!
-        png_image = Image.open(file_path)
-        rgb_image = png_image.convert("RGB")
+        try:
+            png_image = Image.open(file_path)
+        except ValueError:
+            print(f"Can't open {file_name}")
+            continue
 
+        print("Converting:", file_name)
+        rgb_image = png_image.convert("RGB")
         new_filename = file_path.stem + ".jpg"
         new_filepath = images_dir / new_filename
         rgb_image.save(new_filepath, "JPEG")
