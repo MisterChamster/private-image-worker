@@ -27,7 +27,7 @@ def print_all_dates_loop(naming_style: str) -> str | None:
             gen.close()
             return action
 
-        elif not action:
+        elif action == "exit":
             gen.close()
             return
 
@@ -60,7 +60,7 @@ def print_all_files_dates_loop(naming_style: str) -> str | None:
         elif action == "return":
             return action
 
-        elif not action:
+        elif action == "exit":
             return
 
 
@@ -126,7 +126,7 @@ def rename_all_images_loop(
         elif action == "return":
             return action
 
-        elif not action:
+        elif action == "exit":
             return
 
 
@@ -163,7 +163,7 @@ def rename_basis_loop(naming_style: str) -> str | None:
         elif action == "return":
             return action
 
-        elif not action:
+        elif action == "exit":
             return
 
 
@@ -205,14 +205,14 @@ def rename_actionloop(dir_path: Path) -> str | None:
         elif action == "change_naming_style":
             outing = ask_rnm.ask_naming_style(naming_style)
             print()
-            if not outing:
+            if outing == "exit":
                 return
-            elif outing != "rt":
+            elif outing != "return":
                 naming_style = outing
                 print()
 
         elif action == "return":
             return action
 
-        elif not action:
+        elif action == "exit":
             return

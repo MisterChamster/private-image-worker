@@ -5,7 +5,12 @@ from tkinter import filedialog
 
 
 
-def ask_mainloop_action() -> str:
+def ask_mainloop_action() -> Literal[
+    "list",
+    "change_dir",
+    "rename",
+    "convert",
+    "exit"]:
     returns_dict = {
         "ls":  "list",
         "cd":  "change_dir",
