@@ -13,10 +13,10 @@ def ask_print_all_dates() -> str | None:
         print("Show next file dates?\n"
               "Enter - Next\n"
               "rt    - Return\n"
-              "exit  - Exit program\n>> ", end="")
+              "e     - Exit program\n>> ", end="")
         action = input().strip().lower()
 
-        if action == "exit":
+        if action == "e":
             return
         if action in returns_dict:
             return returns_dict[action]

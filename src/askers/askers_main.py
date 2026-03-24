@@ -5,22 +5,21 @@ from tkinter import filedialog
 
 def ask_mainloop_action() -> str | None:
     returns_dict = {
-        "ls": "list",
-        "cd": "change_dir",
+        "ls":  "list",
+        "cd":  "change_dir",
         "rnm": "rename",
-        "cnv": "convert"}
+        "cnv": "convert",
+        "e":   "exit"}
 
     while True:
         print("Choose action: \n"
-              "ls   - List all images in folder\n"
-              "cd   - Change program working directory\n"
-              "rnm  - Rename...\n"
-              "cnv  - Convert...\n"
-              "exit - Exit program\n>> ", end="")
+              "ls  - List all images in folder\n"
+              "cd  - Change program working directory\n"
+              "rnm - Rename...\n"
+              "cnv - Convert...\n"
+              "e   - Exit program\n>> ", end="")
         action = input().strip().lower()
 
-        if action == "exit":
-            return
         if action in returns_dict:
             return returns_dict[action]
         print("Incorrect input.\n")
