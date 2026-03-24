@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 import pillow_heif
 
 import src.askers.askers_renaming as ask_rnm
@@ -166,7 +167,9 @@ def rename_basis_loop(naming_style: str) -> str | None:
             return
 
 
-def rename_actionloop() -> str | None:
+def rename_actionloop(dir_path: Path) -> str | None:
+    # TEMPPPPPP
+    os.chdir(dir_path)
     styles_dict = {
         "iso": "IMG_[Y][M][D]_[H][M][S]",
         "eu":  "IMG_[D][M][Y]_[H][M][S]",

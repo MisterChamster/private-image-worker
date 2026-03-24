@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-from src.utils import list_images_in_dir
+import src.utils as utils
 import src.askers.askers_converting as ask_cnv
 import src.converting_tools as cnv
 
@@ -13,7 +13,7 @@ def htploop() -> str | None:
         print()
 
         if action == "list_heic":
-            list_images_in_dir(Path.cwd(), "heic")
+            utils.list_images_in_dir(Path.cwd(), "heic")
             print()
 
         elif action == "heic_to_png_no_del":
@@ -37,7 +37,7 @@ def htjloop() -> str | None:
         print()
 
         if action == "list_heic":
-            list_images_in_dir(Path.cwd(), "heic")
+            utils.list_images_in_dir(Path.cwd(), "heic")
             print()
 
         elif action == "heic_to_jpg_no_del":
@@ -61,7 +61,7 @@ def ptjloop() -> str | None:
         print()
 
         if action == "list_png":
-            list_images_in_dir(Path.cwd(), "png")
+            utils.list_images_in_dir(Path.cwd(), "png")
             print()
 
         elif action == "png_to_jpg_no_del":
@@ -79,17 +79,19 @@ def ptjloop() -> str | None:
             return
 
 
-def convertloop() -> str | None:
+def convertloop(dir_path: Path) -> str | None:
+    # TEMPPPPPP
+    os.chdir(dir_path)
     while True:
         action = ask_cnv.ask_convert_action()
         print()
 
         if action == "list_heic":
-            list_images_in_dir(Path.cwd(), "heic")
+            utils.list_images_in_dir(Path.cwd(), "heic")
             print()
 
         elif action == "list_png":
-            list_images_in_dir(Path.cwd(), "png")
+            utils.list_images_in_dir(Path.cwd(), "png")
             print()
 
         elif action == "heic_to_png":
