@@ -5,7 +5,7 @@ from tkinter import filedialog
 
 
 
-def ask_mainloop_action() -> str | None:
+def ask_mainloop_action() -> str:
     returns_dict = {
         "ls":  "list",
         "cd":  "change_dir",

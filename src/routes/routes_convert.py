@@ -27,7 +27,7 @@ def htploop() -> str | None:
         elif action == "return":
             return action
 
-        elif not action:
+        elif action == "exit":
             return
 
 
@@ -51,7 +51,7 @@ def htjloop() -> str | None:
         elif action == "return":
             return action
 
-        elif not action:
+        elif action == "exit":
             return
 
 
@@ -75,7 +75,7 @@ def ptjloop() -> str | None:
         elif action == "return":
             return action
 
-        elif not action:
+        elif action == "exit":
             return
 
 
@@ -118,5 +118,5 @@ def convertloop(dir_path: Path) -> str | None:
         elif action == "return":
             return action
 
-        elif not action:
+        elif action == "exit":
             return

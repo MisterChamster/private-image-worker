@@ -168,13 +168,14 @@ def rename_basis_loop(naming_style: str) -> str | None:
 
 
 def rename_actionloop(dir_path: Path) -> str | None:
-    # TEMPPPPPP
-    os.chdir(dir_path)
     styles_dict = {
         "iso": "IMG_[Y][M][D]_[H][M][S]",
         "eu":  "IMG_[D][M][Y]_[H][M][S]",
         "us":  "IMG_[M][D][Y]_[H][M][S]"}
     naming_style = "iso"
+
+    # TEMPPPPPP
+    os.chdir(dir_path)
 
     while True:
         print(f"Current naming style: {naming_style} {styles_dict[naming_style]}")
