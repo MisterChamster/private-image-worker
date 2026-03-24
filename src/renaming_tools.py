@@ -156,21 +156,19 @@ def rename_image_with_style(
     date_type: str,
     naming_style: str
 ) -> None:
-    # TEMPPPPPP
-    image_path = str(image_path)
-    # TEMPPPPPP
-    formatted_date_name = get_formatted_name(Path(image_path), date_type, naming_style)
+    formatted_date_name = get_formatted_name(image_path, date_type, naming_style)
+    og_file_name = image_path.name
+
     if formatted_date_name != "No date" and formatted_date_name != "Invalid date":
-        dirname = os.path.dirname(image_path)
         for i in range(1, 200):
-            new_filename = formatted_date_name + os.path.splitext(image_path)[1]
-            new_filepath = dirname + "/" + new_filename
-            os.path.normcase(new_filepath)
+            new_filename = formatted_date_name + image_path.suffix
+            new_filepath = image_path.parent / new_filename
+
             try:
                 os.rename(image_path, new_filepath)
-                og_filename = os.path.basename(image_path)
-                print(f"Renamed:  {new_filename} <- {og_filename}")
+                print(f"Renamed:  {new_filename} <- {og_file_name}")
                 return
+
             except FileExistsError:
                 print(f"File {new_filename} already exists, trying with a different name.")
                 formatted_date_name += f"_{i}"
@@ -178,12 +176,10 @@ def rename_image_with_style(
         print("File name not changed. How the hell did you achieve this?")
 
     elif formatted_date_name == "No date":
-        og_filename = os.path.basename(image_path)
-        print(f"{og_filename}: No {date_type} type date.")
+        print(f"{og_file_name}: No {date_type} type date.")
 
     elif formatted_date_name == "Invalid date":
-        og_filename = os.path.basename(image_path)
-        print(f"{og_filename}: {date_type} date type is invalid.")
+        print(f"{og_file_name}: {date_type} date type is invalid.")
 
 
 def rename_images_in_dir(
