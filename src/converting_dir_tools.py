@@ -3,6 +3,8 @@ from pathlib import Path
 from PIL import Image
 import pillow_heif
 
+import src.converting_file_tools as conv_file
+
 # TEMPPPPPP join del and not del
 
 def HEICtoPNG_dir_no_del(images_dir: Path) -> None:
