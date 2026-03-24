@@ -7,7 +7,11 @@ import src.converting_tools as cnv
 
 
 
-def htploop() -> str | None:
+def htp_loop() -> bool:
+    exit_flags = {
+        "return": False,
+        "exit": True}
+
     while True:
         action = ask_cnv.ask_htp_action()
         print()
@@ -24,14 +28,15 @@ def htploop() -> str | None:
             cnv.HEICtoPNG_del(os.getcwd())
             print()
 
-        elif action == "return":
-            return action
-
-        elif action == "exit":
-            return
+        elif action in exit_flags:
+            return exit_flags[action]
 
 
-def htjloop() -> str | None:
+def htj_loop() -> bool:
+    exit_flags = {
+        "return": False,
+        "exit": True}
+
     while True:
         action = ask_cnv.ask_htj_action()
         print()
@@ -48,14 +53,15 @@ def htjloop() -> str | None:
             cnv.HEICtoJPG_del(os.getcwd())
             print()
 
-        elif action == "return":
-            return action
-
-        elif action == "exit":
-            return
+        elif action in exit_flags:
+            return exit_flags[action]
 
 
-def ptjloop() -> str | None:
+def ptj_loop() -> bool:
+    exit_flags = {
+        "return": False,
+        "exit": True}
+
     while True:
         action = ask_cnv.ask_ptj_action()
         print()
@@ -72,14 +78,15 @@ def ptjloop() -> str | None:
             cnv.PNGtoJPG_del(os.getcwd())
             print()
 
-        elif action == "return":
-            return action
-
-        elif action == "exit":
-            return
+        elif action in exit_flags:
+            return exit_flags[action]
 
 
-def convertloop(dir_path: Path) -> str | None:
+def convert_loop(dir_path: Path) -> str | None:
+    exit_flags = {
+        "return": False,
+        "exit": True}
+
     # TEMPPPPPP
     os.chdir(dir_path)
     while True:
@@ -96,27 +103,24 @@ def convertloop(dir_path: Path) -> str | None:
 
         elif action == "heic_to_png":
             print()
-            outing = htploop()
-            if outing == None:
-                return
+            exit_flag = htp_loop()
+            if exit_flag:
+                return exit_flags["exit"]
             print()
 
         elif action == "heic_to_jpg":
             print()
-            outing = htjloop()
-            if outing == None:
-                return
+            exit_flag = htj_loop()
+            if exit_flag:
+                return exit_flags["exit"]
             print()
 
         elif action == "png_to_jpg":
             print()
-            outing = ptjloop()
-            if outing == None:
-                return
+            exit_flag = ptj_loop()
+            if exit_flag:
+                return exit_flags["exit"]
             print()
 
-        elif action == "return":
-            return action
-
-        elif action == "exit":
-            return
+        elif action in exit_flags:
+            return exit_flags[action]

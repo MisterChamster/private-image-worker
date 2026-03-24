@@ -127,28 +127,28 @@ def list_images_with_dates(
     naming_style: str
 ) -> None:
     """Lists all images in the directory with date_type dates with the appropriate naming style."""
-    # TEMPPPPPP
-    images_dir = str(images_dir)
     valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
 
-    for filename in os.listdir(images_dir):
+    for file_path in images_dir.iterdir():
+        filename = file_path.name
         extension = filename.lower().split(".")[-1]
-        if extension in valid_extensions:
-            image_path = os.path.join(images_dir, filename)
-            # TEMPPPPPP
-            formatted_name = get_formatted_name(Path(image_path), date_type, naming_style)
-            if formatted_name == "Invalid date":
-                print(f"Invalid date:        {filename}")
-                continue
-            elif formatted_name == "No date":
-                print(f"No date:             {filename}")
-                continue
 
-            line_len = 80
-            rest_len = len(f": {formatted_name}")
-            if len(filename) > line_len + rest_len:
-                filename = filename[:line_len + rest_len-3-4] + "..." + extension
-            print(f"{formatted_name}: {filename}")
+        if extension not in valid_extensions:
+            continue
+
+        formatted_name = get_formatted_name(file_path, date_type, naming_style)
+        if formatted_name == "Invalid date":
+            print(f"Invalid date:        {filename}")
+            continue
+        elif formatted_name == "No date":
+            print(f"No date:             {filename}")
+            continue
+
+        line_len = 80
+        rest_len = len(f": {formatted_name}")
+        if len(filename) > line_len + rest_len:
+            filename = filename[:line_len + rest_len-3-4] + "..." + extension
+        print(f"{formatted_name}: {filename}")
 
 
 def rename_image_with_style(

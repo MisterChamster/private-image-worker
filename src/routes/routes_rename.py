@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 import pillow_heif
 
@@ -166,9 +165,6 @@ def rename_actionloop(dir_path: Path) -> bool:
         "eu":  "IMG_[D][M][Y]_[H][M][S]",
         "us":  "IMG_[M][D][Y]_[H][M][S]"}
     naming_style = "iso"
-
-    # TEMPPPPPP
-    os.chdir(dir_path)
 
     while True:
         print(f"Current naming style: {naming_style} {styles_dict[naming_style]}")

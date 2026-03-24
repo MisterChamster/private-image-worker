@@ -34,8 +34,8 @@ def main_loop() -> None:
 
         elif action =="convert":
             print()
-            outing = cnv_routes.convertloop(dir_main)
-            if not outing:
+            exit_flag = cnv_routes.convert_loop(dir_main)
+            if exit_flag:
                 return
 
         elif action == "exit":
