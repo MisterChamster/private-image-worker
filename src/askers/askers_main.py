@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from typing import Literal
 from tkinter import filedialog
 
 
@@ -26,16 +27,22 @@ def ask_mainloop_action() -> str | None:
         print("Incorrect input.\n")
 
 
-def ask_path_filedialog(type: str, message: str) -> str:
+def ask_path_filedialog(
+        node_type: Literal["file", "dir"],
+        message: str
+        ) -> Path | None:
     original_path = Path.cwd()
     desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
     os.chdir(desktop_path)
 
     sel_path = ""
-    if type == "file":
+    if node_type == "file":
         sel_path = filedialog.askopenfilename(title=message)
-    elif type == "dir":
+    elif node_type == "dir":
         sel_path = filedialog.askdirectory(title=message)
 
     os.chdir(original_path)
-    return sel_path
+    if sel_path == "":
+        return
+
+    return Path(sel_path)

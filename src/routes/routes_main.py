@@ -10,7 +10,7 @@ from src.utils import list_images_in_cwd
 def main_loop() -> None:
     print()
     dir_main = ask_main.ask_path_filedialog("dir", "Choose images directory")
-    if dir_main == "":
+    if not dir_main:
         return
     chdir(dir_main)
 
@@ -24,7 +24,7 @@ def main_loop() -> None:
 
         elif action == "change_dir":
             dir_main = ask_main.ask_path_filedialog("dir", "Choose images directory")
-            if dir_main == "":
+            if not dir_main:
                 return
             chdir(dir_main)
 
