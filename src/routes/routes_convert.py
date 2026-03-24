@@ -12,23 +12,20 @@ def htp_loop(dir_path: Path) -> bool:
         "return": False,
         "exit": True}
 
-    # TEMPPPPPP
-    os.chdir(dir_path)
-
     while True:
         action = ask_cnv.ask_htp_action()
         print()
 
         if action == "list_heic":
-            utils.list_images_in_dir(Path.cwd(), "heic")
+            utils.list_images_in_dir(dir_path, "heic")
             print()
 
         elif action == "heic_to_png_no_del":
-            cnv.HEICtoPNG_no_del(os.getcwd())
+            cnv.HEICtoPNG_no_del(dir_path)
             print()
 
         elif action == "heic_to_png_del":
-            cnv.HEICtoPNG_del(os.getcwd())
+            cnv.HEICtoPNG_del(dir_path)
             print()
 
         elif action in exit_flags:
@@ -40,23 +37,20 @@ def htj_loop(dir_path: Path) -> bool:
         "return": False,
         "exit": True}
 
-    # TEMPPPPPP
-    os.chdir(dir_path)
-
     while True:
         action = ask_cnv.ask_htj_action()
         print()
 
         if action == "list_heic":
-            utils.list_images_in_dir(Path.cwd(), "heic")
+            utils.list_images_in_dir(dir_path, "heic")
             print()
 
         elif action == "heic_to_jpg_no_del":
-            cnv.HEICtoJPG_no_del(os.getcwd())
+            cnv.HEICtoJPG_no_del(dir_path)
             print()
 
         elif action == "heic_to_jpg_del":
-            cnv.HEICtoJPG_del(os.getcwd())
+            cnv.HEICtoJPG_del(dir_path)
             print()
 
         elif action in exit_flags:
@@ -68,23 +62,20 @@ def ptj_loop(dir_path: Path) -> bool:
         "return": False,
         "exit": True}
 
-    # TEMPPPPPP
-    os.chdir(dir_path)
-
     while True:
         action = ask_cnv.ask_ptj_action()
         print()
 
         if action == "list_png":
-            utils.list_images_in_dir(Path.cwd(), "png")
+            utils.list_images_in_dir(dir_path, "png")
             print()
 
         elif action == "png_to_jpg_no_del":
-            cnv.PNGtoJPG_no_del(os.getcwd())
+            cnv.PNGtoJPG_no_del(dir_path)
             print()
 
         elif action == "png_to_jpg_del":
-            cnv.PNGtoJPG_del(os.getcwd())
+            cnv.PNGtoJPG_del(dir_path)
             print()
 
         elif action in exit_flags:
