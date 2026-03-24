@@ -6,14 +6,15 @@ import pillow_heif
 
 
 def HEICtoPNG_no_del(images_dir: Path) -> None:
-    # TEMPPPPPP
-    images_dir = str(images_dir)
+    for file_path in images_dir.iterdir():
+        # TEMPPPPPP
+        images_dir = str(images_dir)
+        file_name = file_path.name
 
-    for filename in os.listdir(images_dir):
-        if filename.lower().endswith(".heic"):
+        if file_name.lower().endswith(".heic"):
             # create an Image object from the HEIC file
-            filepath = os.path.join(images_dir, filename)
-            print("Converting:", filename)
+            filepath = os.path.join(images_dir, file_name)
+            print("Converting:", file_name)
             heif_file = pillow_heif.read_heif(filepath)
             image = Image.frombytes(
                 heif_file.mode,
@@ -22,25 +23,26 @@ def HEICtoPNG_no_del(images_dir: Path) -> None:
                 "raw",)
 
             # create a new filename for the PNG file
-            new_filename = os.path.splitext(filename)[0] + ".png"
+            new_filename = os.path.splitext(file_name)[0] + ".png"
             new_filepath = os.path.join(images_dir, new_filename)
 
             image.save(new_filepath, format("png"))
 
 
 def HEICtoPNG_del(images_dir: Path) -> None:
-    # TEMPPPPPP
-    images_dir = str(images_dir)
+    for file_path in images_dir.iterdir():
+        # TEMPPPPPP
+        images_dir = str(images_dir)
+        file_name = file_path.name
 
-    for filename in os.listdir(images_dir):
-        if filename.lower().endswith(".heic"):
+        if file_name.lower().endswith(".heic"):
             # create an Image object from the HEIC file
-            filepath = os.path.join(images_dir, filename)
-            print("Converting:", filename)
+            filepath = os.path.join(images_dir, file_name)
+            print("Converting:", file_name)
             try:
                 heif_file = pillow_heif.read_heif(filepath)
             except ValueError:
-                print(f"File {filename} could not be coverted.")
+                print(f"File {file_name} could not be coverted.")
                 continue
             image = Image.frombytes(
                 heif_file.mode,
@@ -49,75 +51,79 @@ def HEICtoPNG_del(images_dir: Path) -> None:
                 "raw",)
 
             # create a new filename for the PNG file
-            new_filename = os.path.splitext(filename)[0] + ".png"
+            new_filename = os.path.splitext(file_name)[0] + ".png"
             new_filepath = os.path.join(images_dir, new_filename)
             try:
-                os.remove(filename)
+                os.remove(file_name)
             except:
-                print("Couldn't remove " + filename)
+                print("Couldn't remove " + file_name)
 
             image.save(new_filepath, format("png"))
 
 
 def HEICtoJPG_no_del(images_dir: Path) -> None:
-    # TEMPPPPPP
-    images_dir = str(images_dir)
+    for file_path in images_dir.iterdir():
+        # TEMPPPPPP
+        images_dir = str(images_dir)
+        file_name = file_path.name
 
-    for filename in os.listdir(images_dir):
-        if filename.lower().endswith(".heic"):
-            filepath = os.path.join(images_dir, filename)
-            new_filename = os.path.splitext(filename)[0] + ".jpg"
+        if file_name.lower().endswith(".heic"):
+            filepath = os.path.join(images_dir, file_name)
+            new_filename = os.path.splitext(file_name)[0] + ".jpg"
 
-            print("Converting:", filename)
+            print("Converting:", file_name)
             img = Image.open(filepath)
             img.save(new_filename, format="JPEG")
 
 
 def HEICtoJPG_del(images_dir: Path) -> None:
-    # TEMPPPPPP
-    images_dir = str(images_dir)
+    for file_path in images_dir.iterdir():
+        # TEMPPPPPP
+        images_dir = str(images_dir)
+        file_name = file_path.name
 
-    for filename in os.listdir(images_dir):
-        if filename.lower().endswith(".heic"):
-            filepath = os.path.join(images_dir, filename)
-            new_filename = os.path.splitext(filename)[0] + ".jpg"
+        if file_name.lower().endswith(".heic"):
+            filepath = os.path.join(images_dir, file_name)
+            new_filename = os.path.splitext(file_name)[0] + ".jpg"
 
-            print("Converting:", filename)
+            print("Converting:", file_name)
             img = Image.open(filepath)
             img.save(new_filename, format="JPEG")
 
             try:
-                os.remove(filename)
+                os.remove(file_name)
             except:
-                print("Couldn't remove " + filename)
+                print("Couldn't remove " + file_name)
 
 
 def PNGtoJPG_no_del(images_dir: Path) -> None:
-    # TEMPPPPPP
-    images_dir = str(images_dir)
+    for file_path in images_dir.iterdir():
+        # TEMPPPPPP
+        images_dir = str(images_dir)
+        file_name = file_path.name
 
-    for filename in os.listdir(images_dir):
-        if filename.lower().endswith(".png"):
-            png_image = Image.open(filename)
-            print("Converting:", filename)
+        if file_name.lower().endswith(".png"):
+            png_image = Image.open(file_name)
+            print("Converting:", file_name)
             rgb_image = png_image.convert("RGB")
-            new_filename = os.path.splitext(filename)[0] + ".jpg"
+            new_filename = os.path.splitext(file_name)[0] + ".jpg"
             rgb_image.save(new_filename, "JPEG")
 
 
 def PNGtoJPG_del(images_dir: Path) -> None:
-    # TEMPPPPPP
-    images_dir = str(images_dir)
+    for file_path in images_dir.iterdir():
+        # TEMPPPPPP
+        images_dir = str(images_dir)
+        file_name = file_path.name
 
-    for filename in os.listdir(images_dir):
-        if filename.lower().endswith(".png"):
-            png_image = Image.open(filename)
-            print("Converting:", filename)
+        if file_name.lower().endswith(".png"):
+            png_image = Image.open(file_name)
+            print("Converting:", file_name)
             rgb_image = png_image.convert("RGB")
-            new_filename = os.path.splitext(filename)[0] + ".jpg"
+            new_filename = os.path.splitext(file_name)[0] + ".jpg"
             rgb_image.save(new_filename, "JPEG")
 
             try:
-                os.remove(filename)
+                os.remove(file_name)
             except:
-                print("Couldn't remove " + filename)
+                print("Couldn't remove " + file_name)
