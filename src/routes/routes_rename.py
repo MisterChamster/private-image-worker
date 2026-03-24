@@ -9,8 +9,8 @@ pillow_heif.register_heif_opener()
 
 
 
-def print_all_dates_loop(naming_style: str) -> str | None:
-    gen = rnm_tools.check_single_image_dates(os.getcwd(), naming_style)
+def print_all_dates_loop_cwd(naming_style: str) -> str | None:
+    gen = rnm_tools.check_single_image_dates(Path.cwd(), naming_style)
     print(next(gen))
     while True:
         action = ask_rnm.ask_print_all_dates()
@@ -183,7 +183,7 @@ def rename_actionloop(dir_path: Path) -> str | None:
         print()
 
         if action == "print_dates_first_file":
-            outing = print_all_dates_loop(naming_style)
+            outing = print_all_dates_loop_cwd(naming_style)
             if not outing:
                 return
 

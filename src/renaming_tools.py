@@ -1,23 +1,32 @@
 from PIL import Image
 from PIL.ExifTags import TAGS
-import os
 from datetime import datetime
 from pathlib import Path
+from typing import Literal
+import os
 import pillow_heif
 
 pillow_heif.register_heif_opener()
 
 
 
-def get_image_date(image_path: str, date_type: str) -> str:
+def get_image_date_md(
+        image_path: Path,
+        date_type: Literal[
+            "FILE_MOD",
+            "FILE_CREAT",
+            "EXIF_DTO",
+            "EXIF_DTD",
+            "EXIF_DT"]) -> str:
     """Extracts the date the image was taken from EXIF metadata."""
-    #date_type can be strings: FILE_MOD, FILE_CREAT, EXIF_DTO, EXIF_DTD, EXIF_DT
-    if date_type in ["EXIF_DTO", "EXIF_DTD", "EXIF_DT"]:
+    if date_type in ("EXIF_DTO", "EXIF_DTD", "EXIF_DT"):
         try:
             with Image.open(image_path) as img:
                 exif_data = img.getexif()
                 if exif_data:
-                    tag_dict = {TAGS.get(tag, tag): value for tag, value in exif_data.items()}
+                    tag_dict = {TAGS.get(tag, tag): value
+                                for tag, value
+                                in exif_data.items()}
 
                     if date_type == "EXIF_DTO":
                         try:
@@ -42,8 +51,8 @@ def get_image_date(image_path: str, date_type: str) -> str:
         except Exception as e:
             print(f"Error reading {image_path}: {e}")
 
-    elif date_type in ["FILE_MOD", "FILE_CREAT"]:
-        stats = Path(image_path).stat()
+    elif date_type in ("FILE_MOD", "FILE_CREAT"):
+        stats = image_path.stat()
         if date_type == "FILE_CREAT":
             created = str(datetime.fromtimestamp(stats.st_birthtime))
             created = (":".join(created.split("-"))).split(".")[0]
@@ -73,11 +82,11 @@ def format_date(date_string: str, naming_style: str) -> str | None:
 
 
 def get_formatted_name(
-    image_path: str,
+    image_path: Path,
     date_type: str,
     naming_style: str
 ) -> str:
-    image_date = get_image_date(image_path, date_type)
+    image_date = get_image_date_md(image_path, date_type)
 
     formatted_name = ""
     if image_date != "No date" and image_date is not None:
@@ -88,25 +97,27 @@ def get_formatted_name(
     return formatted_name
 
 
-def check_single_image_dates(images_dir: str, naming_style: str):
+def check_single_image_dates(images_dir: Path, naming_style: str):
     """Generator function listing images with all possible date types."""
-    valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
+    valid_extensions = ('.jpg', '.jpeg', '.png', '.tiff', '.heic')
 
-    for filename in os.listdir(images_dir):
-        if filename.lower().endswith(valid_extensions):
-            image_path = os.path.join(images_dir, filename)
-            formatted_EXIF_DTO_date   = get_formatted_name(image_path, "EXIF_DTO", naming_style)
-            formatted_EXIF_DTD_date   = get_formatted_name(image_path, "EXIF_DTD", naming_style)
-            formatted_EXIF_DT_date    = get_formatted_name(image_path, "EXIF_DT", naming_style)
-            formatted_FILE_CREAT_date = get_formatted_name(image_path, "FILE_CREAT", naming_style)
-            formatted_FILE_MOD_date   = get_formatted_name(image_path, "FILE_MOD", naming_style)
+    for file_path in images_dir.iterdir():
+        if file_path.suffix.lower() in valid_extensions:
+            formatted_EXIF_DTO_date   = get_formatted_name(file_path, "EXIF_DTO", naming_style)
+            formatted_EXIF_DTD_date   = get_formatted_name(file_path, "EXIF_DTD", naming_style)
+            formatted_EXIF_DT_date    = get_formatted_name(file_path, "EXIF_DT", naming_style)
+            formatted_FILE_CREAT_date = get_formatted_name(file_path, "FILE_CREAT", naming_style)
+            formatted_FILE_MOD_date   = get_formatted_name(file_path, "FILE_MOD", naming_style)
 
-            yield (filename + "\n" +
-                  f"By DateTimeOriginal EXIF:  {formatted_EXIF_DTO_date}\n"   +
-                  f"By DateTimeDigitized EXIF: {formatted_EXIF_DTD_date}\n"   +
-                  f"By DateTime EXIF:          {formatted_EXIF_DT_date}\n"    +
-                  f"By file creation:          {formatted_FILE_CREAT_date}\n" +
-                  f"By file modification:      {formatted_FILE_MOD_date }\n")
+            yield_msg = (
+                f"{file_path.name}\n"
+                f"By DateTimeOriginal EXIF:  {formatted_EXIF_DTO_date}\n"
+                f"By DateTimeDigitized EXIF: {formatted_EXIF_DTD_date}\n"
+                f"By DateTime EXIF:          {formatted_EXIF_DT_date}\n"
+                f"By file creation:          {formatted_FILE_CREAT_date}\n"
+                f"By file modification:      {formatted_FILE_MOD_date }\n")
+
+            yield yield_msg
 
 
 def list_images_with_dates(
@@ -121,7 +132,8 @@ def list_images_with_dates(
         extension = filename.lower().split(".")[-1]
         if extension in valid_extensions:
             image_path = os.path.join(images_dir, filename)
-            formatted_name = get_formatted_name(image_path, date_type, naming_style)
+            # TEMPPPPPP
+            formatted_name = get_formatted_name(Path(image_path), date_type, naming_style)
             if formatted_name == "Invalid date":
                 print(f"Invalid date:        {filename}")
                 continue
@@ -141,7 +153,8 @@ def rename_image_with_style(
     date_type: str,
     naming_style: str
 ) -> None:
-    formatted_date_name = get_formatted_name(image_path, date_type, naming_style)
+    # TEMPPPPPP
+    formatted_date_name = get_formatted_name(Path(image_path), date_type, naming_style)
     if formatted_date_name != "No date" and formatted_date_name != "Invalid date":
         dirname = os.path.dirname(image_path)
         for i in range(1, 200):
