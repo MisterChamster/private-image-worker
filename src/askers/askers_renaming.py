@@ -61,22 +61,22 @@ def ask_print_all_files_dates() -> Literal[
 
 
 def ask_rename_images_one_by_one(
-    image_path: str,
+    image_path: Path,
     naming_style: str
-) -> str | None:
-    returns_dict = {"rt": "return"}
+) -> str:
+    returns_dict = {
+        "rt": "return",
+        "e":  "exit"}
 
-    filename = os.path.basename(image_path)
-    # TEMPPPPPP
-    formatted_EXIF_DTO_date   = rnm_tools.get_formatted_name(Path(image_path), "EXIF_DTO", naming_style)
-    formatted_EXIF_DTD_date   = rnm_tools.get_formatted_name(Path(image_path), "EXIF_DTD", naming_style)
-    formatted_EXIF_DT_date    = rnm_tools.get_formatted_name(Path(image_path), "EXIF_DT", naming_style)
-    formatted_FILE_CREAT_date = rnm_tools.get_formatted_name(Path(image_path), "FILE_CREAT", naming_style)
-    formatted_FILE_MOD_date   = rnm_tools.get_formatted_name(Path(image_path), "FILE_MOD", naming_style)
+    formatted_EXIF_DTO_date   = rnm_tools.get_formatted_name(image_path, "EXIF_DTO",   naming_style)
+    formatted_EXIF_DTD_date   = rnm_tools.get_formatted_name(image_path, "EXIF_DTD",   naming_style)
+    formatted_EXIF_DT_date    = rnm_tools.get_formatted_name(image_path, "EXIF_DT",    naming_style)
+    formatted_FILE_CREAT_date = rnm_tools.get_formatted_name(image_path, "FILE_CREAT", naming_style)
+    formatted_FILE_MOD_date   = rnm_tools.get_formatted_name(image_path, "FILE_MOD",   naming_style)
 
     while True:
         anything_flag = False
-        print(f"Renaming: {filename}")
+        print(f"Renaming: {image_path.name}")
         print("Choose renaming style:")
         if formatted_EXIF_DTO_date != "No date" and \
            formatted_EXIF_DTO_date != "Invalid date":
@@ -116,11 +116,9 @@ def ask_rename_images_one_by_one(
             print("Enter - Skip")
 
         print("rt    - Return\n"
-              "exit  - Exit program\n>> ", end="")
+              "e     - Exit program\n>> ", end="")
         action = input().strip()
 
-        if action == "exit":
-            return
         if action in returns_dict:
             return returns_dict[action]
         print("Incorrect input.\n")

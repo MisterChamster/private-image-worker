@@ -73,26 +73,27 @@ def rename_images_onebyone_loop(
     for filename in os.listdir():
         if filename.lower().endswith(valid_extensions):
             image_path = os.path.join(directory, filename)
-            action = ask_rnm.ask_rename_images_one_by_one(image_path, naming_style)
+            # TEMPPPPPP
+            action = ask_rnm.ask_rename_images_one_by_one(Path(image_path), naming_style)
             print()
 
-            if action == "o":
+            if action == "date_time_original":
                 rnm_tools.rename_image_with_style(image_path, "EXIF_DTO", naming_style)
                 print()
 
-            elif action == "d":
+            elif action == "date_time_digitized":
                 rnm_tools.rename_image_with_style(image_path, "EXIF_DTD", naming_style)
                 print()
 
-            elif action == "t":
+            elif action == "date_time":
                 rnm_tools.rename_image_with_style(image_path, "EXIF_DT", naming_style)
                 print()
 
-            elif action == "c":
+            elif action == "file_creation":
                 rnm_tools.rename_image_with_style(image_path, "FILE_CREAT", naming_style)
                 print()
 
-            elif action == "m":
+            elif action == "file_modification":
                 rnm_tools.rename_image_with_style(image_path, "FILE_MOD", naming_style)
                 print()
 
@@ -102,7 +103,7 @@ def rename_images_onebyone_loop(
             elif action == "rt":
                 return action
 
-            elif not action:
+            elif action == "exit":
                 return
     print("All files have been considered.\n")
 
