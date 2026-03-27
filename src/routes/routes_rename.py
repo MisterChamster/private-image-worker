@@ -3,6 +3,7 @@ import pillow_heif
 
 import src.askers.askers_renaming as ask_rnm
 import src.renaming_tools as rnm_tools
+import src.utils as utils
 
 pillow_heif.register_heif_opener()
 
@@ -83,7 +84,8 @@ def rename_images_onebyone_loop(
     valid_extensions = ('.jpg', '.jpeg', '.png', '.tiff', '.heic')
 
     print()
-    for file_path in dir_path.iterdir():
+    files_list = utils.get_files_list(dir_path)
+    for file_path in files_list:
         if file_path.suffix.lower() in valid_extensions:
             action = ask_rnm.ask_rename_images_one_by_one(file_path, naming_style)
             print()

@@ -6,6 +6,8 @@ from typing import Literal
 import os
 import pillow_heif
 
+import src.utils as utils
+
 pillow_heif.register_heif_opener()
 
 
@@ -102,7 +104,8 @@ def check_single_image_dates(images_dir: Path, naming_style: str):
     """Generator function listing images with all possible date types."""
     valid_extensions = ('.jpg', '.jpeg', '.png', '.tiff', '.heic')
 
-    for file_path in images_dir.iterdir():
+    files_list = utils.get_files_list(images_dir)
+    for file_path in files_list:
         if file_path.suffix.lower() in valid_extensions:
             formatted_EXIF_DTO_date   = get_formatted_name(file_path, "EXIF_DTO", naming_style)
             formatted_EXIF_DTD_date   = get_formatted_name(file_path, "EXIF_DTD", naming_style)
@@ -127,15 +130,15 @@ def list_images_with_dates(
     naming_style: str
 ) -> None:
     """Lists all images in the directory with date_type dates with the appropriate naming style."""
-    valid_extensions = ('jpg', 'jpeg', 'png', 'tiff', 'heic')
+    valid_extensions = ('.jpg', '.jpeg', '.png', '.tiff', '.heic')
 
-    for file_path in images_dir.iterdir():
-        filename = file_path.name
-        extension = filename.lower().split(".")[-1]
-
+    files_list = utils.get_files_list(images_dir)
+    for file_path in files_list:
+        extension = file_path.suffix.lower()
         if extension not in valid_extensions:
             continue
 
+        filename = file_path.name
         formatted_name = get_formatted_name(file_path, date_type, naming_style)
         if formatted_name == "Invalid date":
             print(f"Invalid date:        {filename}")
@@ -189,7 +192,8 @@ def rename_images_in_dir(
 ) -> None:
     valid_extensions = ('.jpg', '.jpeg', '.png', '.tiff', '.jfif', '.heic')
 
-    for file_path in images_dir.iterdir():
+    files_list = utils.get_files_list(images_dir)
+    for file_path in files_list:
         extension = file_path.suffix.lower()
         if extension in valid_extensions:
             rename_image_with_style(file_path, date_type, naming_style)

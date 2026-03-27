@@ -2,17 +2,15 @@ import os
 from pathlib import Path
 
 import src.converting_file_tools as conv_file
+import src.utils as utils
 
 
 
 def HEICtoPNG_dir(images_dir: Path, del_flag: bool = False) -> None:
-    for file_path in images_dir.iterdir():
-        ext = file_path.suffix
-        if ext.lower() != ".heic":
-            continue
+    files_list = utils.get_files_list(images_dir, ".heic")
 
+    for file_path in files_list:
         conv_file.HEICtoPNG(file_path)
-
         if del_flag:
             try:
                 os.remove(file_path)
@@ -21,13 +19,10 @@ def HEICtoPNG_dir(images_dir: Path, del_flag: bool = False) -> None:
 
 
 def HEICtoJPG_dir(images_dir: Path, del_flag: bool = False) -> None:
-    for file_path in images_dir.iterdir():
-        ext = file_path.suffix
-        if ext.lower() != ".heic":
-            continue
+    files_list = utils.get_files_list(images_dir, ".heic")
 
+    for file_path in files_list:
         conv_file.HEICtoJPG(file_path)
-
         if del_flag:
             try:
                 os.remove(file_path)
@@ -36,13 +31,10 @@ def HEICtoJPG_dir(images_dir: Path, del_flag: bool = False) -> None:
 
 
 def PNGtoJPG_dir(images_dir: Path, del_flag: bool = False) -> None:
-    for file_path in images_dir.iterdir():
-        ext = file_path.suffix
-        if ext.lower() != ".png":
-            continue
+    files_list = utils.get_files_list(images_dir, ".png")
 
+    for file_path in files_list:
         conv_file.PNGtoJPG(file_path)
-
         if del_flag:
             try:
                 os.remove(file_path)
