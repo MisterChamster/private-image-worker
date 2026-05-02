@@ -12,13 +12,13 @@ def ask_print_all_dates() -> Literal[
     returns_dict = {
         "":   "next",
         "rt": "return",
-        "e":  "exit"}
+        "x":  "exit"}
 
     while True:
         print("Show next file dates?\n"
               "Enter - Next\n"
               "rt    - Return\n"
-              "e     - Exit program\n>> ", end="")
+              "x     - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action in returns_dict:
@@ -41,7 +41,7 @@ def ask_print_all_files_dates() -> Literal[
         "c": "file_creation",
         "m": "file_modification",
         "r": "return",
-        "e": "exit"}
+        "x": "exit"}
 
     while True:
         print("Choose printing format:\n"
@@ -51,7 +51,7 @@ def ask_print_all_files_dates() -> Literal[
               "c - File creation\n"
               "m - File modification\n"
               "r - Return\n"
-              "e - Exit program\n>> ", end="")
+              "x - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action in returns_dict:
@@ -65,7 +65,7 @@ def ask_rename_images_one_by_one(
 ) -> str:
     returns_dict = {
         "rt": "return",
-        "e":  "exit"}
+        "x":  "exit"}
 
     formatted_EXIF_DTO_date   = rnm_tools.get_formatted_name(image_path, "EXIF_DTO",   naming_style)
     formatted_EXIF_DTD_date   = rnm_tools.get_formatted_name(image_path, "EXIF_DTD",   naming_style)
@@ -116,7 +116,7 @@ def ask_rename_images_one_by_one(
             print("Enter - Skip")
 
         print("rt    - Return\n"
-              "e     - Exit program\n>> ", end="")
+              "x     - Exit program\n>> ", end="")
         action = input().strip()
 
         if action in returns_dict:
@@ -133,14 +133,14 @@ def ask_rename_all_images(date_type: str) -> Literal[
         "ls": "list_images_new_names",
         "ra": "rename_all_images",
         "r":  "return",
-        "e":  "exit"}
+        "x":  "exit"}
 
     while True:
         print("Choose a renaming option:\n"
              f"ls - List all images names converted to {date_type} format\n"
              f"ra - Rename all images to {date_type} format\n"
               "r  - Return\n"
-              "e  - Exit program\n>> ", end="")
+              "x  - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action in returns_dict:
@@ -163,7 +163,7 @@ def ask_rename_basis() -> Literal[
         "c": "file_creation",
         "m": "file_modification",
         "r": "return",
-        "e":  "exit"}
+        "x":  "exit"}
 
     while True:
         print("Choose style of renaming images:\n"
@@ -173,7 +173,7 @@ def ask_rename_basis() -> Literal[
               "c - File creation\n"
               "m - File modification\n"
               "r - Return\n"
-              "e - Exit program\n>> ", end="")
+              "x - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action in returns_dict:
@@ -196,7 +196,7 @@ def ask_rename_action() -> Literal[
         "ra": "rename_all_images",
         "cs": "change_naming_style",
         "rt": "return",
-        "e":  "exit"}
+        "x":  "exit"}
 
     while True:
         print("Choose rename action:\n"
@@ -206,7 +206,7 @@ def ask_rename_action() -> Literal[
               "ra - Rename all images to a date format...\n"
               "cs -  Change naming style...\n"
               "rt - Return\n"
-              "e  - Exit program\n>> ", end="")
+              "x  - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action in returns_dict:
@@ -225,7 +225,7 @@ def ask_naming_style(naming_style: str) -> Literal[
         "u": "eu",
         "s": "us",
         "r": "return",
-        "e": "exit"}
+        "x": "exit"}
 
     while True:
         print(f"Current naming style: {naming_style}\n"
@@ -234,7 +234,7 @@ def ask_naming_style(naming_style: str) -> Literal[
                "u - European  IMG_[D][M][Y]_[H][M][S]\n"
                "s - US Format IMG_[M][D][Y]_[H][M][S]\n"
                "r - Return\n"
-               "e - Exit program\n>> ", end="")
+               "x - Exit program\n>> ", end="")
         action = input().strip().lower()
 
         if action in returns_dict:
