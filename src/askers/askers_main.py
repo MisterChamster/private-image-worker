@@ -12,11 +12,11 @@ def ask_mainloop_action() -> Literal[
     "convert",
     "exit"]:
     returns_dict = {
-        "ls":  "list",
+        "ls": "list",
         "rn": "rename",
         "cv": "convert",
-        "cd":  "change_dir",
-        "x":   "exit"}
+        "cd": "change_dir",
+        "x":  "exit"}
 
     while True:
         print("Choose action: \n"
