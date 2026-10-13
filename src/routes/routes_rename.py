@@ -7,16 +7,15 @@ import src.utils as utils
 
 pillow_heif.register_heif_opener()
 
+exit_flags = {
+    "return": False,
+    "exit": True}
+
 
 
 def print_all_dates_loop_cwd(
-        dir_path: Path,
-        naming_style: str
-) -> bool:
-    exit_flags = {
-        "return": False,
-        "exit": True}
-
+    dir_path: Path,
+    naming_style: str) -> bool:
     gen = rnm_tools.check_single_image_dates(
         dir_path,
         naming_style)
@@ -40,18 +39,14 @@ def print_all_dates_loop_cwd(
 
 
 def print_all_files_dates_loop(
-        dir_path: Path,
-        naming_style: str
-        ) -> bool:
+    dir_path: Path,
+    naming_style: str) -> bool:
     date_types = {
-        "date_time_original": "EXIF_DTO",
+        "date_time_original":  "EXIF_DTO",
         "date_time_digitized": "EXIF_DTD",
-        "date_time": "EXIF_DT",
-        "file_creation": "FILE_CREAT",
-        "file_modification": "FILE_MOD"}
-    exit_flags = {
-        "return": False,
-        "exit": True}
+        "date_time":           "EXIF_DT",
+        "file_creation":       "FILE_CREAT",
+        "file_modification":   "FILE_MOD"}
 
     while True:
         action = ask_rnm.ask_print_all_files_dates()
@@ -70,17 +65,13 @@ def print_all_files_dates_loop(
 
 def rename_images_onebyone_loop(
     dir_path: Path,
-    naming_style: str
-) -> bool:
+    naming_style: str) -> bool:
     date_types = {
         "date_time_original": "EXIF_DTO",
         "date_time_digitized": "EXIF_DTD",
         "date_time": "EXIF_DT",
         "file_creation": "FILE_CREAT",
         "file_modification": "FILE_MOD"}
-    exit_flags = {
-        "return": False,
-        "exit": True}
     valid_extensions = ('.jpg', '.jpeg', '.png', '.tiff', '.heic')
 
     print()
@@ -109,12 +100,7 @@ def rename_images_onebyone_loop(
 def rename_all_images_loop(
     dir_path: Path,
     date_type: str,
-    naming_style: str
-) -> bool:
-    exit_flags = {
-        "return": False,
-        "exit": True}
-
+    naming_style: str) -> bool:
     while True:
         action = ask_rnm.ask_rename_all_images(date_type)
         print()
@@ -132,18 +118,14 @@ def rename_all_images_loop(
 
 
 def rename_basis_loop(
-        dir_path: Path,
-        naming_style: str
-        ) -> bool:
+    dir_path: Path,
+    naming_style: str) -> bool:
     date_types = {
         "date_time_original": "EXIF_DTO",
         "date_time_digitized": "EXIF_DTD",
         "date_time": "EXIF_DT",
         "file_creation": "FILE_CREAT",
         "file_modification": "FILE_MOD"}
-    exit_flags = {
-        "return": False,
-        "exit": True}
 
     while True:
         action = ask_rnm.ask_rename_basis()
@@ -162,9 +144,6 @@ def rename_basis_loop(
 
 
 def rename_actionloop(dir_path: Path) -> bool:
-    exit_flags = {
-        "return": False,
-        "exit": True}
     styles_dict = {
         "iso": "IMG_[Y][M][D]_[H][M][S]",
         "eu":  "IMG_[D][M][Y]_[H][M][S]",

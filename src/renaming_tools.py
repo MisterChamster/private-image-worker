@@ -13,13 +13,13 @@ pillow_heif.register_heif_opener()
 
 
 def get_image_date_md(
-        image_path: Path,
-        date_type: Literal[
-            "FILE_MOD",
-            "FILE_CREAT",
-            "EXIF_DTO",
-            "EXIF_DTD",
-            "EXIF_DT"]) -> str:
+    image_path: Path,
+    date_type: Literal[
+        "FILE_MOD",
+        "FILE_CREAT",
+        "EXIF_DTO",
+        "EXIF_DTD",
+        "EXIF_DT"]) -> str:
     """Extracts the date the image was taken from EXIF metadata."""
     if date_type in ("EXIF_DTO", "EXIF_DTD", "EXIF_DT"):
         try:
@@ -87,10 +87,8 @@ def format_date(date_string: str, naming_style: str) -> str | None:
 def get_formatted_name(
     image_path: Path,
     date_type: str,
-    naming_style: str
-) -> str:
+    naming_style: str) -> str:
     image_date = get_image_date_md(image_path, date_type)
-
     formatted_name = ""
     if image_date != "No date" and image_date is not None:
         formatted_name = format_date(image_date, naming_style)
@@ -127,8 +125,7 @@ def check_single_image_dates(images_dir: Path, naming_style: str):
 def list_images_with_dates(
     images_dir: Path,
     date_type: str,
-    naming_style: str
-) -> None:
+    naming_style: str) -> None:
     """Lists all images in the directory with date_type dates with the appropriate naming style."""
     valid_extensions = ('.jpg', '.jpeg', '.png', '.tiff', '.heic')
 
@@ -157,8 +154,7 @@ def list_images_with_dates(
 def rename_image_with_style(
     image_path: Path,
     date_type: str,
-    naming_style: str
-) -> None:
+    naming_style: str) -> None:
     formatted_date_name = get_formatted_name(image_path, date_type, naming_style)
     og_file_name = image_path.name
 
@@ -188,8 +184,7 @@ def rename_image_with_style(
 def rename_images_in_dir(
     images_dir: Path,
     date_type: str,
-    naming_style: str
-) -> None:
+    naming_style: str) -> None:
     valid_extensions = ('.jpg', '.jpeg', '.png', '.tiff', '.jfif', '.heic')
 
     files_list = utils.get_files_list(images_dir)

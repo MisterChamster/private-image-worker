@@ -4,13 +4,12 @@ import src.utils as utils
 import src.askers.askers_converting as ask_cnv
 import src.converting_dir_tools as cnv
 
+exit_flags = {
+    "return": False,
+    "exit":   True}
 
 
 def htp_loop(dir_path: Path) -> bool:
-    exit_flags = {
-        "return": False,
-        "exit": True}
-
     while True:
         action = ask_cnv.ask_htp_action()
         print()
@@ -32,10 +31,6 @@ def htp_loop(dir_path: Path) -> bool:
 
 
 def htj_loop(dir_path: Path) -> bool:
-    exit_flags = {
-        "return": False,
-        "exit": True}
-
     while True:
         action = ask_cnv.ask_htj_action()
         print()
@@ -57,10 +52,6 @@ def htj_loop(dir_path: Path) -> bool:
 
 
 def ptj_loop(dir_path: Path) -> bool:
-    exit_flags = {
-        "return": False,
-        "exit": True}
-
     while True:
         action = ask_cnv.ask_ptj_action()
         print()
@@ -82,10 +73,6 @@ def ptj_loop(dir_path: Path) -> bool:
 
 
 def convert_loop(dir_path: Path) -> bool:
-    exit_flags = {
-        "return": False,
-        "exit": True}
-
     while True:
         action = ask_cnv.ask_convert_action()
         print()

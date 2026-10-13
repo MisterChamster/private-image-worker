@@ -4,9 +4,9 @@ from typing import Literal
 
 
 def list_images_in_dir(
-        dir_path: Path,
-        format: Literal["all", "heic", "png", "jpg"] = "all"
-        ) -> None:
+    dir_path: Path,
+    format: Literal["all", "heic", "png", "jpg"] = "all"
+    ) -> None:
     """Lists all images in current directory with specified format."""
     valid_extensions = ()
 
