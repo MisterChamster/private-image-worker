@@ -1,5 +1,5 @@
 # Image Worker
-A simple program made for renaming images (jpg, jpeg, png, tiff, heic) according to their date and converting them into other formats.
+A simple program made for renaming images (jpg, jpeg, png, tiff, heic) according to their date.
 
 ## Table of Contents
 - [Features](#features)
@@ -8,7 +8,6 @@ A simple program made for renaming images (jpg, jpeg, png, tiff, heic) according
 - [Additional notes](#additional-notes)
 
 ## Features
-- Simple conversion (heic -> png, heic -> jpg, png -> jpg)
 - Renaming based on 5 different image file properties
 - 3 different renaming styles
 - Enhanced preview options
